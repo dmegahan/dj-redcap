@@ -187,7 +187,7 @@ def get_field_type(line):
 	field_params = {};
 	field_notes = [];
 	
-	required = get_field_value(line,'required');
+	required = get_field_value(line,'required?');
 	validation_type = get_field_value(line,'validation type');
 	field_type = get_field_value(line,'field type');
 	repeat_tf = get_field_value(line,'repeat?');
@@ -200,7 +200,6 @@ def get_field_type(line):
 	except KeyError:
 		field_type = 'TextField';
 		field_notes.append('This field type is a guess');
-
 	if not required:
 		field_params['blank'] = True
 		if field_type is 'BooleanField':
