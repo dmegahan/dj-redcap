@@ -62,7 +62,7 @@ def csv2json(reader, fileName):
 		form_name = row['form_name'];
 		
 		#if the row just has endrepeat in it, skip it
-		if row['field_name'] is 'endrepeat':
+		if row['field_name'].replace(' ', '').replace('_','').replace('-','') is 'endrepeat':
 			row = reader.nextLine();
 		
 		#if form_name != last_form_name:
@@ -192,8 +192,8 @@ def get_field_type(line):
 	field_type = get_field_value(line,'field type');
 	repeat_tf = get_field_value(line,'repeat?');
 	if repeat_tf:
-		repeat_num = get_field_value(line,'repeatnum');
-		repeat_pointer = get_field_value(line,'repeatpointer');
+		repeat_num = get_field_value(line,'repeat num');
+		repeat_pointer = get_field_value(line,'repeat pointer');
 	
 	try:
 		field_type = field_types.get(validation_type, field_types[field_type]);
