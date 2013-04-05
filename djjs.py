@@ -158,7 +158,7 @@ def json2dj(fileName):
 		comment_notes.extend(field_notes);
 		
 		field_type += '('
-		print att_name
+
 		if keyword.iskeyword(att_name):
 			att_name += '_field';
 			comment_notes.append('Field renamed because it was a Python reserved word.');
@@ -188,8 +188,12 @@ def get_field_type(line):
 	field_notes = [];
 	
 	required = get_field_value(line,'required');
-	validation_type = get_field_value(line,'validation_type');
-	field_type = get_field_value(line,'field_type');
+	validation_type = get_field_value(line,'validation type');
+	field_type = get_field_value(line,'field type');
+	repeat_tf = get_field_value(line,'repeat?');
+	if repeat_tf:
+		repeat_num = get_field_value(line,'repeatnum');
+		repeat_pointer = get_field_value(line,'repeatpointer');
 	
 	try:
 		field_type = field_types.get(validation_type, field_types[field_type]);
