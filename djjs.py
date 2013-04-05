@@ -223,9 +223,13 @@ def get_field_value(line, field):
 	"""
 		Determines the value of a field from the json representation.
 		
-		This function first finds the begining of the field name (not the value).   		    Then adds the length of the field to the index, and then adds another 3 to i		t. The additional 3 come from the way the Json is structured. A typical Json 		    'field' looks like this example: "identifier":"some_value". The added 3 inde     		x come from the second quotation mark, the colon, and the third quotation.
+		This function first finds the begining of the field name (not the value).
+		Then adds the length of the field to the index, and then adds another 3 to it. 
+		The additional 3 come from the way the Json is structured. A typical Json 'field' 
+		looks like this example: "identifier":"some_value". The added 3 index comes from 
+		the second quotation mark, the colon, and the third quotation.
 		
-		Then finds the length of the field_value and returns that substring using th		    e determined indices.
+		Then finds the length of the field_value and returns that substring using the determined indices.
 	"""
 	field_index = line.find('"' + field + '"');
 	field_index = field_index + len(field) + 4;
