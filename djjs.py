@@ -61,10 +61,6 @@ def csv2json(reader, fileName):
 	for row in reader:
 		form_name = row['form_name'];
 		
-		#if the row just has endrepeat in it, skip it
-		if row['field_name'].replace(' ', '').replace('_','').replace('-','') is 'endrepeat':
-			row = reader.nextLine();
-		
 		#if form_name != last_form_name:
 		#	if last_form_name:
 		#		fout.write('}\n');
@@ -81,9 +77,10 @@ def csv2json(reader, fileName):
 		str_repeat_start = row['field_name'].find('startrepeat');
 		if str_repeat_start != -1:
 			row['repeat_tf'] = "True";
-			row['repeat_num'] = row['field_name'][str_repeat_start+12];
-			row['repeat_pointer'] = row['field_name'][str_repeat_start+14:];
-			row['field_name'] = row['field_name'][:str_repeat_start-1];
+			repeat_info = row['field_name'].strip().split();
+			row['field_name'] = repeat_info[0];
+			row['repeat_num'] = repeat_info[2];
+			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
 		else:
 			row['repeat_tf'] = "False";
 			row['repeat_num'] = "";
@@ -127,7 +124,10 @@ def json2dj(fileName):
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
 		
-		if form_name != prev_form_name:
+		if form_name != prev_form_name and get_field_value(line,'field value').strip() != 'endrepeat':
+			if prev_form_name:
+				for meta_line in get_meta(prev_form_name):
+					fout.write(meta_line);
 			prev_form_name = form_name;
 			fout.write('class %s(models.Model):' % form2model(form_name));
 			fout.write('\n');
@@ -177,7 +177,14 @@ def json2dj(fileName):
 		field_desc += ')';
 		if comment_notes:
 			field_desc += ' # ' + ' '.join(comment_notes);
-		fout.write('    %s' % field_desc);
+		if get_field_value(line,'repeat?') == 'True':
+			if get_field_value(line,'repeat num').isdigit():
+				for i in range(int(get_field_value(line,'repeat num'))):
+					fout.write('    %s' % field_desc);
+			else:
+				fout.write('    %s' % field_desc);
+		elif get_field_value(line,'field value').strip() != 'endrepeat':
+			fout.write('    %s' % field_desc);
 		fout.write('\n');
 def get_field_type(line):
 	"""Given the database connection, the table name, and the cursor row description,
@@ -243,6 +250,16 @@ def get_field_value(line, field):
 		current_char = line[field_index+field_len];
 	field_value = line[field_index:field_index+field_len];
 	return field_value;	
+def get_meta(table_name):
+	"""	Return a sequence comprising the lines of code necessary
+		to construct the inner Meta class for the model 
+		corresponding to the given database table name.
+	"""
+	return ['\n',
+		'    class Meta:\n',
+		'	 db_table = %r\n' % table_name,
+		'\n',
+		'\n'];
 if len(sys.argv) > 1:
 	readFile(sys.argv[1]);
 else:

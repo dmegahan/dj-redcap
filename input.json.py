@@ -33,6 +33,11 @@ class Demographics(models.Model):
     subject_comments = models.TextField(help_text='', null=True, verbose_name='Comments', blank=True) # This field type is a guess
     etiology_esrd = models.IntegerField(help_text='', null=True, verbose_name='Etiology of ESRD', blank=True, choices=[(0, 'Diabetes'), (1, 'Hypertension'), (2, 'Glomerulonephritis'), (3, 'Polycystic Kidney Disease'), (4, 'Interstitial Nephritis'), (5, 'Hereditary Nephritis'), (6, 'Other')]) # This field type is a guess
     survey_1 = models.IntegerField(max_length=2000, blank=True, help_text='This describes the field', null=True, verbose_name='Test', choices=[(1, 'choice 1'), (2, 'choice 2')])
+
+    class Meta:
+	 db_table = 'demographics'
+
+
 class BaselineData(models.Model):
     study_id_display = models.FloatField(help_text='', null=True, verbose_name='study_id', blank=True)
     date_visit_b = models.DateField(help_text='', null=True, verbose_name='Date of baseline visit', blank=True)
@@ -53,6 +58,11 @@ class BaselineData(models.Model):
     serum3_b = models.IntegerField(help_text='', null=True, verbose_name='Collected Serum 3?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     sga_b = models.FloatField(help_text='', null=True, verbose_name='Subject Global Assessment (score = 1-7)', blank=True)
     date_supplement_dispensed = models.DateField(help_text='', null=True, verbose_name='Date patient begins supplement', blank=True)
+
+    class Meta:
+	 db_table = 'baseline_data'
+
+
 class Month1Data(models.Model):
     date_visit_1 = models.DateField(help_text='', null=True, verbose_name='Date of Month 1 visit', blank=True)
     alb_1 = models.FloatField(help_text='', null=True, verbose_name='Serum Albumin (g/dL)', blank=True)
@@ -73,6 +83,11 @@ class Month1Data(models.Model):
     death_1 = models.IntegerField(help_text='', null=True, verbose_name='Has patient died since last visit?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     date_death_1 = models.DateField(help_text='', null=True, verbose_name='Date of death', blank=True)
     cause_death_1 = models.IntegerField(help_text='', null=True, verbose_name='What was the cause of death?', blank=True, choices=[(1, 'All-cause'), (2, 'Cardiovascular')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'month_1_data'
+
+
 class Month2Data(models.Model):
     date_visit_2 = models.DateField(help_text='', null=True, verbose_name='Date of Month 2 visit', blank=True)
     alb_2 = models.FloatField(help_text='', null=True, verbose_name='Serum Albumin (g/dL)', blank=True)
@@ -93,6 +108,11 @@ class Month2Data(models.Model):
     death_2 = models.IntegerField(help_text='', null=True, verbose_name='Has patient died since last visit?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     date_death_2 = models.DateField(help_text='', null=True, verbose_name='Date of death', blank=True)
     cause_death_2 = models.IntegerField(help_text='', null=True, verbose_name='What was the cause of death?', blank=True, choices=[(1, 'All-cause'), (2, 'Cardiovascular')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'month_2_data'
+
+
 class Month3Data(models.Model):
     date_visit_3 = models.DateField(help_text='', null=True, verbose_name='Date of Month 3 visit', blank=True)
     date_blood_3 = models.DateField(help_text='', null=True, verbose_name='Date blood was drawn', blank=True)
@@ -121,6 +141,11 @@ class Month3Data(models.Model):
     death_3 = models.IntegerField(help_text='', null=True, verbose_name='Has patient died since last visit?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     date_death_3 = models.DateField(help_text='', null=True, verbose_name='Date of death', blank=True)
     cause_death_3 = models.IntegerField(help_text='', null=True, verbose_name='What was the cause of death?', blank=True, choices=[(1, 'All-cause'), (2, 'Cardiovascular')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'month_3_data'
+
+
 class Month4Data(models.Model):
     date_visit_4 = models.DateField(help_text='', null=True, verbose_name='Date of Month 4 visit', blank=True)
     alb_4 = models.FloatField(help_text='', null=True, verbose_name='Serum Albumin (g/dL)', blank=True)
@@ -141,6 +166,11 @@ class Month4Data(models.Model):
     death_4 = models.IntegerField(help_text='', null=True, verbose_name='Has patient died since last visit?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     date_death_4 = models.DateField(help_text='', null=True, verbose_name='Date of death', blank=True)
     cause_death_4 = models.IntegerField(help_text='', null=True, verbose_name='What was the cause of death?', blank=True, choices=[(1, 'All-cause'), (2, 'Cardiovascular')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'month_4_data'
+
+
 class Month5Data(models.Model):
     date_visit_5 = models.DateField(help_text='', null=True, verbose_name='Date of Month 5 visit', blank=True)
     alb_5 = models.FloatField(help_text='', null=True, verbose_name='Serum Albumin (g/dL)', blank=True)
@@ -161,6 +191,11 @@ class Month5Data(models.Model):
     death_5 = models.IntegerField(help_text='', null=True, verbose_name='Has patient died since last visit?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     date_death_5 = models.DateField(help_text='', null=True, verbose_name='Date of death', blank=True)
     cause_death_5 = models.IntegerField(help_text='', null=True, verbose_name='What was the cause of death?', blank=True, choices=[(1, 'All-cause'), (2, 'Cardiovascular')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'month_5_data'
+
+
 class Month6Data(models.Model):
     date_visit_6 = models.DateField(help_text='', null=True, verbose_name='Date of Month 6 visit', blank=True)
     date_blood_6 = models.DateField(help_text='', null=True, verbose_name='Date blood was drawn', blank=True)
@@ -189,15 +224,30 @@ class Month6Data(models.Model):
     death_6 = models.IntegerField(help_text='', null=True, verbose_name='Has patient died since last visit?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     date_death_6 = models.DateField(help_text='', null=True, verbose_name='Date of death', blank=True)
     cause_death_6 = models.IntegerField(help_text='', null=True, verbose_name='What was the cause of death?', blank=True, choices=[(1, 'All-cause'), (2, 'Cardiovascular')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'month_6_data'
+
+
 class CompletionData(models.Model):
     complete_study = models.IntegerField(help_text='', null=True, verbose_name='Has patient completed study?', blank=True, choices=[(0, 'No'), (1, 'Yes')]) # This field type is a guess
     withdraw_date = models.DateField(help_text='', null=True, verbose_name='Put a date if patient withdrew study', blank=True)
     withdraw_reason = models.IntegerField(help_text='', null=True, verbose_name='Reason patient withdrew from study', blank=True, choices=[(0, 'Non-compliance'), (1, 'Did not wish to continue in study'), (2, 'Could not tolerate the supplement'), (3, 'Hospitalization'), (4, 'Other')]) # This field type is a guess
     complete_study_date = models.DateField(help_text='', null=True, verbose_name='Date of study completion', blank=True)
     study_comments = models.TextField(help_text='', null=True, verbose_name='Comments', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'completion_data'
+
+
 class Brfss2009Section21EmotionalSupportAndLifeSatisfaction(models.Model):
     brfss_2009_s21_1_a7efff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='21.1 How often do you get the social and emotional support you need?<br><br>INTERVIEWER NOTE: If asked, say \\', choices=[(1, 'Always'), (2, 'Usually'), (3, 'Sometimes'), (4, 'Rarely'), (5, 'Never'), (7, "Don't know / Not sure"), (9, 'Refused')])
     brfss_2009_s21_2_02a4d6 = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='21.2 In general, how satisfied are you with your life?<br><br>INTERVIEWER NOTE: If asked, say \\', choices=[(1, 'Very satisfied'), (2, 'Satisfied'), (3, 'Dissatisfied'), (4, 'Very dissatisfied'), (7, "Don't know / Not sure"), (9, 'Refused')])
+
+    class Meta:
+	 db_table = 'brfss_2009_section_21_emotional_support_and_life_satisfaction'
+
+
 class Brfss2009Module1Prediabetes(models.Model):
     brfss_2009_m1_1_3c9744 = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='1. Have you had a test for high blood sugar or diabetes within the past three years?', choices=[(1, 'Yes'), (2, 'No'), (7, "Don't know / Not sure"), (9, 'Refused')])
     brfss_2009_m1_2_2481a8 = models.CharField(help_text="1, Yes | 2, Yes, during pregnancy | 3, No | 7, Don't know / Not sure | 9, Refused", null=True, max_length=2000, verbose_name='2. Have you ever been told by a doctor or other health professional that you have pre-diabetes or borderline diabetes?<br><br>If \\', blank=True)
