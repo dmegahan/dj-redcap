@@ -1381,3 +1381,8 @@ class CardiacSurgery(models.Model):
     cardsurg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s cardiac surgery', blank=True)
     cardsurg_name = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Name of $s cardiac surgery', blank=True)
     cardsurg_summary_endrepeat = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', db_column='cardsurg_summary endrepeat', blank=True) # Field renamed to remove spaces. Field name made lowercase. This field type is a guess
+
+    class Meta:
+	 db_table = 'cardiac_surgery'
+
+

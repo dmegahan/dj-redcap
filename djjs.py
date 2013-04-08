@@ -175,9 +175,12 @@ def json2dj(fileName):
 					fout.write('    %s' % field_desc);
 			else:
 				fout.write('    %s' % field_desc);
-		elif get_field_value(line,'field value').strip() != 'endrepeat':
+		elif get_field_value(line,'field value').strip().replace('_','') != 'endrepeat':
 			fout.write('    %s' % field_desc);
 		fout.write('\n');
+	#final meta class
+	for meta_line in get_meta(form_name):
+		fout.write(meta_line);
 def get_field_type(line):
 	"""Given the database connection, the table name, and the cursor row description,
 	this routine will return the given field type name, as well as any additional keyword
