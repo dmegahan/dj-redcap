@@ -61,14 +61,6 @@ def csv2json(reader, fileName):
 	for row in reader:
 		form_name = row['form_name'];
 		
-		#if form_name != last_form_name:
-		#	if last_form_name:
-		#		fout.write('}\n');
-		#	last_form_name = form_name
-		#	fout.write('{\n');
-		#	fout.write('\t"form name": ' + row['form_name'] + '\n');
-		#	fout.write('\t"section header": ' + row['section_name'] + '\n');
-		#
 		"""
 		Needed for special case csv's with repeats used, not needed otherwise.
 		Determines if a field_name has startrepeat in it, then extracts the 
@@ -124,7 +116,7 @@ def json2dj(fileName):
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
 		
-		if form_name != prev_form_name and get_field_value(line,'field value').strip() != 'endrepeat':
+		if form_name != prev_form_name and get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
 			if prev_form_name:
 				for meta_line in get_meta(prev_form_name):
 					fout.write(meta_line);
