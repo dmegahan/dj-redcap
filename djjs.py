@@ -57,22 +57,49 @@ def csv2json(reader, fileName):
 	"""
 	fout = open(fileName + '.json', "w+");
 	
+	last_repeat_num = 1;
+	cur_repeat_num = 1;
+	last_repeat_pointer = '';
+	cur_repeat_pointer = '';
 	last_form_name = None;
 	for row in reader:
 		form_name = row['form_name'];
 		
 		"""
 		Needed for special case csv's with repeats used, not needed otherwise.
-		Determines if a field_name has startrepeat in it, then extracts the 
-		number of repeats and the field it refers to.
+		Determines if a field_name has startrepeat,repeat,or endrepeat in it, 			  then extracts the number of repeats and the field it refers to.
 		"""
-		str_repeat_start = row['field_name'].find('startrepeat');
-		if str_repeat_start != -1:
+		if row['field_name'].find('startrepeat') != -1:
 			row['repeat_tf'] = "True";
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
 			row['repeat_num'] = repeat_info[2];
 			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
+			
+			last_repeat_num = cur_repeat_num;
+			cur_repeat_num = row['repeat_num'];
+			last_repeat_pointer = cur_repeat_pointer;
+			cur_repeat_pointer = row['repeat_pointer'];
+		elif row['field_name'].find('endrepeat') != -1:
+			row['repeat_tf'] = "True";
+			row['field_name'] = row['field_name'].strip().split()[0];
+			row['repeat_num'] = cur_repeat_num;
+			row['repeat_pointer'] = cur_repeat_pointer;
+			
+			cur_repeat_num = last_repeat_num;
+			last_repeat_num = 1;
+			cur_repeat_pointer = last_repeat_pointer;
+			last_repeat_pointer = '';
+		elif row['field_name'].find(' repeat ') != -1:
+			row['repeat_tf'] = "True";
+			repeat_info = row['field_name'].strip().split();
+			row['field_name'] = repeat_info[0];
+			row['repeat_num'] = repeat_info[2];
+			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
+		elif cur_repeat_num > 1:
+			row['repeat_tf'] = "True";
+			row['repeat_num'] = cur_repeat_num;
+			row['repeat_pointer'] = cur_repeat_pointer;
 		else:
 			row['repeat_tf'] = "False";
 			row['repeat_num'] = "";
@@ -116,6 +143,7 @@ def json2dj(fileName):
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
 		
+		#if statement checks for endrepeats so a new class isn't created when one is found
 		if form_name != prev_form_name and get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
 			if prev_form_name:
 				for meta_line in get_meta(prev_form_name):
@@ -170,14 +198,15 @@ def json2dj(fileName):
 		if comment_notes:
 			field_desc += ' # ' + ' '.join(comment_notes);
 		if get_field_value(line,'repeat?') == 'True':
+			#some repeat values aren't digits
 			if get_field_value(line,'repeat num').isdigit():
 				for i in range(int(get_field_value(line,'repeat num'))):
-					fout.write('    %s' % field_desc);
+					fout.write('    %s\n' % field_desc);
 			else:
-				fout.write('    %s' % field_desc);
+				fout.write('    %s\n' % field_desc);
+		#determines if line is an endrepeat line, doesn't print it if so
 		elif get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
-			fout.write('    %s' % field_desc);
-		fout.write('\n');
+			fout.write('    %s\n' % field_desc);
 	#final meta class
 	for meta_line in get_meta(form_name):
 		fout.write(meta_line);

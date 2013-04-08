@@ -251,3 +251,8 @@ class Brfss2009Section21EmotionalSupportAndLifeSatisfaction(models.Model):
 class Brfss2009Module1Prediabetes(models.Model):
     brfss_2009_m1_1_3c9744 = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='1. Have you had a test for high blood sugar or diabetes within the past three years?', choices=[(1, 'Yes'), (2, 'No'), (7, "Don't know / Not sure"), (9, 'Refused')])
     brfss_2009_m1_2_2481a8 = models.CharField(help_text="1, Yes | 2, Yes, during pregnancy | 3, No | 7, Don't know / Not sure | 9, Refused", null=True, max_length=2000, verbose_name='2. Have you ever been told by a doctor or other health professional that you have pre-diabetes or borderline diabetes?<br><br>If \\', blank=True)
+
+    class Meta:
+	 db_table = 'brfss_2009_module_1_prediabetes'
+
+
