@@ -175,7 +175,7 @@ def json2dj(fileName):
 					fout.write('    %s' % field_desc);
 			else:
 				fout.write('    %s' % field_desc);
-		elif get_field_value(line,'field value').strip().replace('_','') != 'endrepeat':
+		elif get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
 			fout.write('    %s' % field_desc);
 		fout.write('\n');
 	#final meta class
