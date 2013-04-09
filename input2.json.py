@@ -44,40 +44,136 @@ class BirthHistory(models.Model):
     assisted_reproduction_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Please specify type of assisted reproduction', blank=True)
     prior_pregnancy_history = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Did the mother have any of the following', blank=True)
     miscarriages_no = models.IntegerField(help_text='', null=True, verbose_name='Number of spontaneous miscarriages', blank=True)
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class Miscarriage(models.Model):
     miscarriages_gestational_age = models.TextField(help_text='', null=True, verbose_name='Gestational age of $s miscarriage', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Miscarriage'
+
+
+class BirthHistory(models.Model):
     still_births_no = models.IntegerField(help_text='', null=True, verbose_name='Number of still births', blank=True)
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class StillBirths(models.Model):
     still_births_gestational_age = models.TextField(help_text='', null=True, verbose_name='Gestational age of $s still birth', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Still Births'
+
+
+class BirthHistory(models.Model):
     terminations_no = models.IntegerField(help_text='', null=True, verbose_name='Number of terminations', blank=True)
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class Terminations(models.Model):
     terminations_gestational_age = models.TextField(help_text='', null=True, verbose_name='Gestational age of $s termination', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Terminations'
+
+
+class BirthHistory(models.Model):
     multiples_no = models.IntegerField(help_text='', null=True, verbose_name='Number of multiple births', blank=True)
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class MultipleBirth(models.Model):
     multiple${d}_number = models.IntegerField(help_text='', null=True, verbose_name='Number of children in $s multiple birth', blank=True)
     multiple${d}_gestational_age = models.TextField(help_text='', null=True, verbose_name='Gestation age of $s multiple birth', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Multiple Birth'
+
+
+class BirthHistory(models.Model):
     pregnancy_complications = models.IntegerField(help_text='', null=True, verbose_name='Pregnancy complications', blank=True, choices=[(10, 'None'), (1, 'Bleeding'), (2, 'Eclampsia'), (3, 'Pre-eclampsia'), (4, 'Gestational diabetes'), (5, 'Maternal seizures'), (6, 'Maternal hypertension'), (7, 'Polyhydramnios'), (8, 'Oligohydramnios'), (9, 'Preterm labor'), (11, 'Unknown/Not documented'), (12, 'Other')]) # This field type is a guess
     pn_exposure_med = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Medications during pregnancy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class PrenatalMedications(models.Model):
     pn_med = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s prenatal medication', blank=True)
     pn_med = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s prenatal medication', blank=True)
     pn_med = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s prenatal medication', blank=True)
     pn_med = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s prenatal medication', blank=True)
     pn_med = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s prenatal medication', blank=True)
+
+    class Meta:
+	 db_table = 'Prenatal medications'
+
+
+class BirthHistory(models.Model):
     ultrasound_no = models.IntegerField(help_text='', null=True, verbose_name='How many ultrasound tests do you want to enter?', blank=True)
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class Ultrasounds(models.Model):
     ultrasound${d}_weeks_gestation_drop = models.IntegerField(help_text='', null=True, verbose_name='$s ultrasound performed at (weeks gestation)', blank=True, choices=[(39, 'Unknown'), (1, '4 weeks + 1 day to 5 weeks'), (2, '5 weeks + 1 day to 6 weeks'), (3, '6 weeks + 1 day to 7 weeks'), (4, '7 weeks + 1 day to 8 weeks'), (5, '8 weeks + 1 day to 9 weeks'), (6, '9 weeks + 1 day to 10 weeks'), (7, '10 weeks + 1 day to 11 weeks'), (8, '11 weeks + 1 day to 12 weeks'), (9, '12 weeks + 1 day to 13 weeks'), (10, '13 weeks + 1 day to 14 weeks'), (11, '14 weeks + 1 day to 15 weeks'), (12, '15 weeks + 1 day to 16 weeks'), (13, '16 weeks + 1 day to 17 weeks'), (14, '17 weeks + 1 day to 18 weeks'), (15, '18 weeks + 1 day to 19 weeks'), (16, '19 weeks + 1 day to 20 weeks'), (17, '20 weeks + 1 day to 21 weeks'), (18, '21 weeks + 1 day to 22 weeks'), (19, '22 weeks + 1 day to 23 weeks'), (20, '23 weeks + 1 day to 24 weeks'), (21, '24 weeks + 1 day to 25 weeks'), (22, '25 weeks + 1 day to 26 weeks'), (23, '26 weeks + 1 day to 27 weeks'), (24, '27 weeks + 1 day to 28 weeks'), (25, '28 weeks + 1 day to 29 weeks'), (26, '29 weeks + 1 day to 30 weeks'), (27, '30 weeks + 1 day to 31 weeks'), (28, '31 weeks + 1 day to 32 weeks'), (29, '32 weeks + 1 day to 33 weeks'), (30, '33 weeks + 1 day to 34 weeks'), (31, '34 weeks + 1 day to 25 weeks'), (32, '35 weeks + 1 day to 36 weeks'), (33, '36 weeks + 1 day to 37 weeks'), (34, '37 weeks + 1 day to 38 weeks'), (35, '38 weeks + 1 day to 39 weeks'), (36, '39 weeks + 1 day to 40 weeks'), (37, '40 weeks + 1 day to 41 weeks'), (38, '41 weeks + 1 day to 42 weeks')]) # This field type is a guess
     ultrasound${d}_normal_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ultrasound within normal limits', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     ultrasound${d}_spec = models.TextField(help_text='', null=True, verbose_name='$s ultrasound significant for', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Ultrasounds'
+
+
+class BirthHistory(models.Model):
     ultrasound_increased_reason = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Reason for increased number of ultrasounds?', blank=True)
     pn_exposure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Prenatal exposures', choices=[(6, 'None'), (1, 'Recreational drugs'), (2, 'Alcohol'), (3, 'Tobacco'), (4, 'Infection'), (5, 'Unknown/Not documented'), (7, 'Other unknown exposures'), (8, 'Other known exposures (specify below)')])
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class RecreationalDrugExposure(models.Model):
     pn_exposure_drug = models.CharField(help_text='(Drug, Drug amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s prenatal recreational drug exposure', blank=True)
     pn_exposure_drug = models.CharField(help_text='(Drug, Drug amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s prenatal recreational drug exposure', blank=True)
     pn_exposure_drug = models.CharField(help_text='(Drug, Drug amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s prenatal recreational drug exposure', blank=True)
     pn_exposure_drug = models.CharField(help_text='(Drug, Drug amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s prenatal recreational drug exposure', blank=True)
     pn_exposure_drug = models.CharField(help_text='(Drug, Drug amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s prenatal recreational drug exposure', blank=True)
+
+    class Meta:
+	 db_table = 'Recreational Drug Exposure'
+
+
+class BirthHistory(models.Model):
     pn_exposure_alc_spec = models.TextField(help_text='', null=True, verbose_name='Specify prenatal alcohol exposure\\n(Alcohol amount, time of exposure, duration of exposure)', blank=True) # This field type is a guess
     pn_exposure_tob_spec = models.TextField(help_text='', null=True, verbose_name='Specify prenatal tobacco exposures\\n(Tobacco amount, time of exposure, duration of exposure)', blank=True) # This field type is a guess
     pn_exposure_inf_spec = models.TextField(help_text='', null=True, verbose_name='Specify prenatal infection exposures\\n(Infection, time of exposure, duration of exposure, treatment)', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'birth_history'
+
+
+class PrenatalExposure(models.Model):
     pn_exposure_other_spec = models.CharField(help_text='(exposure, exposure amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s other prenatal exposure', blank=True)
     pn_exposure_other_spec = models.CharField(help_text='(exposure, exposure amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s other prenatal exposure', blank=True)
     pn_exposure_other_spec = models.CharField(help_text='(exposure, exposure amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s other prenatal exposure', blank=True)
     pn_exposure_other_spec = models.CharField(help_text='(exposure, exposure amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s other prenatal exposure', blank=True)
     pn_exposure_other_spec = models.CharField(help_text='(exposure, exposure amount, time of exposure, duration of pregnancy)', null=True, max_length=2000, verbose_name='Specify $s other prenatal exposure', blank=True)
+
+    class Meta:
+	 db_table = 'Prenatal Exposure'
+
+
+class BirthHistory(models.Model):
     maternal_screening = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Maternal serum screening', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not performed'), (5, 'Not determined'), (4, 'Unknown/Not documented')])
     maternal_serum_type = models.TextField(help_text='', null=True, verbose_name='Type of maternal serum screening', blank=True) # This field type is a guess
     maternal_serum_spec = models.TextField(help_text='', null=True, verbose_name='Maternal serum screening revealed', blank=True) # This field type is a guess
@@ -109,6 +205,12 @@ class PriorGeneticTesting(models.Model):
     karyotype_result_details = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify karyotype abnormalities', blank=True)
     karyotype_spec = models.TextField(help_text='', null=True, verbose_name='Specify other karyotype abnormalities', blank=True) # This field type is a guess
     karyotype_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where Karyotype was performed', blank=True)
+
+    class Meta:
+	 db_table = 'prior_genetic_testing'
+
+
+class Microarray(models.Model):
     microarray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s microarray', blank=True)
     microarray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s microarray', blank=True)
     microarray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s microarray', blank=True)
@@ -121,6 +223,12 @@ class PriorGeneticTesting(models.Model):
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Microarray'
+
+
+class Variant(models.Model):
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
@@ -131,10 +239,28 @@ class PriorGeneticTesting(models.Model):
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant'
+
+
+class Microarray(models.Model):
     microarray${d}_location = models.IntegerField(help_text='', null=True, verbose_name='Which laboratory performed $s microarray? | Specify $s microarray lab', blank=True, choices=[(1, 'Baylor'), (2, 'Provential'), (3, 'GeneDX'), (4, 'Transgenomic Familion'), (7, 'CHOP'), (5, 'Unknown'), (6, 'Other')]) # This field type is a guess
     microarray${d}_location = models.IntegerField(help_text='', null=True, verbose_name='Which laboratory performed $s microarray? | Specify $s microarray lab', blank=True, choices=[(1, 'Baylor'), (2, 'Provential'), (3, 'GeneDX'), (4, 'Transgenomic Familion'), (7, 'CHOP'), (5, 'Unknown'), (6, 'Other')]) # This field type is a guess
     microarray${d}_location = models.IntegerField(help_text='', null=True, verbose_name='Which laboratory performed $s microarray? | Specify $s microarray lab', blank=True, choices=[(1, 'Baylor'), (2, 'Provential'), (3, 'GeneDX'), (4, 'Transgenomic Familion'), (7, 'CHOP'), (5, 'Unknown'), (6, 'Other')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Microarray'
+
+
+class PriorGeneticTesting(models.Model):
     gene_or_panel = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Was the sequencing testing performed on single genes or gene panels (containing multiple genes)?', choices=[(1, 'Single genes'), (2, 'Gene panels')])
+
+    class Meta:
+	 db_table = 'prior_genetic_testing'
+
+
+class GeneTest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
@@ -145,6 +271,12 @@ class PriorGeneticTesting(models.Model):
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
+
+    class Meta:
+	 db_table = 'Gene Test'
+
+
+class Mutation(models.Model):
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease causing mutation (on $s1 gene test)', blank=True)
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease causing mutation (on $s1 gene test)', blank=True)
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease causing mutation (on $s1 gene test)', blank=True)
@@ -155,6 +287,12 @@ class PriorGeneticTesting(models.Model):
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change  at protein level for $s disease causing mutation (on $s1 gene test)', blank=True)
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change  at protein level for $s disease causing mutation (on $s1 gene test)', blank=True)
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change  at protein level for $s disease causing mutation (on $s1 gene test)', blank=True)
+
+    class Meta:
+	 db_table = 'Mutation'
+
+
+class VariantOfUnknownSignificance(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
@@ -170,6 +308,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant of Unknown Significance'
+
+
+class GenePanel(models.Model):
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
@@ -194,17 +338,35 @@ class PriorGeneticTesting(models.Model):
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
+
+    class Meta:
+	 db_table = 'Gene Panel'
+
+
+class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
+
+    class Meta:
+	 db_table = 'Gene'
+
+
+class Dcm(models.Model):
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
+
+    class Meta:
+	 db_table = 'DCM'
+
+
+class VariantOfUnknownSignificance(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
@@ -221,6 +383,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant of Unknown Significance'
+
+
+class SingleGeneDeletionDuplicationTest(models.Model):
     deldup${d}_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     deldup${d}_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     deldup${d}_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
@@ -236,6 +404,12 @@ class PriorGeneticTesting(models.Model):
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
+
+    class Meta:
+	 db_table = 'Single Gene Deletion Duplication Test'
+
+
+class DeletionDuplication(models.Model):
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Deletion/Duplication at cDNA level for $s disease causing mutation (on $s1 deletion duplication  test)', blank=True)
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Deletion/Duplication at cDNA level for $s disease causing mutation (on $s1 deletion duplication  test)', blank=True)
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Deletion/Duplication at cDNA level for $s disease causing mutation (on $s1 deletion duplication  test)', blank=True)
@@ -251,6 +425,12 @@ class PriorGeneticTesting(models.Model):
     change${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication (if available) (on $s1 deletion/duplication test)', blank=True)
     change${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication (if available) (on $s1 deletion/duplication test)', blank=True)
     change${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication (if available) (on $s1 deletion/duplication test)', blank=True)
+
+    class Meta:
+	 db_table = 'Deletion Duplication'
+
+
+class VariantOfUnknownSignificance(models.Model):
     vus${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 deletion/duplication test)', blank=True)
     vus${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 deletion/duplication test)', blank=True)
     vus${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 deletion/duplication test)', blank=True)
@@ -271,8 +451,20 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant of Unknown Significance'
+
+
+class PriorGeneticTesting(models.Model):
     mito_analysis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What type(s) of mitochondrial DNA analysis was performed?', choices=[(1, 'Target point mutation analysis (without deletion analysis)'), (2, 'Whole mitochondrial genome sequencing'), (3, 'Deletion analysis (without targetted point mutation analysis)'), (4, 'Combination deletion and targetted mutation analysis panel'), (5, 'Other')])
     targeted_mito_single_or_panel = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Was the targeted mutation analysis for single mutations or mutation panels?', choices=[(1, 'Single mutations'), (2, 'Mutation Panels')])
+
+    class Meta:
+	 db_table = 'prior_genetic_testing'
+
+
+class TargetedTest(models.Model):
     targeted_mito_single_test = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s targeted mutation tested ', blank=True)
     targeted_mito_single_test = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s targeted mutation tested ', blank=True)
     targeted_mito_single_test = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s targeted mutation tested ', blank=True)
@@ -288,6 +480,12 @@ class PriorGeneticTesting(models.Model):
     targeted_mito_single_test${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What was the result of the $s single mutation targeted test?', choices=[(1, 'Positive'), (2, 'Negative')])
     targeted_mito_single_test${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What was the result of the $s single mutation targeted test?', choices=[(1, 'Positive'), (2, 'Negative')])
     targeted_mito_single_test${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What was the result of the $s single mutation targeted test?', choices=[(1, 'Positive'), (2, 'Negative')])
+
+    class Meta:
+	 db_table = 'Targeted test'
+
+
+class MitochondrialPanel(models.Model):
     targeted_mito_panel${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Laboratory that performed $s targeted mitochondrial panel', blank=True)
     targeted_mito_panel${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Laboratory that performed $s targeted mitochondrial panel', blank=True)
     targeted_mito_panel${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Laboratory that performed $s targeted mitochondrial panel', blank=True)
@@ -308,16 +506,34 @@ class PriorGeneticTesting(models.Model):
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Mitochondrial Panel'
+
+
+class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
+
+    class Meta:
+	 db_table = 'Gene'
+
+
+class MdnaChange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
+
+    class Meta:
+	 db_table = 'mDNA change'
+
+
+class MdnaVariantOfUnknownSignificance(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
@@ -333,6 +549,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'mDNA Variant of Unknown Significance'
+
+
+class WholeMitoGeneSeq(models.Model):
     whole_mito_sequencing${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s whole mitochondrial genome sequencing', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     whole_mito_sequencing${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s whole mitochondrial genome sequencing', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     whole_mito_sequencing${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s whole mitochondrial genome sequencing', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
@@ -348,6 +570,12 @@ class PriorGeneticTesting(models.Model):
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
+
+    class Meta:
+	 db_table = 'Whole Mito Gene Seq'
+
+
+class Mutation(models.Model):
     dc_mutation${d}_gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Gene in which $s disease causing mutation was located on $s1 whole mitochondrial sequencing', blank=True)
     dc_mutation${d}_gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Gene in which $s disease causing mutation was located on $s1 whole mitochondrial sequencing', blank=True)
     dc_mutation${d}_gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Gene in which $s disease causing mutation was located on $s1 whole mitochondrial sequencing', blank=True)
@@ -358,6 +586,12 @@ class PriorGeneticTesting(models.Model):
     dc_mutation${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s disease causing mutation on $s1 whole mitochondrial sequencing', blank=True)
     dc_mutation${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s disease causing mutation on $s1 whole mitochondrial sequencing', blank=True)
     dc_mutation${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s disease causing mutation on $s1 whole mitochondrial sequencing', blank=True)
+
+    class Meta:
+	 db_table = 'mutation'
+
+
+class VariantOfUnknownSignificance(models.Model):
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
@@ -368,6 +602,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant of Unknown Significance'
+
+
+class WholeMitoDel(models.Model):
     mito_deletion_analsysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     mito_deletion_analsysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     mito_deletion_analsysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
@@ -383,6 +623,12 @@ class PriorGeneticTesting(models.Model):
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
+
+    class Meta:
+	 db_table = 'Whole Mito Del'
+
+
+class Deletion(models.Model):
     dc_deletion${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the $s disease causing deletion identified on $s1 mitochondrial deletion analysis?', blank=True)
     dc_deletion${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the $s disease causing deletion identified on $s1 mitochondrial deletion analysis?', blank=True)
     dc_deletion${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the $s disease causing deletion identified on $s1 mitochondrial deletion analysis?', blank=True)
@@ -393,6 +639,12 @@ class PriorGeneticTesting(models.Model):
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s1 mitochondrial deletion analysis', blank=True)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s1 mitochondrial deletion analysis', blank=True)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s1 mitochondrial deletion analysis', blank=True)
+
+    class Meta:
+	 db_table = 'deletion'
+
+
+class VariantOfUnknownSignificance(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
@@ -403,6 +655,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant of Unknown Significance'
+
+
+class MitoCombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
@@ -413,6 +671,12 @@ class PriorGeneticTesting(models.Model):
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
+
+    class Meta:
+	 db_table = 'Mito Combo'
+
+
+class Deletion(models.Model):
     mito_combo_analysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis (from combined analysis $d1)', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     mito_combo_analysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis (from combined analysis $d1)', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     mito_combo_analysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis (from combined analysis $d1)', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
@@ -428,6 +692,12 @@ class PriorGeneticTesting(models.Model):
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
+
+    class Meta:
+	 db_table = 'deletion'
+
+
+class VariantOfUnknownSignificance(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
@@ -438,6 +708,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Variant of Unknown Significance'
+
+
+class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
@@ -448,16 +724,34 @@ class PriorGeneticTesting(models.Model):
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'panel'
+
+
+class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
+
+    class Meta:
+	 db_table = 'Gene'
+
+
+class MdnaChange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
+
+    class Meta:
+	 db_table = 'mDNA change'
+
+
+class MdnaVariantOfUnknownSignificance(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
@@ -474,6 +768,12 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'mDNA Variant of Unknown Significance'
+
+
+class MethylationAnalysisTest(models.Model):
     meth${d}_gene_tested = models.CharField(help_text='Example: GNE1 or 15q11', null=True, max_length=2000, verbose_name='Gene/Region tested $d', blank=True)
     meth${d}_gene_tested = models.CharField(help_text='Example: GNE1 or 15q11', null=True, max_length=2000, verbose_name='Gene/Region tested $d', blank=True)
     meth${d}_gene_tested = models.CharField(help_text='Example: GNE1 or 15q11', null=True, max_length=2000, verbose_name='Gene/Region tested $d', blank=True)
@@ -499,27 +799,63 @@ class PriorGeneticTesting(models.Model):
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
     endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Methylation Analysis Test'
+
+
+class PriorGeneticTesting(models.Model):
     fragx_type = models.IntegerField(max_length=2000, blank=True, help_text='Example: GNE1 or 15q11', null=True, verbose_name='What were the results of the Fragile X testing?', choices=[(1, 'Full Mutation'), (2, 'Pre-Mutation'), (3, 'Normal'), (6, 'Inconclusive'), (5, 'Result not known'), (4, 'Results pending')])
+
+    class Meta:
+	 db_table = 'prior_genetic_testing'
+
+
+class FragileXFullMutationRepeat(models.Model):
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
+
+    class Meta:
+	 db_table = 'Fragile X Full Mutation Repeat'
+
+
+class FragileXPreMutationRepeat(models.Model):
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
+
+    class Meta:
+	 db_table = 'Fragile X Pre Mutation Repeat'
+
+
+class FragileXNormalRepeat(models.Model):
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
+
+    class Meta:
+	 db_table = 'Fragile X Normal Repeat'
+
+
+class FragileXInconclusiveRepeat(models.Model):
     fragx_incon = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s inconclusive repeat?', blank=True)
     fragx_incon = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s inconclusive repeat?', blank=True)
     fragx_incon = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s inconclusive repeat?', blank=True)
     fragx_incon = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s inconclusive repeat?', blank=True)
     fragx_incon = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s inconclusive repeat?', blank=True)
+
+    class Meta:
+	 db_table = 'Fragile X Inconclusive Repeat'
+
+
+class PriorGeneticTesting(models.Model):
     cardiac_gene_test_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Previous cardiac genetic testing done', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     cardiac_gene_sent_out = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Previous cardiac genetic testing sent to outside lab', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     cardiac_gene_lab = models.IntegerField(help_text='', null=True, verbose_name='Outside Lab test done at | Outside lab Other - Specify', blank=True, choices=[(1, 'Familion (Transgenomics)'), (2, 'Gene Dx'), (3, 'Harvard Partners'), (4, 'Medical Genetics Laboratories at Baylor College of Medicine'), (5, "Heart Institute Diagnostic Lab at Cincinnati Children's Hospital"), (7, 'Uknown/Not doucmented'), (6, 'Other')]) # This field type is a guess
@@ -538,6 +874,12 @@ class PriorTesting(models.Model):
     blood_lactate_sum = models.TextField(help_text='', null=True, verbose_name='Blood Lactate range $placeholder', blank=True) # This field type is a guess
     blood_lactate_sum_comments = models.TextField(help_text='', null=True, verbose_name='Blood Lactate range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     blood_lactate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Blood Lactate results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class BloodLactate(models.Model):
     blood_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Lactate', blank=True)
     blood_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Lactate', blank=True)
     blood_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Lactate', blank=True)
@@ -550,10 +892,22 @@ class PriorTesting(models.Model):
     blood_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Lactate was performed', blank=True)
     blood_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Lactate was performed', blank=True)
     blood_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Lactate was performed', blank=True)
+
+    class Meta:
+	 db_table = 'Blood Lactate'
+
+
+class PriorTesting(models.Model):
     blood_pyruvate_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal Blood Pyruvate results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     blood_pyruvate_sum = models.TextField(help_text='', null=True, verbose_name='Blood Pyruvate range $placeholder', blank=True) # This field type is a guess
     blood_pyruvate_sum_comments = models.TextField(help_text='', null=True, verbose_name='Blood Pyruvate range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     blood_pyruvate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Blood Pyruvate results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class BloodPyruvate(models.Model):
     blood_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Pyruvate', blank=True)
     blood_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Pyruvate', blank=True)
     blood_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Pyruvate', blank=True)
@@ -566,10 +920,22 @@ class PriorTesting(models.Model):
     blood_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Pyruvate was performed?', blank=True)
     blood_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Pyruvate was performed?', blank=True)
     blood_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Pyruvate was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Blood Pyruvate'
+
+
+class PriorTesting(models.Model):
     csf_lactate_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal CSF Lactate results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     csf_lactate_sum = models.TextField(help_text='', null=True, verbose_name='CSF Lactate range $placeholder', blank=True) # This field type is a guess
     csf_lactate_comments = models.TextField(help_text='', null=True, verbose_name='CSF Lactate range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     csf_lactate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CSF Lactate results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class CsfLactate(models.Model):
     csf_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Lactate', blank=True)
     csf_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Lactate', blank=True)
     csf_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Lactate', blank=True)
@@ -582,10 +948,22 @@ class PriorTesting(models.Model):
     csf_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CSF Lactate was performed?', blank=True)
     csf_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CSF Lactate was performed?', blank=True)
     csf_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CSF Lactate was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'CSF Lactate'
+
+
+class PriorTesting(models.Model):
     csf_pyruvate_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal CSF Pyruvate results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     csf_pyruvate_sum = models.TextField(help_text='', null=True, verbose_name='CSF Pyruvate range $placeholder', blank=True) # This field type is a guess
     csf_pyruvate_comments = models.CharField(help_text='', null=True, max_length=2000, verbose_name='CSF Pyruvate range result comment (quality concerns, normal range)', blank=True)
     csf_pyruvate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CSF Pyruvate results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class CsfPyruvate(models.Model):
     csf_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Pyruvate', blank=True)
     csf_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Pyruvate', blank=True)
     csf_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Pyruvate', blank=True)
@@ -598,10 +976,22 @@ class PriorTesting(models.Model):
     csf_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $ CSF Pyruvate was performed?', blank=True)
     csf_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $ CSF Pyruvate was performed?', blank=True)
     csf_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $ CSF Pyruvate was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'CSF Pyruvate'
+
+
+class PriorTesting(models.Model):
     paa_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal PAA results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     paa_sum = models.TextField(help_text='', null=True, verbose_name='PAA range $placeholder', blank=True) # This field type is a guess
     paa_comments = models.TextField(help_text='', null=True, verbose_name='PAA range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     paa_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual PAA results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Paa(models.Model):
     paa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s PAA', blank=True)
     paa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s PAA', blank=True)
     paa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s PAA', blank=True)
@@ -614,10 +1004,22 @@ class PriorTesting(models.Model):
     paa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where was $s PAA performed?', blank=True)
     paa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where was $s PAA performed?', blank=True)
     paa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where was $s PAA performed?', blank=True)
+
+    class Meta:
+	 db_table = 'PAA'
+
+
+class PriorTesting(models.Model):
     plasma_cn_acp_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal Plasma CN/ACP results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     plasma_cn_acp_sum = models.TextField(help_text='', null=True, verbose_name='Plasma CN/ACP range $placeholder', blank=True) # This field type is a guess
     plasma_cn_acp_comments = models.TextField(help_text='', null=True, verbose_name='Plasma CN/ACP  range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     plasma_cn_acp_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Plasma CN/ACP results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class PlasmaCn/Acp(models.Model):
     plasma_cn_acp_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Plasma CN/ACP', blank=True)
     plasma_cn_acp_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Plasma CN/ACP', blank=True)
     plasma_cn_acp_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Plasma CN/ACP', blank=True)
@@ -630,10 +1032,22 @@ class PriorTesting(models.Model):
     plasma_cn_acp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Plasma CN/ACP was performed?', blank=True)
     plasma_cn_acp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Plasma CN/ACP was performed?', blank=True)
     plasma_cn_acp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Plasma CN/ACP was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Plasma CN/ACP'
+
+
+class PriorTesting(models.Model):
     uoa_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal UOA results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     uoa_sum = models.TextField(help_text='', null=True, verbose_name='UOA range $placeholder', blank=True) # This field type is a guess
     uoa_comments = models.TextField(help_text='', null=True, verbose_name='UOA  range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     uoa_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual UOA results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Uoa(models.Model):
     uoa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s UOA', blank=True)
     uoa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s UOA', blank=True)
     uoa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s UOA', blank=True)
@@ -646,10 +1060,22 @@ class PriorTesting(models.Model):
     uoa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s UOA  was performed?', blank=True)
     uoa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s UOA  was performed?', blank=True)
     uoa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s UOA  was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'UOA'
+
+
+class PriorTesting(models.Model):
     ck_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal CK results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     ck_sum = models.TextField(help_text='', null=True, verbose_name='CK range $placeholder', blank=True) # This field type is a guess
     ck_comments = models.TextField(help_text='', null=True, verbose_name='CK range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     ck_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CK results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Ck(models.Model):
     ck_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CK', blank=True)
     ck_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CK', blank=True)
     ck_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CK', blank=True)
@@ -662,10 +1088,22 @@ class PriorTesting(models.Model):
     ck_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CK was performed?', blank=True)
     ck_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CK was performed?', blank=True)
     ck_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CK was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'CK'
+
+
+class PriorTesting(models.Model):
     uric_acid_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal Uric acid results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     uric_acid_sum = models.TextField(help_text='', null=True, verbose_name='Uric acid range $placeholder', blank=True) # This field type is a guess
     uric_acid_comments = models.TextField(help_text='', null=True, verbose_name='Uric acid range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     uric_acid_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Uric acid results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class UricAcid(models.Model):
     uric_acid_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Uric acid', blank=True)
     uric_acid_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Uric acid', blank=True)
     uric_acid_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Uric acid', blank=True)
@@ -678,10 +1116,22 @@ class PriorTesting(models.Model):
     uric_acid_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Uric acid was performed?', blank=True)
     uric_acid_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Uric acid was performed?', blank=True)
     uric_acid_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Uric acid was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Uric acid'
+
+
+class PriorTesting(models.Model):
     lfts_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal LFTs results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     lfts_sum = models.TextField(help_text='', null=True, verbose_name='LFTs range $placeholder', blank=True) # This field type is a guess
     lfts_comments = models.TextField(help_text='', null=True, verbose_name='LFTs range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     lfts_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual LFTs results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Lfts(models.Model):
     lfts_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s LFTs', blank=True)
     lfts_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s LFTs', blank=True)
     lfts_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s LFTs', blank=True)
@@ -694,10 +1144,22 @@ class PriorTesting(models.Model):
     lfts_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where LFTs was performed?', blank=True)
     lfts_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where LFTs was performed?', blank=True)
     lfts_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where LFTs was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'LFTs'
+
+
+class PriorTesting(models.Model):
     cbc_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal CBC results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     cbc_sum = models.TextField(help_text='', null=True, verbose_name='CBC range $placeholder', blank=True) # This field type is a guess
     cbc_comments = models.TextField(help_text='', null=True, verbose_name='CBC range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     cbc_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CBC results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Cbc(models.Model):
     cbc_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CBC', blank=True)
     cbc_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CBC', blank=True)
     cbc_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CBC', blank=True)
@@ -710,9 +1172,21 @@ class PriorTesting(models.Model):
     cbc_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where CBC was performed?', blank=True)
     cbc_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where CBC was performed?', blank=True)
     cbc_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where CBC was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'CBC'
+
+
+class PriorTesting(models.Model):
     urinalysis_range = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Presence of any of the following over all urinalsyses?', choices=[(1, 'Blood'), (2, 'Protein'), (3, 'Infection')])
     urinalysis_comments = models.TextField(help_text='', null=True, verbose_name='Urinalysis comment (quality concerns, normal range)', blank=True) # This field type is a guess
     urinalysis_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual urinalysis results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Urinalysis(models.Model):
     urinalysis_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of  $s Urinalysis', blank=True)
     urinalysis_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of  $s Urinalysis', blank=True)
     urinalysis_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of  $s Urinalysis', blank=True)
@@ -733,6 +1207,12 @@ class PriorTesting(models.Model):
     urinalysis_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Urinalysis was performed?', blank=True)
     urinalysis_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Urinalysis was performed?', blank=True)
     urinalysis_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Urinalysis was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Urinalysis'
+
+
+class PriorTesting(models.Model):
     cmp_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal Chemistry Panel results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     cmp_glucose_sum = models.TextField(help_text='', null=True, verbose_name='Glucose level $placeholder', blank=True) # This field type is a guess
     cmp_calcium_sum = models.TextField(help_text='', null=True, verbose_name='Calcium level $placeholder', blank=True) # This field type is a guess
@@ -750,6 +1230,12 @@ class PriorTesting(models.Model):
     cmp_bilirubin_sum = models.TextField(help_text='', null=True, verbose_name='Bilirubin level $placeholder', blank=True) # This field type is a guess
     cmp_comments = models.TextField(help_text='', null=True, verbose_name='Chemistry Panel comments (quality concerns, normal ranges)', blank=True) # This field type is a guess
     cmp_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Chemistry panel results', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class ChemistryPanel(models.Model):
     cmp_misc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 1)\\n\\nAbnormal values', choices=[(1, 'Glucose'), (2, 'Calcium'), (3, 'All of the above within normal range')])
     cmp_misc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 1)\\n\\nAbnormal values', choices=[(1, 'Glucose'), (2, 'Calcium'), (3, 'All of the above within normal range')])
     cmp_misc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 1)\\n\\nAbnormal values', choices=[(1, 'Glucose'), (2, 'Calcium'), (3, 'All of the above within normal range')])
@@ -855,9 +1341,21 @@ class PriorTesting(models.Model):
     cmp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where chemistry panel was performed', blank=True)
     cmp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where chemistry panel was performed', blank=True)
     cmp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where chemistry panel was performed', blank=True)
+
+    class Meta:
+	 db_table = 'Chemistry Panel'
+
+
+class PriorTesting(models.Model):
     thyroid_function_sum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Thyroid function findings over time', choices=[(1, 'TSH elevation'), (2, 'TSH decrease'), (3, 'T4 elevation'), (4, 'T4 decrease')])
     thyroid_study_comment = models.TextField(help_text='', null=True, verbose_name='Thyroid study comment (quality concerns)', blank=True) # This field type is a guess
     thyroid_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual thyroid study results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class ThyroidStudy(models.Model):
     thyroid_study_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of thyroid study', blank=True)
     thyroid_study_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of thyroid study', blank=True)
     thyroid_study_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of thyroid study', blank=True)
@@ -878,6 +1376,12 @@ class PriorTesting(models.Model):
     thyroid_function_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where thyroid testing was performed?', blank=True)
     thyroid_function_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where thyroid testing was performed?', blank=True)
     thyroid_function_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where thyroid testing was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Thyroid study'
+
+
+class PriorTesting(models.Model):
     renal_function_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal renal study results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     renal_function_sum_urea_nitrogen = models.TextField(help_text='', null=True, verbose_name='Urea nitrogen range $placeholder', blank=True) # This field type is a guess
     renal_function_sum_sodium = models.TextField(help_text='', null=True, verbose_name='Sodium range $placeholder', blank=True) # This field type is a guess
@@ -887,6 +1391,12 @@ class PriorTesting(models.Model):
     renal_function_sum_creatinine = models.TextField(help_text='', null=True, verbose_name='Creatinine range $placeholder', blank=True) # This field type is a guess
     renal_function_sum_comment = models.TextField(help_text='', null=True, verbose_name='Renal function range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     renal_function_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual renal function studies?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class RenalFunctionStudy(models.Model):
     renal_function${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Abnormal Renal Function Study Results', choices=[(1, 'Urea Nitrogen'), (2, 'Electrolytes'), (3, 'Creatinine'), (4, 'All of the above within normal range')])
     renal_function${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Abnormal Renal Function Study Results', choices=[(1, 'Urea Nitrogen'), (2, 'Electrolytes'), (3, 'Creatinine'), (4, 'All of the above within normal range')])
     renal_function${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Abnormal Renal Function Study Results', choices=[(1, 'Urea Nitrogen'), (2, 'Electrolytes'), (3, 'Creatinine'), (4, 'All of the above within normal range')])
@@ -914,10 +1424,22 @@ class PriorTesting(models.Model):
     renal_function${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s renal study was performed', blank=True)
     renal_function${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s renal study was performed', blank=True)
     renal_function${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s renal study was performed', blank=True)
+
+    class Meta:
+	 db_table = 'Renal Function Study'
+
+
+class PriorTesting(models.Model):
     sweat_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal sweat testing?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     sweat_sum = models.TextField(help_text='', null=True, verbose_name='Sweat test range $placeholder', blank=True) # This field type is a guess
     sweat_comments = models.TextField(help_text='', null=True, verbose_name='Sweat test range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     sweat_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Sweat test results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class SweatTest(models.Model):
     sweat_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Sweat test', blank=True)
     sweat_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Sweat test', blank=True)
     sweat_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Sweat test', blank=True)
@@ -930,11 +1452,23 @@ class PriorTesting(models.Model):
     sweat_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Sweat test was performed?', blank=True)
     sweat_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Sweat test was performed?', blank=True)
     sweat_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Sweat test was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'sweat test'
+
+
+class PriorTesting(models.Model):
     celiac_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal  testing for celiac disease?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     celiac_test_type_sum = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Type of testing for celiac disease', blank=True)
     celiac_sum = models.TextField(help_text='', null=True, verbose_name='Celiac disease range $placeholder', blank=True) # This field type is a guess
     celiac_comments = models.TextField(help_text='', null=True, verbose_name='Celiac disease test range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     celiac_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Celiac disease test results?', blank=True)
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class CeliacDiseaseTest(models.Model):
     celiac_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Celiac disease test', blank=True)
     celiac_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Celiac disease test', blank=True)
     celiac_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Celiac disease test', blank=True)
@@ -950,7 +1484,19 @@ class PriorTesting(models.Model):
     celiac_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Celiac disease test was performed?', blank=True)
     celiac_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Celiac disease test was performed?', blank=True)
     celiac_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Celiac disease test was performed?', blank=True)
+
+    class Meta:
+	 db_table = 'celiac disease test'
+
+
+class PriorTesting(models.Model):
     image_studies_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Imaging studies performed', choices=[(6, 'None'), (1, 'MRI'), (2, 'Spectroscopy (MRS)'), (3, 'CT'), (4, 'Ultrasound'), (5, 'Xray'), (7, 'Endoscopy'), (8, 'Unknown/Not documented')])
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Mri(models.Model):
     mri${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s MRI', blank=True)
     mri${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s MRI', blank=True)
     mri${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s MRI', blank=True)
@@ -986,6 +1532,12 @@ class PriorTesting(models.Model):
     mri${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s MRI performed?', blank=True)
     mri${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s MRI performed?', blank=True)
     mri${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s MRI performed?', blank=True)
+
+    class Meta:
+	 db_table = 'MRI'
+
+
+class BrainSpectroscopy(Mrs)(models.Model):
     mrs${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s spectroscopy (MRS)', blank=True)
     mrs${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s spectroscopy (MRS)', blank=True)
     mrs${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s spectroscopy (MRS)', blank=True)
@@ -1011,6 +1563,12 @@ class PriorTesting(models.Model):
     mrs${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s spectroscopy (MRS) performed?', blank=True)
     mrs${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s spectroscopy (MRS) performed?', blank=True)
     mrs${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s spectroscopy (MRS) performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Brain spectroscopy (MRS)'
+
+
+class Ct(models.Model):
     ct${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CT', blank=True)
     ct${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CT', blank=True)
     ct${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CT', blank=True)
@@ -1046,6 +1604,12 @@ class PriorTesting(models.Model):
     ct${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s CT performed?', blank=True)
     ct${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s CT performed?', blank=True)
     ct${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s CT performed?', blank=True)
+
+    class Meta:
+	 db_table = 'CT'
+
+
+class Ultrasound(models.Model):
     us${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s US', blank=True)
     us${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s US', blank=True)
     us${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s US', blank=True)
@@ -1081,6 +1645,12 @@ class PriorTesting(models.Model):
     us${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s US performed?', blank=True)
     us${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s US performed?', blank=True)
     us${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s US performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Ultrasound'
+
+
+class Xray(models.Model):
     xray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Xray', blank=True)
     xray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Xray', blank=True)
     xray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Xray', blank=True)
@@ -1106,6 +1676,12 @@ class PriorTesting(models.Model):
     xray${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Xray performed?', blank=True)
     xray${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Xray performed?', blank=True)
     xray${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Xray performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Xray'
+
+
+class Endoscopy(models.Model):
     endo${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Endoscopy', blank=True)
     endo${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Endoscopy', blank=True)
     endo${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Endoscopy', blank=True)
@@ -1131,7 +1707,19 @@ class PriorTesting(models.Model):
     endo${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Endoscopy performed?', blank=True)
     endo${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Endoscopy performed?', blank=True)
     endo${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Endoscopy performed?', blank=True)
+
+    class Meta:
+	 db_table = 'endoscopy'
+
+
+class PriorTesting(models.Model):
     biopsies_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Biopsies performed', choices=[(6, 'None'), (1, 'Muscle'), (2, 'Skin'), (3, 'Liver'), (4, 'Brain'), (5, 'Bone Marrow'), (7, 'Other'), (8, 'Unknown/Not documented')])
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class MuscleBiopsy(models.Model):
     muscle_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s muscle biopsy', blank=True)
     muscle_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s muscle biopsy', blank=True)
     muscle_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s muscle biopsy', blank=True)
@@ -1147,6 +1735,12 @@ class PriorTesting(models.Model):
     muscle_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s muscle biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     muscle_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s muscle biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     muscle_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s muscle biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Muscle Biopsy'
+
+
+class SkinBiopsy(models.Model):
     skin_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s skin biopsy', blank=True)
     skin_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s skin biopsy', blank=True)
     skin_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s skin biopsy', blank=True)
@@ -1162,6 +1756,12 @@ class PriorTesting(models.Model):
     skin_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s skin biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     skin_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s skin biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     skin_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s skin biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Skin Biopsy'
+
+
+class LiverBiopsy(models.Model):
     liver_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s liver biopsy', blank=True)
     liver_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s liver biopsy', blank=True)
     liver_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s liver biopsy', blank=True)
@@ -1177,6 +1777,12 @@ class PriorTesting(models.Model):
     liver_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s liver biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     liver_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s liver biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     liver_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s liver biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Liver Biopsy'
+
+
+class BrainBiopsy(models.Model):
     brain_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s brain biopsy', blank=True)
     brain_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s brain biopsy', blank=True)
     brain_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s brain biopsy', blank=True)
@@ -1186,6 +1792,12 @@ class PriorTesting(models.Model):
     brain_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s brain biopsy', blank=True) # This field type is a guess
     brain_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s brain biopsy', blank=True) # This field type is a guess
     brain_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s brain biopsy', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Brain Biopsy'
+
+
+class BoneMarrow(models.Model):
     bone_marrow_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s bone marrow biopsy', blank=True)
     bone_marrow_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s bone marrow biopsy', blank=True)
     bone_marrow_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s bone marrow biopsy', blank=True)
@@ -1195,6 +1807,12 @@ class PriorTesting(models.Model):
     bone_marrow_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s bone marrow biopsy', blank=True) # This field type is a guess
     bone_marrow_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s bone marrow biopsy', blank=True) # This field type is a guess
     bone_marrow_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s bone marrow biopsy', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Bone Marrow'
+
+
+class OtherBiopsy(models.Model):
     other_biopsy${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s other biopsy type', blank=True)
     other_biopsy${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s other biopsy type', blank=True)
     other_biopsy${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s other biopsy type', blank=True)
@@ -1207,7 +1825,19 @@ class PriorTesting(models.Model):
     other_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s other biopsy', blank=True) # This field type is a guess
     other_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s other biopsy', blank=True) # This field type is a guess
     other_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s other biopsy', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Other biopsy'
+
+
+class PriorTesting(models.Model):
     vision_tests_performed = models.IntegerField(help_text='', null=True, verbose_name='Vision tests performed', blank=True, choices=[(2, 'None'), (1, 'Electroretinogram (ERG)'), (3, 'Other'), (4, 'Unknown/Not documented')]) # This field type is a guess
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Electroretinogram(Erg)(models.Model):
     erg_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of electroretinogram (ERG)', blank=True)
     erg_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of electroretinogram (ERG)', blank=True)
     erg_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of electroretinogram (ERG)', blank=True)
@@ -1228,8 +1858,20 @@ class PriorTesting(models.Model):
     erg_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was electroretinogram performed?', blank=True)
     erg_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was electroretinogram performed?', blank=True)
     erg_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was electroretinogram performed?', blank=True)
+
+    class Meta:
+	 db_table = 'Electroretinogram (ERG)'
+
+
+class PriorTesting(models.Model):
     cardio_tests_performed = models.IntegerField(help_text='', null=True, verbose_name='Cardiovascular tests performed | Describe $placeholder cardiac testing', blank=True, choices=[(1, 'None'), (2, 'Electrocardiogram (ECG)'), (3, 'Echocardiogram (ECHO)'), (4, '24 Hour Monitoring (Holter Monitor)'), (5, 'Exercise Stress Test (EST)'), (6, 'Cardiac MRI'), (8, 'Unknown/Not documented'), (7, 'Other')]) # This field type is a guess
     neurologic_tests_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Neurologic tests performed', choices=[(2, 'None'), (1, 'Electroencephalogram (EEG)'), (3, 'Unknown/Not documented')])
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Electroencephalogram(Eeg)(models.Model):
     eeg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electroencephalogram (EEG) result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     eeg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electroencephalogram (EEG) result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     eeg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electroencephalogram (EEG) result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
@@ -1240,7 +1882,19 @@ class PriorTesting(models.Model):
     eeg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electroencephalogram (EEG) result', blank=True) # This field type is a guess
     eeg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electroencephalogram (EEG) result', blank=True) # This field type is a guess
     eeg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electroencephalogram (EEG) result', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Electroencephalogram (EEG)'
+
+
+class PriorTesting(models.Model):
     musculoskeletal_tests_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Musculoskeletal tests performed', choices=[(3, 'None'), (1, 'Electromyogram (EMG)'), (2, 'Nerve Conduction Velocity (NCV)'), (4, 'Unknown/Not documented')])
+
+    class Meta:
+	 db_table = 'prior_testing'
+
+
+class Electromyogram(Emg)(models.Model):
     emg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electromyogram (EMG) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     emg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electromyogram (EMG) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     emg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electromyogram (EMG) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
@@ -1251,6 +1905,12 @@ class PriorTesting(models.Model):
     emg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electromyogram (EMG) results', blank=True) # This field type is a guess
     emg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electromyogram (EMG) results', blank=True) # This field type is a guess
     emg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electromyogram (EMG) results', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Electromyogram (EMG)'
+
+
+class NerveConductionVelocity(Ncv)(models.Model):
     ncv = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Nerve Conduction Velocity (NCV) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     ncv = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Nerve Conduction Velocity (NCV) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     ncv = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Nerve Conduction Velocity (NCV) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
@@ -1261,6 +1921,12 @@ class PriorTesting(models.Model):
     ncv_spec = models.TextField(help_text='', null=True, verbose_name='Specify Nerve Conduction Velocity (NCV) results', blank=True) # This field type is a guess
     ncv_spec = models.TextField(help_text='', null=True, verbose_name='Specify Nerve Conduction Velocity (NCV) results', blank=True) # This field type is a guess
     ncv_spec = models.TextField(help_text='', null=True, verbose_name='Specify Nerve Conduction Velocity (NCV) results', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Nerve Conduction Velocity (NCV)'
+
+
+class PriorTesting(models.Model):
     prior_testing_feedback = models.TextField(help_text='', null=True, verbose_name='Please provide any feedback for this form (for example: missing questions, questions not relevant for a disease area, ambiguities, places where a textbox could be replaced with discrete choices, missing discrete choices)', blank=True) # This field type is a guess
 
     class Meta:
@@ -1293,6 +1959,12 @@ class FamilyHistory(models.Model):
     sons = models.IntegerField(help_text='', null=True, verbose_name='Number of sons', blank=True)
     daughters = models.IntegerField(help_text='', null=True, verbose_name='Number of daughters', blank=True)
     other_family = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any other family members with symptoms similar to proband other than those described above?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+
+    class Meta:
+	 db_table = 'family_history'
+
+
+class OtherFamilyMembersWithSimilarSymptoms(models.Model):
     other_family${d}_side = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Which side of the family is the $s family member on?', choices=[(1, 'Maternal'), (2, 'Paternal'), (3, 'Unknown/Not documented')])
     other_family${d}_side = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Which side of the family is the $s family member on?', choices=[(1, 'Maternal'), (2, 'Paternal'), (3, 'Unknown/Not documented')])
     other_family${d}_side = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Which side of the family is the $s family member on?', choices=[(1, 'Maternal'), (2, 'Paternal'), (3, 'Unknown/Not documented')])
@@ -1308,6 +1980,12 @@ class FamilyHistory(models.Model):
     other_family_symptoms${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Describe the symptoms of the $s family member.', blank=True)
     other_family_symptoms${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Describe the symptoms of the $s family member.', blank=True)
     other_family_symptoms${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Describe the symptoms of the $s family member.', blank=True)
+
+    class Meta:
+	 db_table = 'other family members with similar symptoms'
+
+
+class FamilyHistory(models.Model):
     family_history_feedback = models.TextField(help_text='', null=True, verbose_name='Please provide any feedback for this form (for example: missing questions, questions not relevant for a disease area, ambiguities, places where a textbox could be replaced with discrete choices, missing discrete choices)', blank=True) # This field type is a guess
 
     class Meta:
@@ -1431,11 +2109,23 @@ class ReviewOfSystems(models.Model):
     ros_renal_tubular_acidosis_spec = models.TextField(help_text='', null=True, verbose_name='Describe renal tubular acidosis', blank=True) # This field type is a guess
     ros_renal_other_spec = models.TextField(help_text='', null=True, verbose_name='Describe other renal issues', blank=True) # This field type is a guess
     ros_genitalia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Genitalia abnormality', choices=[(6, 'None'), (1, 'Undescended teste'), (2, 'Hypospadias'), (3, 'Freckling'), (4, 'Labial abnormality'), (7, 'Unknown/Not documented'), (8, 'Other unknown abnormality'), (5, 'Other')])
+
+    class Meta:
+	 db_table = 'review_of_systems'
+
+
+class OtherGenitaliaAbnormality(models.Model):
     ros_other_genitalia_abnormality = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other genitalia abnormality', blank=True)
     ros_other_genitalia_abnormality = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other genitalia abnormality', blank=True)
     ros_other_genitalia_abnormality = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other genitalia abnormality', blank=True)
     ros_other_genitalia_abnormality = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other genitalia abnormality', blank=True)
     ros_other_genitalia_abnormality = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other genitalia abnormality', blank=True)
+
+    class Meta:
+	 db_table = 'Other genitalia abnormality'
+
+
+class ReviewOfSystems(models.Model):
     ros_tanner_scale = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tanner Scale', choices=[(1, 'Tanner I'), (2, 'Tanner II'), (3, 'Tanner III'), (4, 'Tanner IV'), (5, 'Tanner V'), (6, 'Unknown/Not documented')])
     ros_puberty_timing = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Puberty timing', choices=[(1, 'Normal'), (2, 'Delayed'), (3, 'Early'), (4, 'Too early to tell'), (5, 'Unknown/Not documented')])
     ros_menarche = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='First menarche occurred', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented'), (4, 'Not applicable')])
@@ -1484,6 +2174,12 @@ class ReviewOfSystems(models.Model):
     ros_frequent_illness_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Frequent illness', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     ros_frequent_illness_spec = models.TextField(help_text='', null=True, verbose_name='Describe frequent illness', blank=True) # This field type is a guess
     ros_allergies = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Known allergies', choices=[(6, 'None'), (1, 'Medication'), (2, 'Food'), (3, 'Seasonal or environmental'), (4, 'Unknown/Not documented'), (7, 'Other unknown allergy'), (5, 'Other')])
+
+    class Meta:
+	 db_table = 'review_of_systems'
+
+
+class MedicationAllergies(models.Model):
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
@@ -1494,6 +2190,12 @@ class ReviewOfSystems(models.Model):
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
+
+    class Meta:
+	 db_table = 'Medication allergies'
+
+
+class FoodAllergy(models.Model):
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
@@ -1504,14 +2206,32 @@ class ReviewOfSystems(models.Model):
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
+
+    class Meta:
+	 db_table = 'Food allergy'
+
+
+class OtherAllergy(models.Model):
     ros_allergies_other = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other allergry', blank=True)
     ros_allergies_other = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other allergry', blank=True)
     ros_allergies_other = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other allergry', blank=True)
+
+    class Meta:
+	 db_table = 'Other allergy'
+
+
+class ReviewOfSystems(models.Model):
     ros_immunologic_other_spec = models.TextField(help_text='', null=True, verbose_name='Describe other immunologic issues', blank=True) # This field type is a guess
     ros_rashes_eczema_birthmarks = models.IntegerField(help_text='', null=True, verbose_name='Birthmarks or rash | Describe other birthmark rash', blank=True, choices=[(1, 'None'), (2, 'Cafe au lait spots'), (3, 'Capillary hemangioma'), (4, 'Cutis marmorata'), (5, 'Diffuse hypopigmented skin lesions'), (6, 'Unknown/Not documented'), (7, 'Other unknown abnormality'), (8, 'Other')]) # This field type is a guess
     ros_lipomas_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Lipomas', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     ros_lipomas_spec = models.TextField(help_text='', null=True, verbose_name='Describe lipomas', blank=True) # This field type is a guess
     ros_dermatologic_other_spec = models.TextField(help_text='', null=True, verbose_name='Describe other dermatologic issues', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'review_of_systems'
+
+
+class Surgery(models.Model):
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
@@ -1522,6 +2242,12 @@ class ReviewOfSystems(models.Model):
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Surgery'
+
+
+class Hospitalization(models.Model):
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
@@ -1532,6 +2258,12 @@ class ReviewOfSystems(models.Model):
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Hospitalization'
+
+
+class Medication(models.Model):
     ros_medication = models.TextField(help_text='', null=True, verbose_name='$s current medication (if known)', blank=True) # This field type is a guess
     ros_medication = models.TextField(help_text='', null=True, verbose_name='$s current medication (if known)', blank=True) # This field type is a guess
     ros_medication = models.TextField(help_text='', null=True, verbose_name='$s current medication (if known)', blank=True) # This field type is a guess
@@ -1542,6 +2274,12 @@ class ReviewOfSystems(models.Model):
     ros_medication = models.TextField(help_text='', null=True, verbose_name='$s current medication (if known)', blank=True) # This field type is a guess
     ros_medication = models.TextField(help_text='', null=True, verbose_name='$s current medication (if known)', blank=True) # This field type is a guess
     ros_medication = models.TextField(help_text='', null=True, verbose_name='$s current medication (if known)', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Medication'
+
+
+class ReviewOfSystems(models.Model):
     ros_other_notes_spec = models.TextField(help_text='', null=True, verbose_name='Additional notes', blank=True) # This field type is a guess
     ros_feedback = models.TextField(help_text='', null=True, verbose_name='Please provide any feedback for this form (for example: missing questions, questions not relevant for a disease area, ambiguities, places where a textbox could be replaced with discrete choices, missing discrete choices)', blank=True) # This field type is a guess
 
@@ -1637,11 +2375,23 @@ class PhysicalExam(models.Model):
     skin_hyperextensibility_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Skin hyperextensibility', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     skin_hyperextensibility_spec = models.TextField(help_text='', null=True, verbose_name='Describe skin hyperextensibility', blank=True) # This field type is a guess
     skin_conditions = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Other skin conditions', choices=[(1, 'None'), (2, 'Ichthyosis'), (3, 'Unknown/Not documented'), (4, 'Other unknown condition'), (5, 'Other')])
+
+    class Meta:
+	 db_table = 'physical_exam'
+
+
+class OtherSkinFinding(models.Model):
     other_skin_finding = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other skin finding', blank=True)
     other_skin_finding = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other skin finding', blank=True)
     other_skin_finding = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other skin finding', blank=True)
     other_skin_finding = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other skin finding', blank=True)
     other_skin_finding = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other skin finding', blank=True)
+
+    class Meta:
+	 db_table = 'Other skin finding'
+
+
+class PhysicalExam(models.Model):
     hair_abnormal_spec = models.IntegerField(help_text='', null=True, verbose_name='Hair abnormalities', blank=True, choices=[(9, 'None'), (1, 'Alopecia'), (2, 'Hirsutism'), (3, 'Dry'), (4, 'Brittle'), (5, 'Coarse'), (6, 'Wooly'), (7, 'Kinky'), (8, 'Blond'), (10, 'Unknown/Not documened'), (12, 'Other unknown abnormality'), (11, 'Other')]) # This field type is a guess
     anus_position = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anus position', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Unknown/Not documented')])
     anus_position_spec = models.TextField(help_text='', null=True, verbose_name='Describe abnormally positioned anus', blank=True) # This field type is a guess
@@ -1749,21 +2499,45 @@ class PhysicalExam(models.Model):
 class HearingImpairment(models.Model):
     age_of_onset = models.IntegerField(help_text='', null=True, verbose_name='Age of onset', blank=True, choices=[(1, 'congenital(at birth)'), (2, 'after birth up to 1 year'), (3, 'one year'), (4, 'two years'), (5, 'three years'), (6, 'four years'), (7, 'five years'), (8, 'six years'), (9, 'seven years'), (10, 'eight years'), (11, 'nine years'), (12, 'ten years'), (13, '11 years'), (14, '12 years'), (15, '13 years'), (16, '14 years'), (17, '15 years'), (18, '16 years'), (19, '17 years'), (20, '18 years'), (26, '19 years'), (21, '20 years'), (22, '21-30'), (23, '31-40'), (24, '41-50'), (25, '51-60'), (27, '> 60 years')]) # This field type is a guess
     nb_exposures = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Newborn exposures', choices=[(6, 'None'), (1, 'Ventilator'), (2, 'Jaundice'), (3, 'Antibiotics'), (4, 'Infections'), (5, 'Other medications')])
+
+    class Meta:
+	 db_table = 'hearing_impairment'
+
+
+class Antibiotic(models.Model):
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
+
+    class Meta:
+	 db_table = 'antibiotic'
+
+
+class Infection(models.Model):
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
+
+    class Meta:
+	 db_table = 'infection'
+
+
+class OtherMedication(models.Model):
     other_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other medication exposure', blank=True)
     other_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other medication exposure', blank=True)
     other_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other medication exposure', blank=True)
     other_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other medication exposure', blank=True)
     other_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s other medication exposure', blank=True)
+
+    class Meta:
+	 db_table = 'other medication'
+
+
+class HearingImpairment(models.Model):
     type_of_hearing_impairment = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of hearing impairment', choices=[(1, 'Sensorineural'), (2, 'Conductive'), (3, 'Unknown/Not documented')])
     hear_impair_laterality = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Impairment laterality', choices=[(1, 'Bilateral'), (2, 'Unilateral'), (3, 'Unknown/Not documented')])
     hear_impair_symmetric = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Symmetric impairment?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
@@ -1917,6 +2691,12 @@ class CardiacDiagnosis(models.Model):
     cardiac_ep_dx_other = models.TextField(help_text='', null=True, verbose_name='EP Diagnosis (not listed)', blank=True) # This field type is a guess
     card_tx_proc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac treatment procedures done', choices=[(1, 'None'), (2, 'Catheter Ablation'), (3, 'Electrophysiologic Studies'), (4, 'Implantable Cardioverter-Defibrillator'), (5, 'Pacemaker'), (6, 'Left cervical sympathetic denervation'), (7, 'Other')])
     card_tx_oth = models.TextField(help_text='', null=True, verbose_name='Cardiac treatment procedures/Other: Specify', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'cardiac_diagnosis'
+
+
+class CardiacMedication(models.Model):
     card_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s cardiac medication', blank=True)
     card_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s cardiac medication', blank=True)
     card_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s cardiac medication', blank=True)
@@ -1924,7 +2704,7 @@ class CardiacDiagnosis(models.Model):
     card_meds = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s cardiac medication', blank=True)
 
     class Meta:
-	 db_table = 'cardiac_diagnosis'
+	 db_table = 'cardiac medication'
 
 
 class CardiacFamilyHistory(models.Model):
@@ -1957,1488 +2737,1530 @@ class CardiacFamilyHistory(models.Model):
 
 class EcgResults(models.Model):
     ecg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electrocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
-    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
 
     class Meta:
 	 db_table = 'ecg_results'
 
 
+class Ecg(models.Model):
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+
+    class Meta:
+	 db_table = 'ECG'
+
+
 class EchoResults(models.Model):
     echo_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Echocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
-    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
-    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
-    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
-    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
-    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
-    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
-    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
-    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
-    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
-    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
-    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
-    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
-    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
-    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
-    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
-    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
-    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
-    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
-    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
-    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
-    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
-    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
-    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
-    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
-    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
-    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
-    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
-    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
-    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
-    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
-    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
-    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
-    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
-    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
-    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
-    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
-    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
-    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
-    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
-    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
-    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
-    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
-    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
-    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
-    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
-    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
-    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
-    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
-    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
-    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
-    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
-    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
-    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
-    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
-    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
-    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
-    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
-    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
-    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
-    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
-    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
-    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
-    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
-    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
-    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
-    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
-    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
-    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
-    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
-    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
-    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
-    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
-    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
-    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
-    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
-    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
-    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
-    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
-    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
-    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
-    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
-    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
-    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
-    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
-    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
-    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
-    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
-    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
-    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
-    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
-    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
-    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
-    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
-    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
-    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
-    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
-    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
-    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
-    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
-    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
-    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
-    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
-    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
-    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
-    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
-    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
-    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
-    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
-    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
-    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
-    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
-    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
-    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
-    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
-    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
-    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
-    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
-    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
-    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
-    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
-    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
-    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
-    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
-    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
-    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
-    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
-    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
-    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
-    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
-    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
-    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
-    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
-    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
-    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
-    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
-    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
-    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
-    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
-    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
-    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
-    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
-    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
-    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
-    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
-    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
-    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
-    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
-    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
-    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
-    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
-    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
-    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
-    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
-    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
-    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
-    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
-    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
-    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
-    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
-    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
-    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
-    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
-    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
-    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
-    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
-    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
-    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
-    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
-    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
-    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
-    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
-    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
-    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
-    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
-    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
-    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
-    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
-    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
-    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
-    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
-    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
-    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
-    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
-    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
-    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
-    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
-    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
-    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
-    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
-    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
-    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
-    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
-    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
-    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
-    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
-    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
-    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
-    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
-    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
-    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
-    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
-    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
-    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
-    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
-    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
-    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
-    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
-    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
-    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
-    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
-    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
-    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
-    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
-    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
-    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
-    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
-    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
-    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
-    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
-    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
-    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
-    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
-    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
-    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
-    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
-    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
-    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
-    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
-    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
-    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
-    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
-    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
-    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
-    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
-    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
-    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
-    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
-    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
-    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
-    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
-    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
 
     class Meta:
 	 db_table = 'echo_results'
 
 
+class EchoTest(models.Model):
+    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
+    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
+    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
+    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
+    echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
+    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
+    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
+    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
+    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
+    echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
+    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
+    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
+    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
+    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
+    echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
+    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
+    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
+    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
+    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
+    echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
+    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
+    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
+    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
+    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
+    echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
+    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
+    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
+    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
+    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
+    echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
+    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
+    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
+    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
+    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
+    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
+    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
+    echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
+    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
+    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
+    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
+    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
+    echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
+    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
+    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
+    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
+    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
+    echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
+    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
+    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
+    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
+    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
+    echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
+    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
+    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
+    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
+    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
+    echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
+    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
+    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
+    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
+    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
+    echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
+    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
+    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
+    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
+    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
+    echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
+    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
+    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
+    echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
+    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
+    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
+    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
+    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
+    echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
+    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
+    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
+    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
+    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
+    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
+    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
+    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
+    echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
+    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
+    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
+    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
+    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
+    echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
+    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
+    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
+    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
+    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
+    echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
+    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
+    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
+    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
+    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
+    echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
+    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
+    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
+    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
+    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
+    echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
+    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
+    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
+    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
+    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
+    echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
+    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
+    echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
+    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
+    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
+    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
+    echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
+    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
+    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
+    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
+    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
+    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
+    echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
+    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
+    echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
+    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
+    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
+    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
+    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
+    echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
+    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
+    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
+    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
+    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
+    echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
+    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
+    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
+    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
+    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
+    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
+    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
+    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
+    echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
+    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
+    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
+    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
+    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
+    echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
+    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
+    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
+    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
+    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
+    echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
+    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
+    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
+    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
+    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
+    echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
+    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
+    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
+    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
+    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
+    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
+    echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
+    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
+    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
+    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
+    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
+    echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
+    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
+    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
+    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
+    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
+    echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
+    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
+    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
+    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
+    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
+    echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
+    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
+    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
+    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
+    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
+    echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
+    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
+    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
+    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
+    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
+    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
+    echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
+    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
+    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
+    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
+    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
+    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
+    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
+    echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
+    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
+    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
+    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
+    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
+    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
+    echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
+    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
+    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
+    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
+    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
+    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
+    echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
+    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
+    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
+    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
+    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
+    echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
+    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
+    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
+    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
+    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
+    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
+    echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
+    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
+    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
+    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
+    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
+    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
+    echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
+    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
+    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
+    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
+    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
+    echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
+    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
+    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
+    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
+    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
+    echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
+    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
+    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
+    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
+    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
+    echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
+    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
+    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
+    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
+    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
+    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
+    echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
+    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
+    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
+    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
+    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
+    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
+    echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
+    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
+    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
+    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
+    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
+    echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'ECHO test'
+
+
 class EstResults(models.Model):
     est_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Exercise Stress Test done', choices=[(1, 'Yes'), (2, 'No')])
-    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
-    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
-    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
-    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
-    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
-    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
-    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
-    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
-    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
-    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
-    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
-    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
-    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
-    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
-    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
-    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
-    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
-    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
-    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
-    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
-    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
-    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
-    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
-    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
-    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
-    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
-    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
-    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
-    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
-    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
-    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
-    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
-    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
-    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
-    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
-    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
-    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
-    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
-    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
-    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
-    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
-    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
-    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
-    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
-    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
-    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
-    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
-    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
-    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
-    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
-    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
-    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
-    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
-    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
-    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
-    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
-    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
-    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
-    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
-    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
-    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
-    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
-    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
-    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
-    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
-    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
-    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
-    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
-    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
-    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
-    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
-    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
-    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
-    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
-    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
-    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
-    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
-    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
-    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
-    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
-    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
-    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
-    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
-    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
-    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
-    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
-    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
-    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
-    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
-    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
-    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
-    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
-    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
-    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
-    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
-    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
-    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
-    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
-    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
-    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
-    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
-    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
-    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
-    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
-    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
-    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
-    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
-    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
-    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
-    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
-    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
-    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
-    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
-    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
-    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
-    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
-    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
-    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
-    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
-    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
-    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
-    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
-    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
-    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
-    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
-    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
-    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
-    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
-    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
-    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
-    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
-    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
-    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
-    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
-    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
-    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
-    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
-    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
-    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
-    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
-    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
-    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
-    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
-    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
-    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
-    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
-    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
-    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
-    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
-    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
-    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
-    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
-    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
-    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
-    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
-    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
-    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
-    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
-    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
-    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
-    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
-    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
-    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
-    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
-    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
 
     class Meta:
 	 db_table = 'est_results'
 
 
+class ExerciseStressTest(models.Model):
+    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
+    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
+    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
+    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
+    est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
+    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
+    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
+    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
+    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
+    est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
+    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
+    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
+    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
+    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
+    est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
+    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
+    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
+    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
+    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
+    est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
+    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
+    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
+    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
+    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
+    est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
+    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
+    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
+    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
+    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
+    est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
+    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
+    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
+    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
+    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
+    est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
+    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
+    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
+    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
+    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
+    est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
+    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
+    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
+    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
+    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
+    est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
+    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
+    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
+    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
+    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
+    est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
+    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
+    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
+    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
+    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
+    est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
+    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
+    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
+    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
+    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
+    est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
+    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
+    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
+    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
+    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
+    est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
+    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
+    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
+    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
+    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
+    est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
+    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
+    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
+    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
+    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
+    est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
+    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
+    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
+    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
+    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
+    est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
+    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
+    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
+    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
+    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
+    est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
+    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
+    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
+    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
+    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
+    est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
+    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
+    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
+    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
+    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
+    est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
+    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
+    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
+    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
+    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
+    est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
+    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
+    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
+    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
+    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
+    est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
+    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
+    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
+    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
+    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
+    est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
+    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
+    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
+    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
+    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
+    est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
+    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
+    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
+    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
+    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
+    est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
+    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
+    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
+    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
+    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
+    est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
+    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
+    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
+    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
+    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
+    est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
+    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
+    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
+    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
+    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
+    est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
+    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
+    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
+    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
+    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
+    est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
+    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
+    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
+    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
+    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
+    est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
+    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
+    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
+    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
+    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
+    est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
+    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
+    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
+    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
+    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
+    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
+    est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
+    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
+    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
+    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
+    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
+    est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
+    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
+    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
+    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
+    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
+    est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Exercise Stress Test'
+
+
 class HolterResults(models.Model):
     hm_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Holter Monitor test done', choices=[(1, 'Yes'), (2, 'No')])
-    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
-    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
-    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
-    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
-    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
-    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
-    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
-    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
-    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
-    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
-    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
-    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
-    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
-    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
-    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
-    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
-    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
-    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
-    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
-    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
-    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
-    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
-    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
-    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
-    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
-    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
-    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
-    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
-    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
-    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
-    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
-    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
-    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
-    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
-    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
-    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
-    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
-    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
-    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
-    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
-    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
-    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
-    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
-    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
-    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
-    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
-    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
-    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
-    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
-    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
-    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
-    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
-    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
-    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
-    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
-    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
-    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
-    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
-    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
-    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
-    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
-    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
-    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
-    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
-    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
-    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
-    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
-    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
-    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
-    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
-    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
-    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
-    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
-    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
-    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
-    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
-    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
-    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
-    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
-    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
-    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
-    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
-    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
-    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
-    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
-    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
-    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
-    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
-    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
-    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
-    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
-    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
-    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
-    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
-    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
-    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
-    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
-    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
-    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
-    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
-    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
-    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
-    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
-    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
-    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
-    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
-    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
-    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
-    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
-    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
-    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
-    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
-    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
-    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
-    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
-    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
-    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
-    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
-    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
-    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
-    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
-    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
-    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
-    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
-    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
-    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
-    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
-    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
-    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
-    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
-    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
-    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
-    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
-    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
-    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
-    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
-    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
-    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
-    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
-    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
-    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
-    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
-    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
-    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
-    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
-    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
-    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
-    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
-    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
-    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
-    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
-    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
-    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
-    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
-    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
-    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
-    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
-    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
-    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
-    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
-    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
-    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
-    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
-    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
-    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
-    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
-    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
-    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
-    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
-    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
-    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
-    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
-    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
-    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
-    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
-    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
-    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
-    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
-    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
-    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
-    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
-    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
-    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
-    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
-    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
-    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
-    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
-    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
-    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
-    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
-    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
 
     class Meta:
 	 db_table = 'holter_results'
 
 
+class Hm(models.Model):
+    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
+    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
+    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
+    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
+    hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
+    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
+    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
+    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
+    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
+    hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
+    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
+    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
+    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
+    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
+    hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
+    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
+    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
+    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
+    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
+    hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
+    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
+    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
+    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
+    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
+    hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
+    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
+    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
+    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
+    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
+    hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
+    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
+    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
+    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
+    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
+    hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
+    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
+    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
+    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
+    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
+    hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
+    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
+    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
+    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
+    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
+    hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
+    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
+    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
+    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
+    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
+    hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
+    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
+    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
+    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
+    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
+    hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
+    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
+    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
+    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
+    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
+    hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
+    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
+    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
+    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
+    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
+    hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
+    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
+    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
+    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
+    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
+    hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
+    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
+    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
+    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
+    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
+    hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
+    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
+    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
+    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
+    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
+    hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
+    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
+    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
+    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
+    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
+    hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
+    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
+    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
+    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
+    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
+    hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
+    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
+    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
+    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
+    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
+    hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
+    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
+    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
+    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
+    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
+    hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
+    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
+    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
+    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
+    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
+    hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
+    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
+    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
+    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
+    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
+    hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
+    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
+    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
+    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
+    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
+    hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
+    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
+    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
+    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
+    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
+    hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
+    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
+    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
+    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
+    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
+    hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
+    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
+    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
+    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
+    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
+    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
+    hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
+    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
+    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
+    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
+    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
+    hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
+    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
+    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
+    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
+    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
+    hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
+    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
+    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
+    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
+    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
+    hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
+    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
+    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
+    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
+    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
+    hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
+    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
+    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
+    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
+    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
+    hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
+    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
+    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
+    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
+    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
+    hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
+    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
+    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
+    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
+    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
+    hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
+    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
+    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
+    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
+    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
+    hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
+    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
+    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
+    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
+    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
+    hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
+    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
+    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
+    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
+    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
+    hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
+    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
+    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
+    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
+    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
+    hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
+    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
+    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
+    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
+    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
+    hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'hm'
+
+
 class CmriResults(models.Model):
     cmri_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac MRI done', choices=[(1, 'Yes'), (2, 'No')])
-    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
-    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
-    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
-    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
-    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
-    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
-    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
-    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
-    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
-    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
-    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
-    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
-    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
-    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
-    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
-    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
-    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
-    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
-    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
-    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
 
     class Meta:
 	 db_table = 'cmri_results'
 
 
+class CardiacMri(models.Model):
+    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
+    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
+    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
+    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
+    cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
+    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
+    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
+    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
+    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
+    cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
+    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
+    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
+    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
+    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
+    cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
+    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
+    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
+    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
+    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
+    cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Cardiac MRI'
+
+
 class CardiacCathProcedures(models.Model):
     ccath_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac catheterization done', choices=[(1, 'Yes'), (2, 'No')])
-    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
-    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
-    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
-    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
-    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
-    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
-    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
-    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
-    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
-    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
 
     class Meta:
 	 db_table = 'cardiac_cath_procedures'
 
 
+class CardiacCatherizations(models.Model):
+    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
+    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
+    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
+    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
+    ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
+    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
+    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
+    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
+    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
+    ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
+
+    class Meta:
+	 db_table = 'Cardiac Catherizations'
+
+
 class CardiacSurgery(models.Model):
     cardsurg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac surgery done', choices=[(1, 'Yes'), (2, 'No')])
+
+    class Meta:
+	 db_table = 'cardiac_surgery'
+
+
+class CardiacSurgery(models.Model):
     cardsurg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac surgery | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
     cardsurg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac surgery | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
     cardsurg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac surgery | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
@@ -3461,6 +4283,6 @@ class CardiacSurgery(models.Model):
     cardsurg_summary = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', blank=True) # This field type is a guess
 
     class Meta:
-	 db_table = 'cardiac_surgery'
+	 db_table = 'Cardiac Surgery'
 
 

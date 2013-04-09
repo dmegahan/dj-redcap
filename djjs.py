@@ -21,7 +21,8 @@ header_keys = (
 	'question_number',
 	'repeat_tf',
 	'repeat_num',
-	'repeat_pointer'
+	'repeat_pointer',
+	'related'
 )
 
 field_types = {
@@ -57,17 +58,19 @@ def csv2json(reader, fileName):
 	"""
 	fout = open(fileName + '.json', "w+");
 	
-	last_repeat_num = 1;
 	cur_repeat_num = 1;
-	last_repeat_pointer = '';
-	cur_repeat_pointer = '';
+	last_repeat_num = 1;
+	cur_repeat_pointer = 1;
+	last_repeat_pointer = 1;
+	repeat_rows_list = [];
 	last_form_name = None;
 	for row in reader:
 		form_name = row['form_name'];
 		
 		"""
 		Needed for special case csv's with repeats used, not needed otherwise.
-		Determines if a field_name has startrepeat,repeat,or endrepeat in it, 			  then extracts the number of repeats and the field it refers to.
+		Determines if a field_name has startrepeat,repeat,or endrepeat in it,
+		then extracts the number of repeats and the field it refers to.
 		"""
 		if row['field_name'].find('startrepeat') != -1:
 			row['repeat_tf'] = "True";
@@ -76,62 +79,85 @@ def csv2json(reader, fileName):
 			row['repeat_num'] = repeat_info[2];
 			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
 			
+			row['form_name'] = row['repeat_pointer'];
+			
+			#repeat_num_stack.append(row['repeat_num']);
 			last_repeat_num = cur_repeat_num;
 			cur_repeat_num = row['repeat_num'];
+			#repeat_pointer_stack.append(row['repeat_pointer'];
 			last_repeat_pointer = cur_repeat_pointer;
 			cur_repeat_pointer = row['repeat_pointer'];
+			
+			repeat_rows_list.append(row);
 		elif row['field_name'].find('endrepeat') != -1:
 			row['repeat_tf'] = "True";
 			row['field_name'] = row['field_name'].strip().split()[0];
 			row['repeat_num'] = cur_repeat_num;
 			row['repeat_pointer'] = cur_repeat_pointer;
+
+			row['form_name'] = row['repeat_pointer'];
 			
 			cur_repeat_num = last_repeat_num;
 			last_repeat_num = 1;
 			cur_repeat_pointer = last_repeat_pointer;
 			last_repeat_pointer = '';
+
+			repeat_rows_list.append(row);
 		elif row['field_name'].find(' repeat ') != -1:
 			row['repeat_tf'] = "True";
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
 			row['repeat_num'] = repeat_info[2];
 			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
+
+			row['form_name'] = row['repeat_pointer'];
 		elif cur_repeat_num > 1:
 			row['repeat_tf'] = "True";
 			row['repeat_num'] = cur_repeat_num;
 			row['repeat_pointer'] = cur_repeat_pointer;
+			row['form_name'] = row['repeat_pointer'];
+			
+			repeat_rows_list.append(row);
 		else:
 			row['repeat_tf'] = "False";
 			row['repeat_num'] = "";
 			row['repeat_pointer'] = "";
-		
-		#generating the json
-		fout.write(json.dumps({'form':
-					{'form name': row['form_name'],
-				        'section header': row['section_name'],
-					'field':
-					{'field name': row['field_name'],
-					 'field label': row['field_label'],
-					 'field note': row['field_note'],
-					 'type':
-						{'field type': row['field_type'],
-						 'choices': row['choices']},
-					 'text validation':
-						{'validation type': row['validation_type'],
-						 'min value': row['min_value'],
-						 'max value': row['max_value']},
-					 'identifier': row['is_identifier'],
-					 'branching logic': row['branching_logic'],
-					 'required?': row['required'],
-					 'alignment': row['custom_alignment'],
-					 'question number': row['question_number'],
-					 'repeats':
-						{'repeat?': row['repeat_tf'],
-						 'repeat num': row['repeat_num'],
-						 'repeat pointer': row['repeat_pointer']},
-					},},},indent=0, separators=(',',':')));
+		if not repeat_rows_list:
+			fout.write(generateJson(row));
+		else:	
+			#print repeat_rows_list;
+			for i in range(int(last_repeat_num)):
+				for j in range(int(cur_repeat_num)):
+					for k in range(len(repeat_rows_list)):
+						fout.write(generateJson(repeat_rows_list[k]));
 		fout.write('\n');
 	return fout.name;
+def generateJson(row):
+	return (json.dumps({'form':
+                                        {'form name': row['form_name'],
+                                        'section header': row['section_name'],
+                                        'field':
+                                        {'field name': row['field_name'],
+                                         'field label': row['field_label'],
+                                         'field note': row['field_note'],
+                                         'type':
+                                                {'field type': row['field_type'],
+                                                 'choices': row['choices']},
+                                         'text validation':
+                                                {'validation type': row['validation_type'],
+                                                 'min value': row['min_value'],
+                                                 'max value': row['max_value']},
+                                         'identifier': row['is_identifier'],
+                                         'branching logic': row['branching_logic'],
+                                         'required?': row['required'],
+                                         'alignment': row['custom_alignment'],
+                                         'question number': row['question_number'],
+                                         'repeats':
+                                                {'repeat?': row['repeat_tf'],
+                                                 'repeat num': row['repeat_num'],
+                                                 'repeat pointer': row['repeat_pointer'],
+                                                 'related': row['related']},
+                                        },},},indent=0, separators=(',',':')));	
 
 def json2dj(fileName):
 	form2model = lambda form_name: form_name.title().replace('_','').replace(' ','').replace('-','');
@@ -197,16 +223,8 @@ def json2dj(fileName):
 		field_desc += ')';
 		if comment_notes:
 			field_desc += ' # ' + ' '.join(comment_notes);
-		if get_field_value(line,'repeat?') == 'True':
-			#some repeat values aren't digits
-			if get_field_value(line,'repeat num').isdigit():
-				for i in range(int(get_field_value(line,'repeat num'))):
-					fout.write('    %s\n' % field_desc);
-			else:
-				fout.write('    %s\n' % field_desc);
-		#determines if line is an endrepeat line, doesn't print it if so
-		elif get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
-			fout.write('    %s\n' % field_desc);
+		
+		fout.write('    %s\n' % field_desc);
 	#final meta class
 	for meta_line in get_meta(form_name):
 		fout.write(meta_line);
@@ -221,11 +239,7 @@ def get_field_type(line):
 	required = get_field_value(line,'required?');
 	validation_type = get_field_value(line,'validation type');
 	field_type = get_field_value(line,'field type');
-	repeat_tf = get_field_value(line,'repeat?');
-	if repeat_tf:
-		repeat_num = get_field_value(line,'repeat num');
-		repeat_pointer = get_field_value(line,'repeat pointer');
-	
+
 	try:
 		field_type = field_types.get(validation_type, field_types[field_type]);
 	except KeyError:
