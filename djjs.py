@@ -19,9 +19,6 @@ header_keys = (
 	'required',
 	'custom_alignment',
 	'question_number',
-	'repeat_tf',
-	'repeat_num',
-	'repeat_pointer',
 	'related'
 )
 
@@ -65,6 +62,7 @@ def csv2json(reader, fileName):
 	repeat_rows_list = [];
 	last_form_name = None;
 	for row in reader:
+		(repeat_num, repeat_tf, repeat_pointer) = '','','';
 		form_name = row['form_name'];
 		
 		"""
@@ -73,29 +71,29 @@ def csv2json(reader, fileName):
 		then extracts the number of repeats and the field it refers to.
 		"""
 		if row['field_name'].find('startrepeat') != -1:
-			row['repeat_tf'] = "True";
+			repeat_tf = "True";
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
-			row['repeat_num'] = repeat_info[2];
-			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
+			repeat_num = repeat_info[2];
+			repeat_pointer = ' '.join(repeat_info[3:]);
 			
-			row['form_name'] = row['repeat_pointer'];
+			row['form_name'] = repeat_pointer;
 			
 			#repeat_num_stack.append(row['repeat_num']);
 			last_repeat_num = cur_repeat_num;
-			cur_repeat_num = row['repeat_num'];
-			#repeat_pointer_stack.append(row['repeat_pointer'];
+			cur_repeat_num = repeat_num;
+			#repeat_pointer_stack.append(repeat_pointer);
 			last_repeat_pointer = cur_repeat_pointer;
-			cur_repeat_pointer = row['repeat_pointer'];
+			cur_repeat_pointer = repeat_pointer;
 			
 			repeat_rows_list.append(row);
 		elif row['field_name'].find('endrepeat') != -1:
-			row['repeat_tf'] = "True";
+			repeat_tf = "True";
 			row['field_name'] = row['field_name'].strip().split()[0];
-			row['repeat_num'] = cur_repeat_num;
-			row['repeat_pointer'] = cur_repeat_pointer;
-
-			row['form_name'] = row['repeat_pointer'];
+			repeat_num = cur_repeat_num;
+			repeat_pointer = cur_repeat_pointer;
+	
+			row['form_name'] = repeat_pointer;
 			
 			cur_repeat_num = last_repeat_num;
 			last_repeat_num = 1;
@@ -104,24 +102,24 @@ def csv2json(reader, fileName):
 
 			repeat_rows_list.append(row);
 		elif row['field_name'].find(' repeat ') != -1:
-			row['repeat_tf'] = "True";
+			repeat_tf = "True";
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
-			row['repeat_num'] = repeat_info[2];
-			row['repeat_pointer'] = ' '.join(repeat_info[3:]);
+			repeat_num = repeat_info[2];
+			repeat_pointer = ' '.join(repeat_info[3:]);
 
-			row['form_name'] = row['repeat_pointer'];
+			row['form_name'] = repeat_pointer;
 		elif cur_repeat_num > 1:
-			row['repeat_tf'] = "True";
-			row['repeat_num'] = cur_repeat_num;
-			row['repeat_pointer'] = cur_repeat_pointer;
-			row['form_name'] = row['repeat_pointer'];
+			repeat_tf = "True";
+			repeat_num = cur_repeat_num;
+			repeat_pointer = cur_repeat_pointer;
+			row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list.append(row);
 		else:
-			row['repeat_tf'] = "False";
-			row['repeat_num'] = "";
-			row['repeat_pointer'] = "";
+			repeat_tf = "False";
+			repeat_num = "";
+			repeat_pointer = "";
 		if not repeat_rows_list:
 			fout.write(generateJson(row));
 		else:	
@@ -129,7 +127,7 @@ def csv2json(reader, fileName):
 			for i in range(int(last_repeat_num)):
 				for j in range(int(cur_repeat_num)):
 					for k in range(len(repeat_rows_list)):
-						fout.write(generateJson(repeat_rows_list[k]));
+						fout.write(generateJson(repeat_rows_list[k]);
 		fout.write('\n');
 	return fout.name;
 def generateJson(row):
@@ -152,11 +150,6 @@ def generateJson(row):
                                          'required?': row['required'],
                                          'alignment': row['custom_alignment'],
                                          'question number': row['question_number'],
-                                         'repeats':
-                                                {'repeat?': row['repeat_tf'],
-                                                 'repeat num': row['repeat_num'],
-                                                 'repeat pointer': row['repeat_pointer'],
-                                                 'related': row['related']},
                                         },},},indent=0, separators=(',',':')));	
 
 def json2dj(fileName):
