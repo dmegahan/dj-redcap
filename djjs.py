@@ -19,7 +19,6 @@ header_keys = (
 	'required',
 	'custom_alignment',
 	'question_number',
-	'related'
 )
 
 field_types = {
@@ -57,14 +56,14 @@ def csv2json(reader, fileName):
 	
 	cur_repeat_num = 1;
 	last_repeat_num = 1;
-	cur_repeat_pointer = 1;
-	last_repeat_pointer = 1;
+	cur_repeat_pointer = '';
+	last_repeat_pointer = '';
+	repeat_num_stack = [];
 	repeat_rows_list = [];
 	last_form_name = None;
 	for row in reader:
 		(repeat_num, repeat_tf, repeat_pointer) = '','','';
 		form_name = row['form_name'];
-		
 		"""
 		Needed for special case csv's with repeats used, not needed otherwise.
 		Determines if a field_name has startrepeat,repeat,or endrepeat in it,
@@ -77,7 +76,7 @@ def csv2json(reader, fileName):
 			repeat_num = repeat_info[2];
 			repeat_pointer = ' '.join(repeat_info[3:]);
 			
-			row['form_name'] = repeat_pointer;
+			#row['form_name'] = repeat_pointer;
 			
 			#repeat_num_stack.append(row['repeat_num']);
 			last_repeat_num = cur_repeat_num;
@@ -95,6 +94,7 @@ def csv2json(reader, fileName):
 	
 			row['form_name'] = repeat_pointer;
 			
+			
 			cur_repeat_num = last_repeat_num;
 			last_repeat_num = 1;
 			cur_repeat_pointer = last_repeat_pointer;
@@ -108,7 +108,7 @@ def csv2json(reader, fileName):
 			repeat_num = repeat_info[2];
 			repeat_pointer = ' '.join(repeat_info[3:]);
 
-			row['form_name'] = repeat_pointer;
+			#row['form_name'] = repeat_pointer;
 		elif cur_repeat_num > 1:
 			repeat_tf = "True";
 			repeat_num = cur_repeat_num;
@@ -122,13 +122,15 @@ def csv2json(reader, fileName):
 			repeat_pointer = "";
 		if not repeat_rows_list:
 			fout.write(generateJson(row));
-		else:	
+			fout.write('\n');
+		elif cur_repeat_num != 1:
 			#print repeat_rows_list;
 			for i in range(int(last_repeat_num)):
 				for j in range(int(cur_repeat_num)):
 					for k in range(len(repeat_rows_list)):
-						fout.write(generateJson(repeat_rows_list[k]);
-		fout.write('\n');
+						fout.write(generateJson(repeat_rows_list[k]));
+						fout.write('\n');
+			repeat_rows_list = [];
 	return fout.name;
 def generateJson(row):
 	return (json.dumps({'form':
@@ -161,7 +163,6 @@ def json2dj(fileName):
 	
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
-		
 		#if statement checks for endrepeats so a new class isn't created when one is found
 		if form_name != prev_form_name and get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
 			if prev_form_name:
