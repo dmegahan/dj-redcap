@@ -57,7 +57,7 @@ def csv2json(reader, fileName):
 	repeat_num_stack = [];
 	repeat_rows_list = [];
 	last_form_name = None;
-	cur_depth = 1;
+	cur_depth = 0;
 	for row in reader:
 		form_name = row['form_name'];
 		"""
@@ -73,7 +73,10 @@ def csv2json(reader, fileName):
 			#row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list = last_inner_append(repeat_rows_list, [row],0,cur_depth);
-			repeat_num_stack.append(repeat_info[2]);
+			if repeat_info[2].isdigit():
+				repeat_num_stack.append(repeat_info[2]);
+			else:
+				repeat_num_stack.append(1);
 			cur_depth = cur_depth + 1;
 		elif row['field_name'].find('endrepeat') != -1:
 			row['field_name'] = row['field_name'].strip().split()[0];
@@ -90,15 +93,18 @@ def csv2json(reader, fileName):
 			#repeat_num = repeat_info[2];
 			#repeat_pointer = ' '.join(repeat_info[3:]);
 			
-			repeat_num_stack.append(repeat_info[2]);
+			if repeat_info[2].isdigit():
+				repeat_num_stack.append(repeat_info[2]);
+			else:
+				repeat_num_stack.append(1);
 			repeat_rows_list = last_inner_append(repeat_rows_list, [row],0,cur_depth);
 			cur_depth = cur_depth - 1;
 			repeat_rows_list = last_inner_append(repeat_rows_list,'',0,cur_depth);
 			#row['form_name'] = repeat_pointer;
 		elif repeat_num_stack:
 			#row['form_name'] = repeat_pointer;
-			
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
+	print repeat_rows_list;
 	print_list(repeat_num_stack,repeat_rows_list,fout,-1,);
 	return fout.name;
 
@@ -109,6 +115,7 @@ def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 	function uses num_repeats and num_repeats_index to keep track of how many iterations it should do for each list, nested
 	or not.
 	"""
+	print repeats_list;
 	for i in range(int(num_repeats[num_repeats_index])):
 		for j,item in enumerate(repeats_list):
 			if isinstance(repeats_list[j],list):
@@ -126,8 +133,7 @@ def last_inner_append(x,y,curDepth,depth):
 	try:
 		if(curDepth != depth):
 			if isinstance(x[-1],list):
-				curDepth = curDepth + 1;
-				last_inner_append(x[-1],y,curDepth,depth);
+				last_inner_append(x[-1],y,curDepth+1,depth);
 				return x;
 	except IndexError:
 		pass;
