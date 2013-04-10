@@ -54,17 +54,11 @@ def csv2json(reader, fileName):
 	"""
 	fout = open(fileName + '.json', "w+");
 	
-	cur_repeat_num = 1;
-	last_repeat_num = 1;
-	cur_repeat_pointer = '';
-	last_repeat_pointer = '';
 	repeat_num_stack = [];
 	repeat_rows_list = [];
 	last_form_name = None;
 	cur_depth = 1;
-	i = iter(repeat_rows_list);
 	for row in reader:
-		(repeat_num, repeat_tf, repeat_pointer) = '','','';
 		form_name = row['form_name'];
 		"""
 		Needed for special case csv's with repeats used, not needed otherwise.
@@ -72,74 +66,52 @@ def csv2json(reader, fileName):
 		then extracts the number of repeats and the field it refers to.
 		"""
 		if row['field_name'].find('startrepeat') != -1:
-			repeat_tf = "True";
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
-			repeat_num = repeat_info[2];
-			repeat_pointer = ' '.join(repeat_info[3:]);
-			
+			#repeat_num = repeat_info[2];
+			#repeat_pointer = ' '.join(repeat_info[3:]);
 			#row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list = last_inner_append(repeat_rows_list, [row],0,cur_depth);
-			repeat_num_stack.append(repeat_num);
+			repeat_num_stack.append(repeat_info[2]);
 			cur_depth = cur_depth + 1;
-			#last_repeat_num = cur_repeat_num;
-			#cur_repeat_num = repeat_num;
-			#repeat_pointer_stack.append(repeat_pointer);
-			#last_repeat_pointer = cur_repeat_pointer;
-			#cur_repeat_pointer = repeat_pointer;
 		elif row['field_name'].find('endrepeat') != -1:
-			repeat_tf = "True";
 			row['field_name'] = row['field_name'].strip().split()[0];
-			repeat_num = cur_repeat_num;
-			repeat_pointer = cur_repeat_pointer;
-	
+			#repeat_num = cur_repeat_num;
+			#repeat_pointer = cur_repeat_pointer;
 			#row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
 			cur_depth = cur_depth - 1;
 			repeat_rows_list = last_inner_append(repeat_rows_list,'',0,cur_depth);
-			cur_repeat_num = last_repeat_num;
-			last_repeat_num =  1;
-			cur_repeat_pointer = last_repeat_pointer;
-			last_repeat_pointer = '';
-			
 		elif row['field_name'].find(' repeat ') != -1:
-			repeat_tf = "True";
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
-			repeat_num = repeat_info[2];
-			repeat_pointer = ' '.join(repeat_info[3:]);
+			#repeat_num = repeat_info[2];
+			#repeat_pointer = ' '.join(repeat_info[3:]);
 			
-			repeat_num_stack.append(repeat_num);
+			repeat_num_stack.append(repeat_info[2]);
 			repeat_rows_list = last_inner_append(repeat_rows_list, [row],0,cur_depth);
 			cur_depth = cur_depth - 1;
 			repeat_rows_list = last_inner_append(repeat_rows_list,'',0,cur_depth);
 			#row['form_name'] = repeat_pointer;
 		elif repeat_num_stack:
-			repeat_tf = "True";
-			repeat_num = cur_repeat_num;
-			repeat_pointer = cur_repeat_pointer;
 			#row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
-		else:
-			repeat_tf = "False";
-			repeat_num = "";
-			repeat_pointer = "";
-	#print repeat_num_stack;
 	print_list(repeat_num_stack,repeat_rows_list,fout,-1,);
-		#fout.write(generateJson(row));
-		#fout.write('\n');
-		#print repeat_rows_list;
 	return fout.name;
 
 def print_list(num_repeats,repeats_list,fout,num_repeats_index):
+	"""Recursive method for generating the json for a list of lines that use repeats.
+	The function iterates through the list, generating the json for each dictionary it encounters.
+	When it finds another list, this function is recursively called on that list and does the same. The
+	function uses num_repeats and num_repeats_index to keep track of how many iterations it should do for each list, nested
+	or not.
+	"""
 	for i in range(int(num_repeats[num_repeats_index])):
 		for j,item in enumerate(repeats_list):
 			if isinstance(repeats_list[j],list):
-				#print num_repeats_index;
-				#print num_repeats[num_repeats_index];
 				print_list(num_repeats,item,fout,num_repeats_index+1);
 			elif repeats_list[j] == '':
 				repeats_list.pop(j);
@@ -148,6 +120,9 @@ def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 				fout.write('\n');
 
 def last_inner_append(x,y,curDepth,depth):
+	"""Finds the deepest index in a list, that is not a list itself. If a list is 
+	found, the function is called recursively on that list.
+	"""
 	try:
 		if(curDepth != depth):
 			if isinstance(x[-1],list):
@@ -160,7 +135,6 @@ def last_inner_append(x,y,curDepth,depth):
 	return x;
 
 def generateJson(row):
-	print row;
 	return (json.dumps({'form':
                                         {'form name': row['form_name'],
                                         'section header': row['section_name'],
