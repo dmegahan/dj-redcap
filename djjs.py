@@ -35,6 +35,7 @@ field_types = {
 	'yesno': 'BooleanField',
 	'truefalse': 'BooleanField',
 }
+
 def readFile(fileName=None):
 	if not fileName:
 		fileName = raw_input('Enter a valid filename: ');
@@ -48,6 +49,7 @@ def readFile(fileName=None):
 	if fileName.find('.json') == -1:
 		fileName = csv2json(reader, fileName);
 	json2dj(fileName);
+
 def csv2json(reader, fileName):
 	"""
 		Function that converts csv file to valid json. 
@@ -105,13 +107,26 @@ def csv2json(reader, fileName):
 			#row['form_name'] = repeat_pointer;
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
 		if cur_depth == 0 and len(repeat_num_stack) > 1:
-			print repeat_rows_list;
+			repeat_rows_list = clean_list(repeat_rows_list);
+			#print repeat_rows_list;
 			print_list(repeat_num_stack,repeat_rows_list,fout,0);
 			repeat_num_stack = [1];
 			repeat_rows_list = [];
 			cur_depth = 0;
+		elif cur_depth == 0 and len(repeat_num_stack) == 1:
+			fout.write(generateJson(row));
 	#print_list(repeat_num_stack,repeat_rows_list,fout,-1);
 	return fout.name;
+
+def clean_list(repeats_list):
+	for j,item in enumerate(repeats_list):
+		if isinstance(item,list):
+			item = clean_list(item);
+		elif item == '':
+			repeats_list.pop(j);
+		elif item == 'endrepeat':
+			repeats_list.pop(j);
+	return repeats_list;
 
 def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 	"""Recursive method for generating the json for a list of lines that use repeats.
@@ -121,7 +136,7 @@ def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 	or not.
 	"""
 	#print num_repeats_index;
-	print num_repeats[num_repeats_index];
+	#print num_repeats[num_repeats_index];
 	#print repeats_list;
 	num_lists = 0;
 	for i in range(int(num_repeats[num_repeats_index])):
@@ -244,6 +259,7 @@ def json2dj(fileName):
 	#final meta class
 	for meta_line in get_meta(form_name):
 		fout.write(meta_line);
+
 def get_field_type(line):
 	"""Given the database connection, the table name, and the cursor row description,
 	this routine will return the given field type name, as well as any additional keyword
@@ -283,6 +299,7 @@ def get_field_type(line):
 		field_params['choices'] = choices;
 	
 	return field_type, field_params, field_notes;
+
 def get_field_value(line, field):
 	"""
 		Determines the value of a field from the json representation.
@@ -304,6 +321,7 @@ def get_field_value(line, field):
 		current_char = line[field_index+field_len];
 	field_value = line[field_index:field_index+field_len];
 	return field_value;	
+
 def get_meta(table_name):
 	"""	Return a sequence comprising the lines of code necessary
 		to construct the inner Meta class for the model 
@@ -314,6 +332,7 @@ def get_meta(table_name):
 		'	 db_table = %r\n' % table_name,
 		'\n',
 		'\n'];
+
 if len(sys.argv) > 1:
 	readFile(sys.argv[1]);
 else:
