@@ -25,7 +25,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -39,7 +42,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -53,7 +59,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -67,7 +76,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
     panel${d}_laboratory = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Which laboratory performed $s gene panel?', blank=True)
     panel${d}_date_performed = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year $s panel was performed', blank=True)
@@ -87,7 +99,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -101,7 +116,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -115,7 +133,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -129,7 +150,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -143,8 +167,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
     panel${d}_laboratory = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Which laboratory performed $s gene panel?', blank=True)
     panel${d}_date_performed = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year $s panel was performed', blank=True)
@@ -164,7 +190,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -178,7 +207,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -192,7 +224,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -206,7 +241,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -220,8 +258,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
     panel${d}_laboratory = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Which laboratory performed $s gene panel?', blank=True)
     panel${d}_date_performed = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year $s panel was performed', blank=True)
@@ -241,7 +281,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -255,7 +298,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -269,7 +315,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -283,7 +332,10 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
@@ -297,10 +349,12 @@ class PriorGeneticTesting(models.Model):
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
+    vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
 
     class Meta:
-	 db_table = ''
+	 db_table = 'prior_genetic_testing'
 
 

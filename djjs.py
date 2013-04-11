@@ -54,7 +54,7 @@ def csv2json(reader, fileName):
 	"""
 	fout = open(fileName + '.json', "w+");
 	
-	repeat_num_stack = [];
+	repeat_num_stack = [1];
 	repeat_rows_list = [];
 	last_form_name = None;
 	cur_depth = 0;
@@ -101,11 +101,16 @@ def csv2json(reader, fileName):
 			cur_depth = cur_depth - 1;
 			repeat_rows_list = last_inner_append(repeat_rows_list,'',0,cur_depth);
 			#row['form_name'] = repeat_pointer;
-		elif repeat_num_stack:
+		elif len(repeat_num_stack) > 1:
 			#row['form_name'] = repeat_pointer;
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
-	print repeat_rows_list;
-	print_list(repeat_num_stack,repeat_rows_list,fout,-1,);
+		if cur_depth == 0 and len(repeat_num_stack) > 1:
+			print repeat_rows_list;
+			print_list(repeat_num_stack,repeat_rows_list,fout,0);
+			repeat_num_stack = [1];
+			repeat_rows_list = [];
+			cur_depth = 0;
+	#print_list(repeat_num_stack,repeat_rows_list,fout,-1);
 	return fout.name;
 
 def print_list(num_repeats,repeats_list,fout,num_repeats_index):
@@ -115,12 +120,21 @@ def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 	function uses num_repeats and num_repeats_index to keep track of how many iterations it should do for each list, nested
 	or not.
 	"""
-	print repeats_list;
+	#print num_repeats_index;
+	print num_repeats[num_repeats_index];
+	#print repeats_list;
+	num_lists = 0;
 	for i in range(int(num_repeats[num_repeats_index])):
+		num_lists = 0;
 		for j,item in enumerate(repeats_list):
-			if isinstance(repeats_list[j],list):
-				print_list(num_repeats,item,fout,num_repeats_index+1);
-			elif repeats_list[j] == '':
+			if isinstance(item,list):
+				#print 'found a list at ' + str(len(repeats_list));
+				num_lists = num_lists + 1;
+				#print num_lists;
+				print_list(num_repeats,item,fout,num_repeats_index+num_lists);
+			elif item == '':
+				repeats_list.pop(j);
+			elif item['field_name'] == 'endrepeat':
 				repeats_list.pop(j);
 			else:
 				fout.write(generateJson(item));
