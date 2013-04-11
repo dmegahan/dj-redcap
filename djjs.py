@@ -115,6 +115,7 @@ def csv2json(reader, fileName):
 			cur_depth = 0;
 		elif cur_depth == 0 and len(repeat_num_stack) == 1:
 			fout.write(generateJson(row));
+			fout.write('\n');
 	#print_list(repeat_num_stack,repeat_rows_list,fout,-1);
 	return fout.name;
 
