@@ -70,9 +70,6 @@ def csv2json(reader, fileName):
 		if row['field_name'].find('startrepeat') != -1:
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
-			#repeat_num = repeat_info[2];
-			#repeat_pointer = ' '.join(repeat_info[3:]);
-			#row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list = last_inner_append(repeat_rows_list, [row],0,cur_depth);
 			if repeat_info[2].isdigit():
@@ -82,9 +79,6 @@ def csv2json(reader, fileName):
 			cur_depth = cur_depth + 1;
 		elif row['field_name'].find('endrepeat') != -1:
 			row['field_name'] = row['field_name'].strip().split()[0];
-			#repeat_num = cur_repeat_num;
-			#repeat_pointer = cur_repeat_pointer;
-			#row['form_name'] = repeat_pointer;
 			
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
 			cur_depth = cur_depth - 1;
@@ -92,8 +86,6 @@ def csv2json(reader, fileName):
 		elif row['field_name'].find(' repeat ') != -1:
 			repeat_info = row['field_name'].strip().split();
 			row['field_name'] = repeat_info[0];
-			#repeat_num = repeat_info[2];
-			#repeat_pointer = ' '.join(repeat_info[3:]);
 			
 			if repeat_info[2].isdigit():
 				repeat_num_stack.append(repeat_info[2]);
@@ -102,20 +94,21 @@ def csv2json(reader, fileName):
 			repeat_rows_list = last_inner_append(repeat_rows_list, [row],0,cur_depth);
 			cur_depth = cur_depth - 1;
 			repeat_rows_list = last_inner_append(repeat_rows_list,'',0,cur_depth);
-			#row['form_name'] = repeat_pointer;
 		elif len(repeat_num_stack) > 1:
-			#row['form_name'] = repeat_pointer;
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
-		if cur_depth == 0 and len(repeat_num_stack) > 1:
+		if cur_depth <= 0 and len(repeat_num_stack) > 1:
 			repeat_rows_list = clean_list(repeat_rows_list);
 			#print repeat_rows_list;
 			print_list(repeat_num_stack,repeat_rows_list,fout,0);
 			repeat_num_stack = [1];
 			repeat_rows_list = [];
 			cur_depth = 0;
-		elif cur_depth == 0 and len(repeat_num_stack) == 1:
+		elif cur_depth <= 0 and len(repeat_num_stack) == 1:
 			fout.write(generateJson(row));
 			fout.write('\n');
+			cur_depth = 0;
+			repeat_num_stack = [1];
+			repeat_rows_list = [];
 	#print_list(repeat_num_stack,repeat_rows_list,fout,-1);
 	return fout.name;
 
