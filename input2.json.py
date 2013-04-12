@@ -45,6 +45,7 @@ class BirthHistory(models.Model):
     prior_pregnancy_history = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Did the mother have any of the following', blank=True)
     miscarriages_no = models.IntegerField(help_text='', null=True, verbose_name='Number of spontaneous miscarriages', blank=True)
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -59,6 +60,7 @@ class Miscarriage(models.Model):
 class BirthHistory(models.Model):
     still_births_no = models.IntegerField(help_text='', null=True, verbose_name='Number of still births', blank=True)
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -73,6 +75,7 @@ class Stillbirths(models.Model):
 class BirthHistory(models.Model):
     terminations_no = models.IntegerField(help_text='', null=True, verbose_name='Number of terminations', blank=True)
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -87,6 +90,7 @@ class Terminations(models.Model):
 class BirthHistory(models.Model):
     multiples_no = models.IntegerField(help_text='', null=True, verbose_name='Number of multiple births', blank=True)
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -103,6 +107,7 @@ class BirthHistory(models.Model):
     pregnancy_complications = models.IntegerField(help_text='', null=True, verbose_name='Pregnancy complications', blank=True, choices=[(10, 'None'), (1, 'Bleeding'), (2, 'Eclampsia'), (3, 'Pre-eclampsia'), (4, 'Gestational diabetes'), (5, 'Maternal seizures'), (6, 'Maternal hypertension'), (7, 'Polyhydramnios'), (8, 'Oligohydramnios'), (9, 'Preterm labor'), (11, 'Unknown/Not documented'), (12, 'Other')]) # This field type is a guess
     pn_exposure_med = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Medications during pregnancy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -121,6 +126,7 @@ class Prenatalmedications(models.Model):
 class BirthHistory(models.Model):
     ultrasound_no = models.IntegerField(help_text='', null=True, verbose_name='How many ultrasound tests do you want to enter?', blank=True)
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -138,6 +144,7 @@ class BirthHistory(models.Model):
     ultrasound_increased_reason = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Reason for increased number of ultrasounds?', blank=True)
     pn_exposure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Prenatal exposures', choices=[(6, 'None'), (1, 'Recreational drugs'), (2, 'Alcohol'), (3, 'Tobacco'), (4, 'Infection'), (5, 'Unknown/Not documented'), (7, 'Other unknown exposures'), (8, 'Other known exposures (specify below)')])
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -158,6 +165,7 @@ class BirthHistory(models.Model):
     pn_exposure_tob_spec = models.TextField(help_text='', null=True, verbose_name='Specify prenatal tobacco exposures\\n(Tobacco amount, time of exposure, duration of exposure)', blank=True) # This field type is a guess
     pn_exposure_inf_spec = models.TextField(help_text='', null=True, verbose_name='Specify prenatal infection exposures\\n(Infection, time of exposure, duration of exposure, treatment)', blank=True) # This field type is a guess
     birth_history = models.ForeignKey(birth_history)
+
     class Meta:
 	 db_table = 'birth_history'
 
@@ -206,6 +214,7 @@ class PriorGeneticTesting(models.Model):
     karyotype_spec = models.TextField(help_text='', null=True, verbose_name='Specify other karyotype abnormalities', blank=True) # This field type is a guess
     karyotype_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where Karyotype was performed', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'prior_genetic_testing'
 
@@ -216,6 +225,7 @@ class Microarray(models.Model):
     microarray${d}_type_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s microarray type', blank=True)
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
     microarray = models.ForeignKey(Microarray)
+
     class Meta:
 	 db_table = 'Microarray'
 
@@ -232,6 +242,7 @@ class Variant(models.Model):
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Variant'
 
@@ -243,6 +254,7 @@ class Microarray(models.Model):
     microarray${d}_type_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s microarray type', blank=True)
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
     microarray = models.ForeignKey(Microarray)
+
     class Meta:
 	 db_table = 'Microarray'
 
@@ -259,6 +271,7 @@ class Variant(models.Model):
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Variant'
 
@@ -270,6 +283,7 @@ class Microarray(models.Model):
     microarray${d}_type_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s microarray type', blank=True)
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
     microarray = models.ForeignKey(Microarray)
+
     class Meta:
 	 db_table = 'Microarray'
 
@@ -286,6 +300,7 @@ class Variant(models.Model):
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Variant'
 
@@ -300,6 +315,7 @@ class Microarray(models.Model):
 class PriorGeneticTesting(models.Model):
     gene_or_panel = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Was the sequencing testing performed on single genes or gene panels (containing multiple genes)?', choices=[(1, 'Single genes'), (2, 'Gene panels')])
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'prior_genetic_testing'
 
@@ -308,6 +324,7 @@ class Genetest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     genetest = models.ForeignKey(GeneTest)
+
     class Meta:
 	 db_table = 'GeneTest'
 
@@ -334,6 +351,7 @@ class Mutation(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 gene test)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Mutation'
 
@@ -342,6 +360,7 @@ class Genetest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     genetest = models.ForeignKey(GeneTest)
+
     class Meta:
 	 db_table = 'GeneTest'
 
@@ -368,6 +387,7 @@ class Mutation(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 gene test)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Mutation'
 
@@ -376,6 +396,7 @@ class Genetest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     genetest = models.ForeignKey(GeneTest)
+
     class Meta:
 	 db_table = 'GeneTest'
 
@@ -402,6 +423,7 @@ class Mutation(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 gene test)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Mutation'
 
@@ -410,6 +432,7 @@ class Genetest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     genetest = models.ForeignKey(GeneTest)
+
     class Meta:
 	 db_table = 'GeneTest'
 
@@ -436,6 +459,7 @@ class Mutation(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 gene test)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Mutation'
 
@@ -444,6 +468,7 @@ class Genetest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     genetest = models.ForeignKey(GeneTest)
+
     class Meta:
 	 db_table = 'GeneTest'
 
@@ -470,6 +495,7 @@ class Mutation(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
     vus_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 gene test)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Mutation'
 
@@ -482,6 +508,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -489,6 +516,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -511,6 +539,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -518,6 +547,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -540,6 +570,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -547,6 +578,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -569,6 +601,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -576,6 +609,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -598,6 +632,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -605,6 +640,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -627,6 +663,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -639,6 +676,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -646,6 +684,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -668,6 +707,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -675,6 +715,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -697,6 +738,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -704,6 +746,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -726,6 +769,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -733,6 +777,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -755,6 +800,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -762,6 +808,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -784,6 +831,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -796,6 +844,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -803,6 +852,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -825,6 +875,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -832,6 +883,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -854,6 +906,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -861,6 +914,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -883,6 +937,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -890,6 +945,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -912,6 +968,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -919,6 +976,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -941,6 +999,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -953,6 +1012,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -960,6 +1020,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -982,6 +1043,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -989,6 +1051,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1011,6 +1074,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -1018,6 +1082,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1040,6 +1105,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -1047,6 +1113,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1069,6 +1136,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -1076,6 +1144,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1098,6 +1167,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -1107,6 +1177,7 @@ class Singlegenedeletionduplicationtest(models.Model):
     type_deldup_test${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of deletion/duplication testing performed', choices=[(1, 'MLPA'), (2, 'FISH'), (3, 'Unknown'), (4, 'Other')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     singlegenedeletionduplicationtest = models.ForeignKey(SingleGeneDeletionDuplicationTest)
+
     class Meta:
 	 db_table = 'SingleGeneDeletionDuplicationTest'
 
@@ -1143,6 +1214,7 @@ class Deletionduplication(models.Model):
     vus${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 deletion/duplication test)', blank=True)
     vus${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication VUS (on $s1 deletion/duplication test) (if available)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DeletionDuplication'
 
@@ -1152,6 +1224,7 @@ class Singlegenedeletionduplicationtest(models.Model):
     type_deldup_test${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of deletion/duplication testing performed', choices=[(1, 'MLPA'), (2, 'FISH'), (3, 'Unknown'), (4, 'Other')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     singlegenedeletionduplicationtest = models.ForeignKey(SingleGeneDeletionDuplicationTest)
+
     class Meta:
 	 db_table = 'SingleGeneDeletionDuplicationTest'
 
@@ -1188,6 +1261,7 @@ class Deletionduplication(models.Model):
     vus${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 deletion/duplication test)', blank=True)
     vus${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication VUS (on $s1 deletion/duplication test) (if available)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DeletionDuplication'
 
@@ -1197,6 +1271,7 @@ class Singlegenedeletionduplicationtest(models.Model):
     type_deldup_test${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of deletion/duplication testing performed', choices=[(1, 'MLPA'), (2, 'FISH'), (3, 'Unknown'), (4, 'Other')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     singlegenedeletionduplicationtest = models.ForeignKey(SingleGeneDeletionDuplicationTest)
+
     class Meta:
 	 db_table = 'SingleGeneDeletionDuplicationTest'
 
@@ -1233,6 +1308,7 @@ class Deletionduplication(models.Model):
     vus${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 deletion/duplication test)', blank=True)
     vus${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication VUS (on $s1 deletion/duplication test) (if available)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DeletionDuplication'
 
@@ -1242,6 +1318,7 @@ class Singlegenedeletionduplicationtest(models.Model):
     type_deldup_test${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of deletion/duplication testing performed', choices=[(1, 'MLPA'), (2, 'FISH'), (3, 'Unknown'), (4, 'Other')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     singlegenedeletionduplicationtest = models.ForeignKey(SingleGeneDeletionDuplicationTest)
+
     class Meta:
 	 db_table = 'SingleGeneDeletionDuplicationTest'
 
@@ -1278,6 +1355,7 @@ class Deletionduplication(models.Model):
     vus${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 deletion/duplication test)', blank=True)
     vus${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication VUS (on $s1 deletion/duplication test) (if available)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DeletionDuplication'
 
@@ -1287,6 +1365,7 @@ class Singlegenedeletionduplicationtest(models.Model):
     type_deldup_test${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of deletion/duplication testing performed', choices=[(1, 'MLPA'), (2, 'FISH'), (3, 'Unknown'), (4, 'Other')])
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     singlegenedeletionduplicationtest = models.ForeignKey(SingleGeneDeletionDuplicationTest)
+
     class Meta:
 	 db_table = 'SingleGeneDeletionDuplicationTest'
 
@@ -1331,6 +1410,7 @@ class PriorGeneticTesting(models.Model):
     mito_analysis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What type(s) of mitochondrial DNA analysis was performed?', choices=[(1, 'Target point mutation analysis (without deletion analysis)'), (2, 'Whole mitochondrial genome sequencing'), (3, 'Deletion analysis (without targetted point mutation analysis)'), (4, 'Combination deletion and targetted mutation analysis panel'), (5, 'Other')])
     targeted_mito_single_or_panel = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Was the targeted mutation analysis for single mutations or mutation panels?', choices=[(1, 'Single mutations'), (2, 'Mutation Panels')])
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'prior_genetic_testing'
 
@@ -1352,6 +1432,7 @@ class Targetedtest(models.Model):
     targeted_mito_single_test${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Tissue type tested for $s single mutation targeted test', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
     targeted_mito_single_test${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What was the result of the $s single mutation targeted test?', choices=[(1, 'Positive'), (2, 'Negative')])
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Targetedtest'
 
@@ -1362,6 +1443,7 @@ class Mitochondrialpanel(models.Model):
     targeted_mito_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the type of the $s targeted mitochondrial panel?', blank=True)
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'MitochondrialPanel'
 
@@ -1369,6 +1451,7 @@ class Mitochondrialpanel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1380,6 +1463,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1387,6 +1471,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1398,6 +1483,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1405,6 +1491,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1416,6 +1503,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1423,6 +1511,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1434,6 +1523,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1441,6 +1531,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1452,6 +1543,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1463,6 +1555,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1473,6 +1566,7 @@ class Mitochondrialpanel(models.Model):
     targeted_mito_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the type of the $s targeted mitochondrial panel?', blank=True)
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'MitochondrialPanel'
 
@@ -1480,6 +1574,7 @@ class Mitochondrialpanel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1491,6 +1586,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1498,6 +1594,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1509,6 +1606,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1516,6 +1614,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1527,6 +1626,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1534,6 +1634,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1545,6 +1646,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1552,6 +1654,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1563,6 +1666,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1574,6 +1678,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1584,6 +1689,7 @@ class Mitochondrialpanel(models.Model):
     targeted_mito_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the type of the $s targeted mitochondrial panel?', blank=True)
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'MitochondrialPanel'
 
@@ -1591,6 +1697,7 @@ class Mitochondrialpanel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1602,6 +1709,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1609,6 +1717,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1620,6 +1729,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1627,6 +1737,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1638,6 +1749,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1645,6 +1757,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1656,6 +1769,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1663,6 +1777,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1674,6 +1789,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1685,6 +1801,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1695,6 +1812,7 @@ class Mitochondrialpanel(models.Model):
     targeted_mito_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the type of the $s targeted mitochondrial panel?', blank=True)
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'MitochondrialPanel'
 
@@ -1702,6 +1820,7 @@ class Mitochondrialpanel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1713,6 +1832,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1720,6 +1840,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1731,6 +1852,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1738,6 +1860,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1749,6 +1872,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1756,6 +1880,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1767,6 +1892,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1774,6 +1900,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1785,6 +1912,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1796,6 +1924,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1806,6 +1935,7 @@ class Mitochondrialpanel(models.Model):
     targeted_mito_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the type of the $s targeted mitochondrial panel?', blank=True)
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'MitochondrialPanel'
 
@@ -1813,6 +1943,7 @@ class Mitochondrialpanel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1824,6 +1955,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1831,6 +1963,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1842,6 +1975,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1849,6 +1983,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1860,6 +1995,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1867,6 +2003,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1878,6 +2015,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1885,6 +2023,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on $s1 targeted mitochondrial panel that contained mutation', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -1896,6 +2035,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
     mitochondrialpanel = models.ForeignKey(MitochondrialPanel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -1919,6 +2059,7 @@ class Wholemitogeneseq(models.Model):
     whole_mito_sequencing${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s whole mitochondrial genome sequencing', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     wholemitogeneseq = models.ForeignKey(WholeMitoGeneSeq)
+
     class Meta:
 	 db_table = 'WholeMitoGeneSeq'
 
@@ -1940,6 +2081,7 @@ class Mutation(models.Model):
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'mutation'
 
@@ -1949,6 +2091,7 @@ class Wholemitogeneseq(models.Model):
     whole_mito_sequencing${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s whole mitochondrial genome sequencing', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     wholemitogeneseq = models.ForeignKey(WholeMitoGeneSeq)
+
     class Meta:
 	 db_table = 'WholeMitoGeneSeq'
 
@@ -1970,6 +2113,7 @@ class Mutation(models.Model):
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'mutation'
 
@@ -1979,6 +2123,7 @@ class Wholemitogeneseq(models.Model):
     whole_mito_sequencing${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s whole mitochondrial genome sequencing', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     wholemitogeneseq = models.ForeignKey(WholeMitoGeneSeq)
+
     class Meta:
 	 db_table = 'WholeMitoGeneSeq'
 
@@ -2000,6 +2145,7 @@ class Mutation(models.Model):
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'mutation'
 
@@ -2009,6 +2155,7 @@ class Wholemitogeneseq(models.Model):
     whole_mito_sequencing${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s whole mitochondrial genome sequencing', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     wholemitogeneseq = models.ForeignKey(WholeMitoGeneSeq)
+
     class Meta:
 	 db_table = 'WholeMitoGeneSeq'
 
@@ -2030,6 +2177,7 @@ class Mutation(models.Model):
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     vus${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s variant of unknown significance on $s1 whole mitochondrial sequencing', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'mutation'
 
@@ -2039,6 +2187,7 @@ class Wholemitogeneseq(models.Model):
     whole_mito_sequencing${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s whole mitochondrial genome sequencing', blank=True)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     wholemitogeneseq = models.ForeignKey(WholeMitoGeneSeq)
+
     class Meta:
 	 db_table = 'WholeMitoGeneSeq'
 
@@ -2071,6 +2220,7 @@ class Wholemitodel(models.Model):
     mito_deletion_analsysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s mitochondrial deletion analysis', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     wholemitodel = models.ForeignKey(WholeMitoDel)
+
     class Meta:
 	 db_table = 'WholeMitoDel'
 
@@ -2092,6 +2242,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2101,6 +2252,7 @@ class Wholemitodel(models.Model):
     mito_deletion_analsysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s mitochondrial deletion analysis', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     wholemitodel = models.ForeignKey(WholeMitoDel)
+
     class Meta:
 	 db_table = 'WholeMitoDel'
 
@@ -2122,6 +2274,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2131,6 +2284,7 @@ class Wholemitodel(models.Model):
     mito_deletion_analsysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s mitochondrial deletion analysis', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     wholemitodel = models.ForeignKey(WholeMitoDel)
+
     class Meta:
 	 db_table = 'WholeMitoDel'
 
@@ -2152,6 +2306,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2161,6 +2316,7 @@ class Wholemitodel(models.Model):
     mito_deletion_analsysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s mitochondrial deletion analysis', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     wholemitodel = models.ForeignKey(WholeMitoDel)
+
     class Meta:
 	 db_table = 'WholeMitoDel'
 
@@ -2182,6 +2338,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s1 mitochondrial deletion analysis', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2191,6 +2348,7 @@ class Wholemitodel(models.Model):
     mito_deletion_analsysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s mitochondrial deletion analysis', blank=True)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     wholemitodel = models.ForeignKey(WholeMitoDel)
+
     class Meta:
 	 db_table = 'WholeMitoDel'
 
@@ -2222,6 +2380,7 @@ class Mitocombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mitocombo = models.ForeignKey(MitoCombo)
+
     class Meta:
 	 db_table = 'MitoCombo'
 
@@ -2308,6 +2467,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2316,6 +2476,7 @@ class Mitocombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mitocombo = models.ForeignKey(MitoCombo)
+
     class Meta:
 	 db_table = 'MitoCombo'
 
@@ -2402,6 +2563,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2410,6 +2572,7 @@ class Mitocombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mitocombo = models.ForeignKey(MitoCombo)
+
     class Meta:
 	 db_table = 'MitoCombo'
 
@@ -2496,6 +2659,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2504,6 +2668,7 @@ class Mitocombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mitocombo = models.ForeignKey(MitoCombo)
+
     class Meta:
 	 db_table = 'MitoCombo'
 
@@ -2590,6 +2755,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2598,6 +2764,7 @@ class Mitocombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     mitocombo = models.ForeignKey(MitoCombo)
+
     class Meta:
 	 db_table = 'MitoCombo'
 
@@ -2684,6 +2851,7 @@ class Deletion(models.Model):
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     vus${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'deletion'
 
@@ -2692,6 +2860,7 @@ class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'panel'
 
@@ -2699,6 +2868,7 @@ class Panel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2710,6 +2880,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2717,6 +2888,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2728,6 +2900,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2735,6 +2908,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2746,6 +2920,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2753,6 +2928,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2764,6 +2940,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2771,6 +2948,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2782,6 +2960,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2793,6 +2972,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2801,6 +2981,7 @@ class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'panel'
 
@@ -2808,6 +2989,7 @@ class Panel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2819,6 +3001,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2826,6 +3009,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2837,6 +3021,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2844,6 +3029,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2855,6 +3041,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2862,6 +3049,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2873,6 +3061,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2880,6 +3069,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2891,6 +3081,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2902,6 +3093,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2910,6 +3102,7 @@ class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'panel'
 
@@ -2917,6 +3110,7 @@ class Panel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2928,6 +3122,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2935,6 +3130,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2946,6 +3142,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2953,6 +3150,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2964,6 +3162,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2971,6 +3170,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -2982,6 +3182,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -2989,6 +3190,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3000,6 +3202,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3011,6 +3214,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3019,6 +3223,7 @@ class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'panel'
 
@@ -3026,6 +3231,7 @@ class Panel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3037,6 +3243,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3044,6 +3251,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3055,6 +3263,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3062,6 +3271,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3073,6 +3283,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3080,6 +3291,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3091,6 +3303,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3098,6 +3311,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3109,6 +3323,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3120,6 +3335,7 @@ class Gene(models.Model):
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3128,6 +3344,7 @@ class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'panel'
 
@@ -3135,6 +3352,7 @@ class Panel(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3146,6 +3364,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3153,6 +3372,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3164,6 +3384,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3171,6 +3392,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3182,6 +3404,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3189,6 +3412,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3200,6 +3424,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3207,6 +3432,7 @@ class Mdnachange(models.Model):
 class Gene(models.Model):
     gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s gene on panel $d2 that contained mutation (on $s1 combined analysis)', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -3218,6 +3444,7 @@ class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
     panel = models.ForeignKey(panel)
+
     class Meta:
 	 db_table = 'mDNAchange'
 
@@ -3266,6 +3493,7 @@ class Methylationanalysistest(models.Model):
 class PriorGeneticTesting(models.Model):
     fragx_type = models.IntegerField(max_length=2000, blank=True, help_text='Example: GNE1 or 15q11', null=True, verbose_name='What were the results of the Fragile X testing?', choices=[(1, 'Full Mutation'), (2, 'Pre-Mutation'), (3, 'Normal'), (6, 'Inconclusive'), (5, 'Result not known'), (4, 'Results pending')])
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'prior_genetic_testing'
 
@@ -3277,6 +3505,7 @@ class Fragilexfullmutationrepeat(models.Model):
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
     fragx_full_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s full mutation repeat?', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'FragileXFullMutationRepeat'
 
@@ -3288,6 +3517,7 @@ class Fragilexpremutationrepeat(models.Model):
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
     fragx_pre_mut = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s pre mutation repeat?', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'FragileXPreMutationRepeat'
 
@@ -3299,6 +3529,7 @@ class Fragilexnormalrepeat(models.Model):
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
     fragx_norm = models.FloatField(help_text='', null=True, verbose_name='What was the size of the $s normal repeat?', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'FragileXNormalRepeat'
 
@@ -3334,6 +3565,7 @@ class PriorTesting(models.Model):
     blood_lactate_sum_comments = models.TextField(help_text='', null=True, verbose_name='Blood Lactate range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     blood_lactate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Blood Lactate results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3362,6 +3594,7 @@ class PriorTesting(models.Model):
     blood_pyruvate_sum_comments = models.TextField(help_text='', null=True, verbose_name='Blood Pyruvate range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     blood_pyruvate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Blood Pyruvate results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3390,6 +3623,7 @@ class PriorTesting(models.Model):
     csf_lactate_comments = models.TextField(help_text='', null=True, verbose_name='CSF Lactate range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     csf_lactate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CSF Lactate results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3418,6 +3652,7 @@ class PriorTesting(models.Model):
     csf_pyruvate_comments = models.CharField(help_text='', null=True, max_length=2000, verbose_name='CSF Pyruvate range result comment (quality concerns, normal range)', blank=True)
     csf_pyruvate_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CSF Pyruvate results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3446,6 +3681,7 @@ class PriorTesting(models.Model):
     paa_comments = models.TextField(help_text='', null=True, verbose_name='PAA range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     paa_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual PAA results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3474,6 +3710,7 @@ class PriorTesting(models.Model):
     plasma_cn_acp_comments = models.TextField(help_text='', null=True, verbose_name='Plasma CN/ACP  range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     plasma_cn_acp_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Plasma CN/ACP results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3502,6 +3739,7 @@ class PriorTesting(models.Model):
     uoa_comments = models.TextField(help_text='', null=True, verbose_name='UOA  range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     uoa_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual UOA results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3530,6 +3768,7 @@ class PriorTesting(models.Model):
     ck_comments = models.TextField(help_text='', null=True, verbose_name='CK range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     ck_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CK results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3558,6 +3797,7 @@ class PriorTesting(models.Model):
     uric_acid_comments = models.TextField(help_text='', null=True, verbose_name='Uric acid range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     uric_acid_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Uric acid results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3586,6 +3826,7 @@ class PriorTesting(models.Model):
     lfts_comments = models.TextField(help_text='', null=True, verbose_name='LFTs range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     lfts_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual LFTs results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3614,6 +3855,7 @@ class PriorTesting(models.Model):
     cbc_comments = models.TextField(help_text='', null=True, verbose_name='CBC range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     cbc_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual CBC results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3641,6 +3883,7 @@ class PriorTesting(models.Model):
     urinalysis_comments = models.TextField(help_text='', null=True, verbose_name='Urinalysis comment (quality concerns, normal range)', blank=True) # This field type is a guess
     urinalysis_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual urinalysis results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3690,6 +3933,7 @@ class PriorTesting(models.Model):
     cmp_comments = models.TextField(help_text='', null=True, verbose_name='Chemistry Panel comments (quality concerns, normal ranges)', blank=True) # This field type is a guess
     cmp_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Chemistry panel results', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3810,6 +4054,7 @@ class PriorTesting(models.Model):
     thyroid_study_comment = models.TextField(help_text='', null=True, verbose_name='Thyroid study comment (quality concerns)', blank=True) # This field type is a guess
     thyroid_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual thyroid study results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3851,6 +4096,7 @@ class PriorTesting(models.Model):
     renal_function_sum_comment = models.TextField(help_text='', null=True, verbose_name='Renal function range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     renal_function_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual renal function studies?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3894,6 +4140,7 @@ class PriorTesting(models.Model):
     sweat_comments = models.TextField(help_text='', null=True, verbose_name='Sweat test range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     sweat_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Sweat test results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3923,6 +4170,7 @@ class PriorTesting(models.Model):
     celiac_comments = models.TextField(help_text='', null=True, verbose_name='Celiac disease test range result comment (quality concerns, normal range)', blank=True) # This field type is a guess
     celiac_datapoints = models.NullBooleanField(help_text='', verbose_name='Would you like to enter individual Celiac disease test results?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3951,6 +4199,7 @@ class Celiacdiseasetest(models.Model):
 class PriorTesting(models.Model):
     image_studies_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Imaging studies performed', choices=[(6, 'None'), (1, 'MRI'), (2, 'Spectroscopy (MRS)'), (3, 'CT'), (4, 'Ultrasound'), (5, 'Xray'), (7, 'Endoscopy'), (8, 'Unknown/Not documented')])
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -3992,6 +4241,7 @@ class Mri(models.Model):
     mri${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s MRI Result', blank=True) # This field type is a guess
     mri${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s MRI performed?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'MRI'
 
@@ -4023,6 +4273,7 @@ class Brainspectroscopy(Mrs)(models.Model):
     mrs${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s spectroscopy (MRS) result', blank=True) # This field type is a guess
     mrs${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s spectroscopy (MRS) performed?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'Brainspectroscopy(MRS)'
 
@@ -4064,6 +4315,7 @@ class Ct(models.Model):
     ct${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s CT result', blank=True) # This field type is a guess
     ct${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s CT performed?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'CT'
 
@@ -4105,6 +4357,7 @@ class Ultrasound(models.Model):
     us${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s US result', blank=True) # This field type is a guess
     us${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s US performed?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'Ultrasound'
 
@@ -4136,6 +4389,7 @@ class Xray(models.Model):
     xray${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s Xray result', blank=True) # This field type is a guess
     xray${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Xray performed?', blank=True)
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'Xray'
 
@@ -4174,6 +4428,7 @@ class Endoscopy(models.Model):
 class PriorTesting(models.Model):
     biopsies_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Biopsies performed', choices=[(6, 'None'), (1, 'Muscle'), (2, 'Skin'), (3, 'Liver'), (4, 'Brain'), (5, 'Bone Marrow'), (7, 'Other'), (8, 'Unknown/Not documented')])
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -4195,6 +4450,7 @@ class Musclebiopsy(models.Model):
     muscle_biopsy${d}_mito_test_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitochondrial testing done on $s muscle biopsy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     muscle_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s muscle biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'MuscleBiopsy'
 
@@ -4216,6 +4472,7 @@ class Skinbiopsy(models.Model):
     skin_biopsy${d}_mito_test_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitochondrial testing done on $s skin biopsy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     skin_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s skin biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'SkinBiopsy'
 
@@ -4237,6 +4494,7 @@ class Liverbiopsy(models.Model):
     liver_biopsy${d}_mito_test_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitochondrial testing done on $s liver biopsy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     liver_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s liver biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'LiverBiopsy'
 
@@ -4252,6 +4510,7 @@ class Brainbiopsy(models.Model):
     brain_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s brain biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     brain_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s brain biopsy', blank=True) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'BrainBiopsy'
 
@@ -4267,6 +4526,7 @@ class Bonemarrow(models.Model):
     bone_marrow_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s bone marrow biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     bone_marrow_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s bone marrow biopsy', blank=True) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'BoneMarrow'
 
@@ -4292,6 +4552,7 @@ class Otherbiopsy(models.Model):
 class PriorTesting(models.Model):
     vision_tests_performed = models.IntegerField(help_text='', null=True, verbose_name='Vision tests performed', blank=True, choices=[(2, 'None'), (1, 'Electroretinogram (ERG)'), (3, 'Other'), (4, 'Unknown/Not documented')]) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -4326,6 +4587,7 @@ class PriorTesting(models.Model):
     cardio_tests_performed = models.IntegerField(help_text='', null=True, verbose_name='Cardiovascular tests performed | Describe $placeholder cardiac testing', blank=True, choices=[(1, 'None'), (2, 'Electrocardiogram (ECG)'), (3, 'Echocardiogram (ECHO)'), (4, '24 Hour Monitoring (Holter Monitor)'), (5, 'Exercise Stress Test (EST)'), (6, 'Cardiac MRI'), (8, 'Unknown/Not documented'), (7, 'Other')]) # This field type is a guess
     neurologic_tests_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Neurologic tests performed', choices=[(2, 'None'), (1, 'Electroencephalogram (EEG)'), (3, 'Unknown/Not documented')])
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -4349,6 +4611,7 @@ class Electroencephalogram(Eeg)(models.Model):
 class PriorTesting(models.Model):
     musculoskeletal_tests_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Musculoskeletal tests performed', choices=[(3, 'None'), (1, 'Electromyogram (EMG)'), (2, 'Nerve Conduction Velocity (NCV)'), (4, 'Unknown/Not documented')])
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'prior_testing'
 
@@ -4365,6 +4628,7 @@ class Electromyogram(Emg)(models.Model):
     emg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electromyogram (EMG) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
     emg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electromyogram (EMG) results', blank=True) # This field type is a guess
     prior_testing = models.ForeignKey(prior_testing)
+
     class Meta:
 	 db_table = 'Electromyogram(EMG)'
 
@@ -4419,6 +4683,7 @@ class FamilyHistory(models.Model):
     daughters = models.IntegerField(help_text='', null=True, verbose_name='Number of daughters', blank=True)
     other_family = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any other family members with symptoms similar to proband other than those described above?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     family_history = models.ForeignKey(family_history)
+
     class Meta:
 	 db_table = 'family_history'
 
@@ -4569,6 +4834,7 @@ class ReviewOfSystems(models.Model):
     ros_renal_other_spec = models.TextField(help_text='', null=True, verbose_name='Describe other renal issues', blank=True) # This field type is a guess
     ros_genitalia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Genitalia abnormality', choices=[(6, 'None'), (1, 'Undescended teste'), (2, 'Hypospadias'), (3, 'Freckling'), (4, 'Labial abnormality'), (7, 'Unknown/Not documented'), (8, 'Other unknown abnormality'), (5, 'Other')])
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'review_of_systems'
 
@@ -4634,6 +4900,7 @@ class ReviewOfSystems(models.Model):
     ros_frequent_illness_spec = models.TextField(help_text='', null=True, verbose_name='Describe frequent illness', blank=True) # This field type is a guess
     ros_allergies = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Known allergies', choices=[(6, 'None'), (1, 'Medication'), (2, 'Food'), (3, 'Seasonal or environmental'), (4, 'Unknown/Not documented'), (7, 'Other unknown allergy'), (5, 'Other')])
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'review_of_systems'
 
@@ -4650,6 +4917,7 @@ class Medicationallergies(models.Model):
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
     ros_allergies_medication = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s medication allergy', blank=True)
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'Medicationallergies'
 
@@ -4666,6 +4934,7 @@ class Foodallergy(models.Model):
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
     ros_allergies_food = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s food allergy', blank=True)
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'Foodallergy'
 
@@ -4686,6 +4955,7 @@ class ReviewOfSystems(models.Model):
     ros_lipomas_spec = models.TextField(help_text='', null=True, verbose_name='Describe lipomas', blank=True) # This field type is a guess
     ros_dermatologic_other_spec = models.TextField(help_text='', null=True, verbose_name='Describe other dermatologic issues', blank=True) # This field type is a guess
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'review_of_systems'
 
@@ -4702,6 +4972,7 @@ class Surgery(models.Model):
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
     ros_surgeries = models.TextField(help_text='Please specify age, reason, and treatment/type of surgery. If filling out cardiac intake forms, please describe any Cardiac Surgeries in the appropriate question there instead of here.', null=True, verbose_name='$s Significant surgery', blank=True) # This field type is a guess
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'Surgery'
 
@@ -4718,6 +4989,7 @@ class Hospitalization(models.Model):
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
     ros_hospita = models.TextField(help_text='Please specify age, reason for hospitalization', null=True, verbose_name='$s Significant hospitalization', blank=True) # This field type is a guess
     review_of_systems = models.ForeignKey(review_of_systems)
+
     class Meta:
 	 db_table = 'Hospitalization'
 
@@ -4835,6 +5107,7 @@ class PhysicalExam(models.Model):
     skin_hyperextensibility_spec = models.TextField(help_text='', null=True, verbose_name='Describe skin hyperextensibility', blank=True) # This field type is a guess
     skin_conditions = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Other skin conditions', choices=[(1, 'None'), (2, 'Ichthyosis'), (3, 'Unknown/Not documented'), (4, 'Other unknown condition'), (5, 'Other')])
     physical_exam = models.ForeignKey(physical_exam)
+
     class Meta:
 	 db_table = 'physical_exam'
 
@@ -4959,6 +5232,7 @@ class HearingImpairment(models.Model):
     age_of_onset = models.IntegerField(help_text='', null=True, verbose_name='Age of onset', blank=True, choices=[(1, 'congenital(at birth)'), (2, 'after birth up to 1 year'), (3, 'one year'), (4, 'two years'), (5, 'three years'), (6, 'four years'), (7, 'five years'), (8, 'six years'), (9, 'seven years'), (10, 'eight years'), (11, 'nine years'), (12, 'ten years'), (13, '11 years'), (14, '12 years'), (15, '13 years'), (16, '14 years'), (17, '15 years'), (18, '16 years'), (19, '17 years'), (20, '18 years'), (26, '19 years'), (21, '20 years'), (22, '21-30'), (23, '31-40'), (24, '41-50'), (25, '51-60'), (27, '> 60 years')]) # This field type is a guess
     nb_exposures = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Newborn exposures', choices=[(6, 'None'), (1, 'Ventilator'), (2, 'Jaundice'), (3, 'Antibiotics'), (4, 'Infections'), (5, 'Other medications')])
     hearing_impairment = models.ForeignKey(hearing_impairment)
+
     class Meta:
 	 db_table = 'hearing_impairment'
 
@@ -4970,6 +5244,7 @@ class Antibiotic(models.Model):
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
     antibiotics = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s antibiotic exposure', blank=True)
     hearing_impairment = models.ForeignKey(hearing_impairment)
+
     class Meta:
 	 db_table = 'antibiotic'
 
@@ -4981,6 +5256,7 @@ class Infection(models.Model):
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
     infections = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s infection exposure', blank=True)
     hearing_impairment = models.ForeignKey(hearing_impairment)
+
     class Meta:
 	 db_table = 'infection'
 
@@ -5151,6 +5427,7 @@ class CardiacDiagnosis(models.Model):
     card_tx_proc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac treatment procedures done', choices=[(1, 'None'), (2, 'Catheter Ablation'), (3, 'Electrophysiologic Studies'), (4, 'Implantable Cardioverter-Defibrillator'), (5, 'Pacemaker'), (6, 'Left cervical sympathetic denervation'), (7, 'Other')])
     card_tx_oth = models.TextField(help_text='', null=True, verbose_name='Cardiac treatment procedures/Other: Specify', blank=True) # This field type is a guess
     cardiac_diagnosis = models.ForeignKey(cardiac_diagnosis)
+
     class Meta:
 	 db_table = 'cardiac_diagnosis'
 
@@ -5197,6 +5474,7 @@ class CardiacFamilyHistory(models.Model):
 class EcgResults(models.Model):
     ecg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electrocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
     ecg_results = models.ForeignKey(ecg_results)
+
     class Meta:
 	 db_table = 'ecg_results'
 
@@ -5420,6 +5698,7 @@ class Ecg(models.Model):
 class EchoResults(models.Model):
     echo_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Echocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
     echo_results = models.ForeignKey(echo_results)
+
     class Meta:
 	 db_table = 'echo_results'
 
@@ -6183,6 +6462,7 @@ class Echotest(models.Model):
 class EstResults(models.Model):
     est_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Exercise Stress Test done', choices=[(1, 'Yes'), (2, 'No')])
     est_results = models.ForeignKey(est_results)
+
     class Meta:
 	 db_table = 'est_results'
 
@@ -6431,6 +6711,7 @@ class Exercisestresstest(models.Model):
 class HolterResults(models.Model):
     hm_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Holter Monitor test done', choices=[(1, 'Yes'), (2, 'No')])
     holter_results = models.ForeignKey(holter_results)
+
     class Meta:
 	 db_table = 'holter_results'
 
@@ -6649,6 +6930,7 @@ class Hm(models.Model):
 class CmriResults(models.Model):
     cmri_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac MRI done', choices=[(1, 'Yes'), (2, 'No')])
     cmri_results = models.ForeignKey(cmri_results)
+
     class Meta:
 	 db_table = 'cmri_results'
 
@@ -6687,6 +6969,7 @@ class Cardiacmri(models.Model):
 class CardiacCathProcedures(models.Model):
     ccath_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac catheterization done', choices=[(1, 'Yes'), (2, 'No')])
     cardiac_cath_procedures = models.ForeignKey(cardiac_cath_procedures)
+
     class Meta:
 	 db_table = 'cardiac_cath_procedures'
 
@@ -6715,6 +6998,7 @@ class Cardiaccatherizations(models.Model):
 class CardiacSurgery(models.Model):
     cardsurg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac surgery done', choices=[(1, 'Yes'), (2, 'No')])
     cardiac_surgery = models.ForeignKey(cardiac_surgery)
+
     class Meta:
 	 db_table = 'cardiac_surgery'
 
@@ -6741,6 +7025,7 @@ class Cardiacsurgery(models.Model):
     cardsurg_name = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Name of $s cardiac surgery', blank=True)
     cardsurg_summary = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', blank=True) # This field type is a guess
     cardiac_surgery = models.ForeignKey(cardiac_surgery)
+
     class Meta:
 	 db_table = 'CardiacSurgery'
 

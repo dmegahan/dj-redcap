@@ -160,7 +160,6 @@ def create_form_relations(repeats_list, form_list, form_index):
 			item = create_form_relations(item, form_list, form_index+num_lists);
 		else:
 			item['form_name'] = form_list[form_index] + '~' + form_list[form_index-1];
-			print item['form_name'];
 
 def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 	"""
@@ -357,7 +356,7 @@ def get_field_value(line, field):
 	return field_value;
 	
 def get_FK(form_name):
-	return '    ' + form_name.lower() + ' = models.ForeignKey(' + form_name + ')';
+	return '    ' + form_name.lower() + ' = models.ForeignKey(' + form_name + ')\n';
 
 def get_meta(table_name):
 	"""	

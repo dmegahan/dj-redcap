@@ -6,6 +6,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -13,6 +14,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -35,6 +37,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -42,6 +45,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -64,6 +68,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -71,6 +76,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -93,6 +99,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -100,6 +107,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -122,6 +130,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -129,6 +138,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -151,6 +161,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -163,6 +174,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -170,6 +182,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -192,6 +205,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -199,6 +213,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -221,6 +236,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -228,6 +244,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -250,6 +267,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -257,6 +275,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -279,6 +298,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -286,6 +306,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -308,6 +329,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -320,6 +342,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -327,6 +350,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -349,6 +373,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -356,6 +381,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -378,6 +404,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -385,6 +412,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -407,6 +435,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -414,6 +443,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -436,6 +466,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -443,6 +474,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -465,6 +497,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     prior_genetic_testing = models.ForeignKey(prior_genetic_testing)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -477,6 +510,7 @@ class Genepanel(models.Model):
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'GenePanel'
 
@@ -484,6 +518,7 @@ class Genepanel(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -506,6 +541,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -513,6 +549,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -535,6 +572,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -542,6 +580,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -564,6 +603,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -571,6 +611,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -593,6 +634,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     genepanel = models.ForeignKey(GenePanel)
+
     class Meta:
 	 db_table = 'DCM'
 
@@ -600,6 +642,7 @@ class Dcm(models.Model):
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'Gene'
 
@@ -622,6 +665,7 @@ class Dcm(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
+
     class Meta:
 	 db_table = 'DCM'
 
