@@ -12,7 +12,7 @@ class CardiacFamilyHistory(models.Model):
 
 class EcgResults(models.Model):
     ecg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electrocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
-
+    ecg_results = models.ForeignKey(ecg_results)
     class Meta:
 	 db_table = 'ecg_results'
 
@@ -235,7 +235,7 @@ class Ecg(models.Model):
 
 class EchoResults(models.Model):
     echo_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Echocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
-
+    echo_results = models.ForeignKey(echo_results)
     class Meta:
 	 db_table = 'echo_results'
 
@@ -998,7 +998,7 @@ class Echotest(models.Model):
 
 class EstResults(models.Model):
     est_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Exercise Stress Test done', choices=[(1, 'Yes'), (2, 'No')])
-
+    est_results = models.ForeignKey(est_results)
     class Meta:
 	 db_table = 'est_results'
 
@@ -1246,7 +1246,7 @@ class Exercisestresstest(models.Model):
 
 class HolterResults(models.Model):
     hm_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Holter Monitor test done', choices=[(1, 'Yes'), (2, 'No')])
-
+    holter_results = models.ForeignKey(holter_results)
     class Meta:
 	 db_table = 'holter_results'
 
@@ -1464,7 +1464,7 @@ class Hm(models.Model):
 
 class CmriResults(models.Model):
     cmri_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac MRI done', choices=[(1, 'Yes'), (2, 'No')])
-
+    cmri_results = models.ForeignKey(cmri_results)
     class Meta:
 	 db_table = 'cmri_results'
 
@@ -1502,7 +1502,7 @@ class Cardiacmri(models.Model):
 
 class CardiacCathProcedures(models.Model):
     ccath_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac catheterization done', choices=[(1, 'Yes'), (2, 'No')])
-
+    cardiac_cath_procedures = models.ForeignKey(cardiac_cath_procedures)
     class Meta:
 	 db_table = 'cardiac_cath_procedures'
 
@@ -1530,7 +1530,7 @@ class Cardiaccatherizations(models.Model):
 
 class CardiacSurgery(models.Model):
     cardsurg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac surgery done', choices=[(1, 'Yes'), (2, 'No')])
-
+    cardiac_surgery = models.ForeignKey(cardiac_surgery)
     class Meta:
 	 db_table = 'cardiac_surgery'
 
@@ -1556,7 +1556,7 @@ class Cardiacsurgery(models.Model):
     cardsurg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s cardiac surgery', blank=True)
     cardsurg_name = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Name of $s cardiac surgery', blank=True)
     cardsurg_summary = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', blank=True) # This field type is a guess
-
+    cardiac_surgery = models.ForeignKey(cardiac_surgery)
     class Meta:
 	 db_table = 'CardiacSurgery'
 

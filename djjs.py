@@ -20,8 +20,7 @@ header_keys = (
 	'branching_logic',
 	'required',
 	'custom_alignment',
-	'question_number',
-	'relation'
+	'question_number'
 )
 
 field_types = {
@@ -55,7 +54,7 @@ def readFile(fileName=None):
 
 def csv2json(reader, fileName):
 	"""
-		Function that converts csv file to valid json. 
+	Function that converts csv file to valid json. 
 	"""
 	fout = open(fileName + '.json', "w+");
 	
@@ -107,7 +106,8 @@ def csv2json(reader, fileName):
 		elif len(repeat_num_stack) > 1:
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
 		if cur_depth <= 0 and len(repeat_num_stack) > 1:
-			repeat_rows_list = clean_list(repeat_rows_list);
+			repeat_rows_list = clean_list_space(repeat_rows_list);
+			repeat_rows_list = clean_list_endrepeat(repeat_rows_list);
 			create_form_relations(repeat_rows_list,form_list,0);
 			print_list(repeat_num_stack,repeat_rows_list,fout,0);
 			repeat_num_stack = [1];
@@ -124,37 +124,51 @@ def csv2json(reader, fileName):
 			repeat_rows_list = [];
 	return fout.name;
 
-def clean_list(repeats_list):
-	"""Removes all values in a list that equal '' or 'endrepeat'. 
+def clean_list_space(repeats_list):
+	"""
+	Removes all values in a list that equal ''.
 	If there are nested lists, it recursively calls itself to search those
 	too.
 	"""
 	for j,item in enumerate(repeats_list):
 		if isinstance(item,list):
-			item = clean_list(item);
+			item = clean_list_space(item);
 		elif item == '':
 			repeats_list.pop(j);
+	return repeats_list;
+
+def clean_list_endrepeat(repeats_list):
+	"""
+	Removes all values in a list where the field_name = 'endrepeat'.
+	If there are nested lists, the function is recursively called to
+	search them too.
+	"""
+	for j, item in enumerate(repeats_list):
+		if isinstance(item,list):
+			item = clean_list_endrepeat(item);
 		elif item['field_name'] == 'endrepeat':
 			repeats_list.pop(j);
 	return repeats_list;
 
 def create_form_relations(repeats_list, form_list, form_index):
-	#Creates relationships between forms to be used when creating models.
-
+	#Edit form names to include the previous form read, so models can reference
+	#each other through foreign keys
 	for j, item in enumerate(repeats_list):
 		num_lists = 0;
 		if isinstance(item,list):
 			num_lists = num_lists + 1;
 			item = create_form_relations(item, form_list, form_index+num_lists);
 		else:
-			item['relation'] = form_list[form_index-1];
-			item['form_name'] = form_list[form_index];
-			
+			item['form_name'] = form_list[form_index] + '~' + form_list[form_index-1];
+			print item['form_name'];
+
 def print_list(num_repeats,repeats_list,fout,num_repeats_index):
-	"""Recursive method for generating the json for a list of lines that use repeats.
+	"""
+	Recursive method for generating the json for a list of lines that use repeats.
 	The function iterates through the list, generating the json for each dictionary it encounters.
-	When it finds another list, this function is recursively called on that list and does the same. The
-	function uses num_repeats and num_repeats_index to keep track of how many iterations it should do for each list, nested
+	When it finds another list, this function is recursively called on that list and does 
+	the same. The function uses num_repeats and num_repeats_index to keep track of how many iterations 
+	it should do for each list, nested
 	or not.
 	"""
 	for i in range(int(num_repeats[num_repeats_index])):
@@ -168,7 +182,8 @@ def print_list(num_repeats,repeats_list,fout,num_repeats_index):
 				fout.write('\n');
 
 def last_inner_append(x,y,curDepth,depth):
-	"""Finds the deepest index in a list, that is not a list itself. If a list is 
+	"""
+	Finds the deepest index in a list, that is not a list itself. If a list is 
 	found, the function is called recursively on that list.
 	"""
 	try:
@@ -212,9 +227,13 @@ def json2dj(fileName):
 	
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
-		#if statement checks for endrepeats so a new class isn't created when one is found
-		if form_name != prev_form_name and get_field_value(line,'field name').strip().replace('_','') != 'endrepeat':
+		fk_name = None;
+		if form_name.find('~') != -1:
+			form_name, fk_name = form_name.split('~');			
+		if form_name != prev_form_name:
 			if prev_form_name:
+				if fk_name:
+					fout.write(get_FK(fk_name));
 				for meta_line in get_meta(prev_form_name):
 					fout.write(meta_line);
 			prev_form_name = form_name;
@@ -269,11 +288,14 @@ def json2dj(fileName):
 		
 		fout.write('    %s\n' % field_desc);
 	#final meta class
+	if fk_name:
+		fout.write(get_FK(fk_name));
 	for meta_line in get_meta(form_name):
 		fout.write(meta_line);
 
 def get_field_type(line):
-	"""Given the database connection, the table name, and the cursor row description,
+	"""
+	Given the database connection, the table name, and the cursor row description,
 	this routine will return the given field type name, as well as any additional keyword
 	parameters and notes for the field.
 	"""
@@ -314,15 +336,15 @@ def get_field_type(line):
 
 def get_field_value(line, field):
 	"""
-		Determines the value of a field from the json representation.
+	Determines the value of a field from the json representation.
 		
-		This function first finds the begining of the field name (not the value).
-		Then adds the length of the field to the index, and then adds another 3 to it. 
-		The additional 3 come from the way the Json is structured. A typical Json 'field' 
-		looks like this example: "identifier":"some_value". The added 3 index comes from 
-		the second quotation mark, the colon, and the third quotation.
+	This function first finds the begining of the field name (not the value).
+	Then adds the length of the field to the index, and then adds another 3 to it. 
+	The additional 3 come from the way the Json is structured. A typical Json 'field' 
+	looks like this example: "identifier":"some_value". The added 3 index comes from 
+	the second quotation mark, the colon, and the third quotation.
 		
-		Then finds the length of the field_value and returns that substring using the determined indices.
+	Then finds the length of the field_value and returns that substring using the determined indices.
 	"""
 	field_index = line.find('"' + field + '"');
 	field_index = field_index + len(field) + 4;
@@ -335,12 +357,13 @@ def get_field_value(line, field):
 	return field_value;
 	
 def get_FK(form_name):
-	return form_name.lower() + ' = models.ForeignKey(' + form_name + ')';
+	return '    ' + form_name.lower() + ' = models.ForeignKey(' + form_name + ')';
 
 def get_meta(table_name):
-	"""	Return a sequence comprising the lines of code necessary
-		to construct the inner Meta class for the model 
-		corresponding to the given database table name.
+	"""	
+	Return a sequence comprising the lines of code necessary
+	to construct the inner Meta class for the model 
+	corresponding to the given database table name.
 	"""
 	return ['\n',
 		'    class Meta:\n',
