@@ -228,7 +228,9 @@ def json2dj(fileName):
 		form_name = get_field_value(line, 'form name');
 		fk_name = None;
 		if form_name.find('~') != -1:
-			form_name, fk_name = form_name.split('~');			
+			form_name, fk_name = form_name.split('~');
+			fk_name = form2model(fk_name);		
+			form_name = form2model(form_name);
 		if form_name != prev_form_name:
 			if prev_form_name:
 				if fk_name:
@@ -237,7 +239,7 @@ def json2dj(fileName):
 					fout.write(meta_line);
 			prev_form_name = form_name;
 			print form_name;
-			fout.write('class %s(models.Model):' % form2model(form_name));
+			fout.write('class %s(models.Model):' % form_name);
 			fout.write('\n');
 			
 		column_name = get_field_value(line, 'field name');
