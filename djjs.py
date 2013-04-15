@@ -236,6 +236,7 @@ def json2dj(fileName):
 				for meta_line in get_meta(prev_form_name):
 					fout.write(meta_line);
 			prev_form_name = form_name;
+			print form_name;
 			fout.write('class %s(models.Model):' % form2model(form_name));
 			fout.write('\n');
 			
