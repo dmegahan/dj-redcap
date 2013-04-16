@@ -116,6 +116,7 @@ def csv2json(reader, fileName):
 			cur_depth = 0;
 			form_list = [''];
 			repeat_rows_list = [];
+		print row['form_name'];
 	if row['form_name'] != last_form_name:
 		if last_form_name:
 			print_list(all_repeats, fout);
@@ -144,7 +145,7 @@ def clean_list_endrepeat(repeats_list):
 	for j, item in enumerate(repeats_list):
 		if isinstance(item,list):
 			item = clean_list_endrepeat(item);
-		elif item == 'endrepeat':
+		elif item['field_name'] == 'endrepeat':
 			repeats_list.pop(j);
 	return repeats_list;
 
@@ -152,6 +153,7 @@ def create_form_relations(repeats_list, form_list, form_index, prev_form_index):
 	#Edit form names to include the previous form read, so models can reference
 	#each other through foreign keys
 	num_lists = 0;
+	print form_list;
 	for j, item in enumerate(repeats_list):
 		if isinstance(item,list):
 			num_lists = num_lists + 1;
@@ -226,8 +228,8 @@ def json2dj(fileName):
 	
 	fout = open(fileName + '.py', 'w+');
 
-	prev_form_name = None
-	fk_name = None;
+	prev_form_name = None;
+	prev_fk_name = None;
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
 		fk_name = None;
@@ -235,11 +237,12 @@ def json2dj(fileName):
 		if form_name.find('~') != -1:
 			form_name, fk_name = form_name.split('~');
 			fk_name = form2model(fk_name);
-		form_name = form2model(form_name);		
+		form_name = form2model(form_name);
+		if prev_fk_name:
+			fout.write(get_FK(prev_fk_name));
+		prev_fk_name = fk_name;		
 		if form_name != prev_form_name:
 			if prev_form_name:
-				if fk_name:
-					fout.write(get_FK(fk_name));
 				for meta_line in get_meta(prev_form_name):
 					fout.write(meta_line);
 			prev_form_name = form_name;
