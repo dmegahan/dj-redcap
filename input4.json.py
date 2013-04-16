@@ -1,4 +1,4 @@
-class cardiac_family_history(models.Model):
+class CardiacFamilyHistory(models.Model):
     cfhx_seizure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any blood relatives with Unexplained seizures', choices=[(1, 'None'), (2, 'Mother'), (3, 'Father'), (4, 'Sister'), (5, 'Brother'), (6, 'Maternal Grandmother'), (7, 'Maternal Grandfather'), (8, 'Paternal Grandmother'), (9, 'Paternal Grandfather'), (10, 'Maternal Aunt'), (11, 'Paternal Aunt'), (12, 'Maternal Uncle'), (13, 'Paternal Uncle'), (14, 'Maternal Cousin'), (15, 'Paternal Cousin'), (16, 'Other')])
     cfhx_drowning = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any blood relatives with Near drowning', choices=[(1, 'None'), (2, 'Mother'), (3, 'Father'), (4, 'Sister'), (5, 'Brother'), (6, 'Maternal Grandmother'), (7, 'Maternal Grandfather'), (8, 'Paternal Grandmother'), (9, 'Paternal Grandfather'), (10, 'Maternal Aunt'), (11, 'Paternal Aunt'), (12, 'Maternal Uncle'), (13, 'Paternal Uncle'), (14, 'Maternal Cousin'), (15, 'Paternal Cousin'), (16, 'Other')])
     cfhx_hypertension = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any blood relatives with High blood pressure (Hypertension)', choices=[(1, 'None'), (2, 'Mother'), (3, 'Father'), (4, 'Sister'), (5, 'Brother'), (6, 'Maternal Grandmother'), (7, 'Maternal Grandfather'), (8, 'Paternal Grandmother'), (9, 'Paternal Grandfather'), (10, 'Maternal Aunt'), (11, 'Paternal Aunt'), (12, 'Maternal Uncle'), (13, 'Paternal Uncle'), (14, 'Maternal Cousin'), (15, 'Paternal Cousin'), (16, 'Other')])
@@ -7,15 +7,15 @@ class cardiac_family_history(models.Model):
     cfhx_explanation = models.TextField(help_text='', null=True, verbose_name='Explain the cardiac family history stated above', blank=True) # This field type is a guess
 
     class Meta:
-	 db_table = 'cardiac_family_history'
+	 db_table = 'CardiacFamilyHistory'
 
 
-class ecg_results(models.Model):
+class EcgResults(models.Model):
     ecg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electrocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
     ecgresults = models.ForeignKey(EcgResults)
 
     class Meta:
-	 db_table = 'ecg_results'
+	 db_table = 'EcgResults'
 
 
 class Ecg(models.Model):
@@ -45,12 +45,12 @@ class Ecg(models.Model):
 	 db_table = 'Ecg'
 
 
-class echo_results(models.Model):
+class EchoResults(models.Model):
     echo_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Echocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
     echoresults = models.ForeignKey(EchoResults)
 
     class Meta:
-	 db_table = 'echo_results'
+	 db_table = 'EchoResults'
 
 
 class Echotest(models.Model):
@@ -209,12 +209,12 @@ class Echotest(models.Model):
 	 db_table = 'Echotest'
 
 
-class est_results(models.Model):
+class EstResults(models.Model):
     est_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Exercise Stress Test done', choices=[(1, 'Yes'), (2, 'No')])
     estresults = models.ForeignKey(EstResults)
 
     class Meta:
-	 db_table = 'est_results'
+	 db_table = 'EstResults'
 
 
 class Exercisestresstest(models.Model):
@@ -270,12 +270,12 @@ class Exercisestresstest(models.Model):
 	 db_table = 'Exercisestresstest'
 
 
-class holter_results(models.Model):
+class HolterResults(models.Model):
     hm_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Holter Monitor test done', choices=[(1, 'Yes'), (2, 'No')])
     holterresults = models.ForeignKey(HolterResults)
 
     class Meta:
-	 db_table = 'holter_results'
+	 db_table = 'HolterResults'
 
 
 class Hm(models.Model):
@@ -325,12 +325,12 @@ class Hm(models.Model):
 	 db_table = 'Hm'
 
 
-class cmri_results(models.Model):
+class CmriResults(models.Model):
     cmri_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac MRI done', choices=[(1, 'Yes'), (2, 'No')])
     cmriresults = models.ForeignKey(CmriResults)
 
     class Meta:
-	 db_table = 'cmri_results'
+	 db_table = 'CmriResults'
 
 
 class Cardiacmri(models.Model):
@@ -344,12 +344,12 @@ class Cardiacmri(models.Model):
 	 db_table = 'Cardiacmri'
 
 
-class cardiac_cath_procedures(models.Model):
+class CardiacCathProcedures(models.Model):
     ccath_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac catheterization done', choices=[(1, 'Yes'), (2, 'No')])
     cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
 
     class Meta:
-	 db_table = 'cardiac_cath_procedures'
+	 db_table = 'CardiacCathProcedures'
 
 
 class Cardiaccatherizations(models.Model):
@@ -361,10 +361,22 @@ class Cardiaccatherizations(models.Model):
 	 db_table = 'Cardiaccatherizations'
 
 
-class cardiac_surgery(models.Model):
+class CardiacSurgery(models.Model):
     cardsurg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac surgery done', choices=[(1, 'Yes'), (2, 'No')])
+    cardiacsurgery = models.ForeignKey(CardiacSurgery)
 
     class Meta:
-	 db_table = 'cardiac_surgery'
+	 db_table = 'CardiacSurgery'
+
+
+class Cardiacsurgery(models.Model):
+    cardsurg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac surgery | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cardsurg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s cardiac surgery', blank=True)
+    cardsurg_name = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Name of $s cardiac surgery', blank=True)
+    cardsurg_summary = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', blank=True) # This field type is a guess
+    cardiacsurgery = models.ForeignKey(CardiacSurgery)
+
+    class Meta:
+	 db_table = 'Cardiacsurgery'
 
 

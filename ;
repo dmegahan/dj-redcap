@@ -116,10 +116,7 @@ def csv2json(reader, fileName):
 			cur_depth = 0;
 			form_list = [''];
 			repeat_rows_list = [];
-	if row['form_name'] != last_form_name:
-		if last_form_name:
-			print_list(all_repeats, fout);
-			all_repeats = [];
+		print row['form_name'];
 	return fout.name;
 
 def clean_list_space(repeats_list):
@@ -231,11 +228,10 @@ def json2dj(fileName):
 	for line in open(fileName,'r'):
 		form_name = get_field_value(line, 'form name');
 		fk_name = None;
-		
 		if form_name.find('~') != -1:
 			form_name, fk_name = form_name.split('~');
-			fk_name = form2model(fk_name);
-		form_name = form2model(form_name);		
+			fk_name = form2model(fk_name);		
+			form_name = form2model(form_name);
 		if form_name != prev_form_name:
 			if prev_form_name:
 				if fk_name:

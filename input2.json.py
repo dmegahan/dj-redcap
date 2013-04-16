@@ -1,4 +1,4 @@
-class demographics(models.Model):
+class Demographics(models.Model):
     study_id = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Study ID', blank=True)
     gender = models.IntegerField(help_text='', null=True, verbose_name='Gender', blank=True, choices=[(0, 'Female'), (1, 'Male'), (2, 'Other')]) # This field type is a guess
     other_gender = models.IntegerField(help_text='Newborn Screening LTFU', null=True, verbose_name='Other gender | Please specify $placeholder gender', blank=True, choices=[(1, 'Not tested'), (2, 'XX genotype/Female'), (3, 'XY genotype/Male'), (4, "XXY Klinefelter's Syndrome"), (5, "XO Turner's Syndrome"), (6, 'XXXY syndrome'), (7, 'XXYY syndrome'), (8, 'Mosaic including XXXXY'), (9, 'Penta X syndrome'), (10, 'XYY'), (11, 'Unknown'), (12, 'Other')]) # This field type is a guess
@@ -9,10 +9,10 @@ class demographics(models.Model):
     demographics_feedback = models.TextField(help_text='', null=True, verbose_name='Please provide any feedback for this form (for example: missing questions, questions not relevant for a disease area, ambiguities, places where a textbox could be replaced with discrete choices, missing discrete choices)', blank=True) # This field type is a guess
 
     class Meta:
-	 db_table = 'demographics'
+	 db_table = 'Demographics'
 
 
-class pediseq_study_id(models.Model):
+class PediseqStudyId(models.Model):
     family_code = models.FloatField(help_text='', null=True, verbose_name='Family Code', blank=True)
     family_member_code = models.CharField(help_text='P - Proband, S - Sibling, M - Mother, F - Father', null=True, max_length=2000, verbose_name='Family Member', blank=True)
     other_family_member = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other family member', blank=True)
@@ -20,18 +20,18 @@ class pediseq_study_id(models.Model):
     validation_or_prospective = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Validation or Prospective', blank=True)
 
     class Meta:
-	 db_table = 'pediseq_study_id'
+	 db_table = 'PediseqStudyId'
 
 
-class study_ids(models.Model):
+class StudyIds(models.Model):
     original_study_id = models.CharField(help_text="Enter the subject's ID from the original consenting study (HLS, Mito, etc.)", null=True, max_length=2000, verbose_name='Original Study ID', blank=True)
     discarded_clinical = models.NullBooleanField(help_text='', verbose_name='Discarded Clinical Specimen?', blank=True)
 
     class Meta:
-	 db_table = 'study_ids'
+	 db_table = 'StudyIds'
 
 
-class birth_history(models.Model):
+class BirthHistory(models.Model):
     birthweight = models.TextField(help_text='Please indicate out to one decimal place unless units are lbs. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Birthweight', blank=True) # This field type is a guess
     birth_length = models.TextField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Birth length', blank=True) # This field type is a guess
     birth_head_circumference = models.FloatField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Birth head circumference (cm)', blank=True)
@@ -76,7 +76,7 @@ class birth_history(models.Model):
     birthhistory = models.ForeignKey(BirthHistory)
 
     class Meta:
-	 db_table = 'birth_history'
+	 db_table = 'BirthHistory'
 
 
 class Miscarriage(models.Model):
@@ -145,7 +145,7 @@ class Prenatalexposure(models.Model):
 	 db_table = 'Prenatalexposure'
 
 
-class prior_genetic_testing(models.Model):
+class PriorGeneticTesting(models.Model):
     genetic_tests_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Genetic tests performed', choices=[(6, 'None'), (1, 'Karyotype'), (2, 'Microarray'), (3, 'Sequence analysis of a single nuclear gene or group of nuclear genes'), (8, 'Deletion or duplication analysis of a single nuclear gene or group of nuclear genes'), (4, 'Nuclear exome/Genome sequencing'), (5, 'Mitochondrial DNA analysis'), (9, 'Methylation analysis'), (10, 'Testing for Fragile X Syndrome'), (7, 'Other')])
     karyotype_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of Karyotype', blank=True)
     karyotype_tissue = models.IntegerField(help_text='', null=True, verbose_name='Karyotype tissue studied | Specify other tissue studied', blank=True, choices=[(1, 'Amniotic fluid'), (2, 'Blood'), (3, 'Chorionic villi'), (4, 'Fibroblasts'), (5, 'Saliva'), (6, 'Unknown/Not documented'), (7, 'Other')]) # This field type is a guess
@@ -166,7 +166,7 @@ class prior_genetic_testing(models.Model):
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
     class Meta:
-	 db_table = 'prior_genetic_testing'
+	 db_table = 'PriorGeneticTesting'
 
 
 class Microarray(models.Model):
@@ -203,7 +203,7 @@ class Genetest(models.Model):
 class Mutation(models.Model):
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease causing mutation (on $s1 gene test)', blank=True)
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change  at protein level for $s disease causing mutation (on $s1 gene test)', blank=True)
-    mutation = models.ForeignKey(Mutation)
+    genetest = models.ForeignKey(Genetest)
 
     class Meta:
 	 db_table = 'Mutation'
@@ -244,7 +244,7 @@ class Gene(models.Model):
 class Dcm(models.Model):
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
-    dcm = models.ForeignKey(Dcm)
+    gene = models.ForeignKey(Gene)
 
     class Meta:
 	 db_table = 'Dcm'
@@ -274,7 +274,7 @@ class Deletionduplication(models.Model):
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Deletion/Duplication at cDNA level for $s disease causing mutation (on $s1 deletion duplication  test)', blank=True)
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Deletion/Duplication  at protein level for $s disease causing mutation (on $s1 deletion/duplication gene test)', blank=True)
     change${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication (if available) (on $s1 deletion/duplication test)', blank=True)
-    deletionduplication = models.ForeignKey(Deletionduplication)
+    singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
 
     class Meta:
 	 db_table = 'Deletionduplication'
@@ -343,7 +343,7 @@ class Wholemitogeneseq(models.Model):
 class Mutation(models.Model):
     dc_mutation${d}_gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Gene in which $s disease causing mutation was located on $s1 whole mitochondrial sequencing', blank=True)
     dc_mutation${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s disease causing mutation on $s1 whole mitochondrial sequencing', blank=True)
-    mutation = models.ForeignKey(Mutation)
+    wholemitogeneseq = models.ForeignKey(Wholemitogeneseq)
 
     class Meta:
 	 db_table = 'Mutation'
@@ -371,7 +371,7 @@ class Wholemitodel(models.Model):
 class Deletion(models.Model):
     dc_deletion${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the $s disease causing deletion identified on $s1 mitochondrial deletion analysis?', blank=True)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s1 mitochondrial deletion analysis', blank=True)
-    deletion = models.ForeignKey(Deletion)
+    wholemitodel = models.ForeignKey(Wholemitodel)
 
     class Meta:
 	 db_table = 'Deletion'
@@ -486,7 +486,7 @@ class Fragilexinconclusiverepeat(models.Model):
 	 db_table = 'Fragilexinconclusiverepeat'
 
 
-class prior_testing(models.Model):
+class PriorTesting(models.Model):
     prior_test_explain = models.TextField(help_text='', null=True, verbose_name="Many of the sections on this instrument ask if there is a history of abnormal results for a type of test. If you answer yes you can summarize the patient's result history by giving result value ranges. Regardless of whether there is a history of abnormal results you can also add results of individual tests and specify if each one was normal or abnormal. Please answer Yes or No to the history of abnormal results question, and then choose whether to summarize the results (if they were abnormal), enter results of individual tests, or if you have no specific data, skip both.", blank=True) # This field type is a guess
     lab_tests_performed = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Laboratory tests performed', choices=[(19, 'None'), (1, 'Blood Lactate'), (2, 'Blood Pyruvate'), (3, 'CSF Lactate'), (4, 'CSF Pyruvate'), (5, 'PAA'), (6, 'Plasma CN/ACP'), (7, 'UOA'), (8, 'CK'), (9, 'Uric Acid'), (10, 'LFTs'), (11, 'CBC'), (12, 'Urinalysis'), (13, 'Chemistry Panel (CMP)'), (14, 'Thyroid Function'), (15, 'Renal Function'), (16, 'Sweat Test'), (17, 'Celiac Disease'), (18, 'Unknown/Not documented')])
     blood_lactate_sum_bool = models.IntegerField(max_length=2000, blank=True, help_text='Answering yes will present a result summary section. This should be skipped if you would rather enter individual test results in the section below.', null=True, verbose_name='History of abnormal Blood Lactate results?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
@@ -584,7 +584,7 @@ class prior_testing(models.Model):
     priortesting = models.ForeignKey(PriorTesting)
 
     class Meta:
-	 db_table = 'prior_testing'
+	 db_table = 'PriorTesting'
 
 
 class Bloodlactate(models.Model):
@@ -979,7 +979,7 @@ class Nerveconductionvelocity(Ncv)(models.Model):
 	 db_table = 'Nerveconductionvelocity(Ncv)'
 
 
-class family_history(models.Model):
+class FamilyHistory(models.Model):
     suspected_inheritance = models.IntegerField(help_text='', null=True, verbose_name='Suspected mode of  inheritance', blank=True, choices=[(1, 'Autosomal dominant'), (2, 'Autosomal recessive'), (3, 'X-linked dominant'), (4, 'X-linked recessive'), (5, 'Multifactorial'), (6, 'Mitochondrial inheritance'), (7, 'Unknown/Not documented')]) # This field type is a guess
     mat_ancestry = models.CharField(help_text='Separate with commas.  Example: Irish, English, Scottish', null=True, max_length=2000, verbose_name='Maternal ancestry', blank=True)
     pat_ancestry = models.CharField(help_text='Separate with commas.  Example: Irish, English, Scottish', null=True, max_length=2000, verbose_name='Paternal ancestry', blank=True)
@@ -1009,7 +1009,7 @@ class family_history(models.Model):
     familyhistory = models.ForeignKey(FamilyHistory)
 
     class Meta:
-	 db_table = 'family_history'
+	 db_table = 'FamilyHistory'
 
 
 class Otherfamilymemberswithsimilarsymptoms(models.Model):
@@ -1021,7 +1021,7 @@ class Otherfamilymemberswithsimilarsymptoms(models.Model):
 	 db_table = 'Otherfamilymemberswithsimilarsymptoms'
 
 
-class developmental_history(models.Model):
+class DevelopmentalHistory(models.Model):
     age_rolled_over = models.FloatField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Age first rolled over (months)', blank=True)
     age_sat = models.FloatField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Age when first sat (months)', blank=True)
     age_walk = models.FloatField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Age when first walked (months)', blank=True)
@@ -1056,10 +1056,10 @@ class developmental_history(models.Model):
     developmental_history_feedback = models.TextField(help_text='', null=True, verbose_name='Please provide any feedback for this form (for example: missing questions, questions not relevant for a disease area, ambiguities, places where a textbox could be replaced with discrete choices, missing discrete choices)', blank=True) # This field type is a guess
 
     class Meta:
-	 db_table = 'developmental_history'
+	 db_table = 'DevelopmentalHistory'
 
 
-class review_of_systems(models.Model):
+class ReviewOfSystems(models.Model):
     ros_growth_normal_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='History of abnormal growth', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     ros_growth_spec = models.TextField(help_text='', null=True, verbose_name='Describe abnormal growth', blank=True) # This field type is a guess
     ros_odors_details = models.IntegerField(help_text='', null=True, verbose_name='Unusual odors | Describe other unusual odor', blank=True, choices=[(1, 'None'), (2, 'Sweet (maple syrup)'), (3, 'Fishy'), (4, 'Foul'), (5, 'Musty'), (6, 'Unknown/Not documented'), (7, 'Other')]) # This field type is a guess
@@ -1196,7 +1196,7 @@ class review_of_systems(models.Model):
     reviewofsystems = models.ForeignKey(ReviewOfSystems)
 
     class Meta:
-	 db_table = 'review_of_systems'
+	 db_table = 'ReviewOfSystems'
 
 
 class Othergenitaliaabnormality(models.Model):
@@ -1254,7 +1254,7 @@ class Medication(models.Model):
 	 db_table = 'Medication'
 
 
-class physical_exam(models.Model):
+class PhysicalExam(models.Model):
     age_of_exam = models.TextField(help_text='', null=True, verbose_name='Age of exam', blank=True) # This field type is a guess
     height = models.TextField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Height', blank=True) # This field type is a guess
     weight = models.TextField(help_text='Please indicate out to one decimal place. Please round up to the nearest tenth if the hundredth position is 5 or higher. ', null=True, verbose_name='Weight', blank=True) # This field type is a guess
@@ -1444,7 +1444,7 @@ class physical_exam(models.Model):
     physicalexam = models.ForeignKey(PhysicalExam)
 
     class Meta:
-	 db_table = 'physical_exam'
+	 db_table = 'PhysicalExam'
 
 
 class Otherskinfinding(models.Model):
@@ -1454,7 +1454,7 @@ class Otherskinfinding(models.Model):
 	 db_table = 'Otherskinfinding'
 
 
-class hearing_impairment(models.Model):
+class HearingImpairment(models.Model):
     age_of_onset = models.IntegerField(help_text='', null=True, verbose_name='Age of onset', blank=True, choices=[(1, 'congenital(at birth)'), (2, 'after birth up to 1 year'), (3, 'one year'), (4, 'two years'), (5, 'three years'), (6, 'four years'), (7, 'five years'), (8, 'six years'), (9, 'seven years'), (10, 'eight years'), (11, 'nine years'), (12, 'ten years'), (13, '11 years'), (14, '12 years'), (15, '13 years'), (16, '14 years'), (17, '15 years'), (18, '16 years'), (19, '17 years'), (20, '18 years'), (26, '19 years'), (21, '20 years'), (22, '21-30'), (23, '31-40'), (24, '41-50'), (25, '51-60'), (27, '> 60 years')]) # This field type is a guess
     nb_exposures = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Newborn exposures', choices=[(6, 'None'), (1, 'Ventilator'), (2, 'Jaundice'), (3, 'Antibiotics'), (4, 'Infections'), (5, 'Other medications')])
     type_of_hearing_impairment = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of hearing impairment', choices=[(1, 'Sensorineural'), (2, 'Conductive'), (3, 'Unknown/Not documented')])
@@ -1499,7 +1499,7 @@ class hearing_impairment(models.Model):
     hearingimpairment = models.ForeignKey(HearingImpairment)
 
     class Meta:
-	 db_table = 'hearing_impairment'
+	 db_table = 'HearingImpairment'
 
 
 class Antibiotic(models.Model):
@@ -1525,7 +1525,7 @@ class Othermedication(models.Model):
 	 db_table = 'Othermedication'
 
 
-class intellectual_disability(models.Model):
+class IntellectualDisability(models.Model):
     id_susp_age = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Age at which intellectual disability was first suspected? (months)', blank=True)
     developpeds_eval = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Evaluated by developmental pediatrician?', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
     developmental_screening_details = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Developmental screening tests employed', choices=[(14, 'None'), (1, 'Modified Checklist for Autism in Toddlers'), (2, 'Early Screening of Autistic Traits Questionnaire'), (3, 'First Year Inventory'), (4, 'Autism Diagnostic Interview-Revised (ADI-R)'), (5, 'Autism Diagnostic Observation Schedule (ADOS)'), (6, 'Childhood Autism Rating Scale (CARS)'), (7, 'Aberrant Behavior Checklist'), (8, 'Social Communication Questionnaire'), (9, 'Vineland-II Adaptive Behavior Scale'), (10, 'Preschool Language Scales-4 (PLS4)'), (11, 'Beery Test of Visual Motor Integration (VMI)'), (12, 'Kaufman Brief Intelligence'), (15, 'Unknown/Not documented'), (13, 'Other')])
@@ -1610,10 +1610,10 @@ class intellectual_disability(models.Model):
     intellectual_disability_feedback = models.TextField(help_text='', null=True, verbose_name='Please provide any feedback for this form (for example: missing questions, questions not relevant for a disease area, ambiguities, places where a textbox could be replaced with discrete choices, missing discrete choices)', blank=True) # This field type is a guess
 
     class Meta:
-	 db_table = 'intellectual_disability'
+	 db_table = 'IntellectualDisability'
 
 
-class cardiac_diagnosis(models.Model):
+class CardiacDiagnosis(models.Model):
     cardiac_presumed_dx = models.TextField(help_text='', null=True, verbose_name="Subject's presumed diagnosis", blank=True) # This field type is a guess
     cardiac_date_presumed_dx = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of presumed diagnosis (MM/YY)', blank=True)
     cardiac_reason_presumed_dx = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply.', null=True, verbose_name='Reason for consideration of presumed diagnosis ', choices=[(13, 'None'), (1, 'Personal history'), (2, 'Family history'), (3, 'Clinical history'), (4, 'Physical exam'), (5, 'ECG'), (6, 'ECHO'), (7, 'Genetic test'), (8, 'EST'), (9, 'Holter Monitor'), (10, 'Transtelephonic Monitoring (TTM)'), (11, 'Electrophysiologic Studies'), (12, 'Other')])
@@ -1637,7 +1637,7 @@ class cardiac_diagnosis(models.Model):
     cardiacdiagnosis = models.ForeignKey(CardiacDiagnosis)
 
     class Meta:
-	 db_table = 'cardiac_diagnosis'
+	 db_table = 'CardiacDiagnosis'
 
 
 class Cardiacmedication(models.Model):
@@ -1647,7 +1647,7 @@ class Cardiacmedication(models.Model):
 	 db_table = 'Cardiacmedication'
 
 
-class cardiac_family_history(models.Model):
+class CardiacFamilyHistory(models.Model):
     cfhx_died_scd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any blood relative who died of heart problems or had an unexpected or unexplained sudden death (including drowning or unexplained car accident) before age 50.', choices=[(1, 'None'), (2, 'Mother'), (3, 'Father'), (4, 'Sister'), (5, 'Brother'), (6, 'Maternal Grandmother'), (7, 'Maternal Grandfather'), (8, 'Paternal Grandmother'), (9, 'Paternal Grandfather'), (10, 'Maternal Aunt'), (11, 'Paternal Aunt'), (12, 'Maternal Uncle'), (13, 'Paternal Uncle'), (14, 'Maternal Cousin'), (15, 'Paternal Cousin'), (16, 'Other')])
     cfhx_died_sids = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any blood relative who died with SIDS / SUID (Sudden Infant Death Syndrome / Sudden Unexpected Infant Death).', choices=[(1, 'None'), (2, 'Mother'), (3, 'Father'), (4, 'Sister'), (5, 'Brother'), (6, 'Maternal Grandmother'), (7, 'Maternal Grandfather'), (8, 'Paternal Grandmother'), (9, 'Paternal Grandfather'), (10, 'Maternal Aunt'), (11, 'Paternal Aunt'), (12, 'Maternal Uncle'), (13, 'Paternal Uncle'), (14, 'Maternal Cousin'), (15, 'Paternal Cousin'), (16, 'Other')])
     cfhx_survive_sca = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Any blood relative experienced a sudden cardiac arrest (SCA) before age 50 and survived.', choices=[(1, 'None'), (2, 'Mother'), (3, 'Father'), (4, 'Sister'), (5, 'Brother'), (6, 'Maternal Grandmother'), (7, 'Maternal Grandfather'), (8, 'Paternal Grandmother'), (9, 'Paternal Grandfather'), (10, 'Maternal Aunt'), (11, 'Paternal Aunt'), (12, 'Maternal Uncle'), (13, 'Paternal Uncle'), (14, 'Maternal Cousin'), (15, 'Paternal Cousin'), (16, 'Other')])
@@ -1672,15 +1672,15 @@ class cardiac_family_history(models.Model):
     cfhx_explanation = models.TextField(help_text='', null=True, verbose_name='Explain the cardiac family history stated above', blank=True) # This field type is a guess
 
     class Meta:
-	 db_table = 'cardiac_family_history'
+	 db_table = 'CardiacFamilyHistory'
 
 
-class ecg_results(models.Model):
+class EcgResults(models.Model):
     ecg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electrocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
     ecgresults = models.ForeignKey(EcgResults)
 
     class Meta:
-	 db_table = 'ecg_results'
+	 db_table = 'EcgResults'
 
 
 class Ecg(models.Model):
@@ -1710,12 +1710,12 @@ class Ecg(models.Model):
 	 db_table = 'Ecg'
 
 
-class echo_results(models.Model):
+class EchoResults(models.Model):
     echo_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Echocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
     echoresults = models.ForeignKey(EchoResults)
 
     class Meta:
-	 db_table = 'echo_results'
+	 db_table = 'EchoResults'
 
 
 class Echotest(models.Model):
@@ -1874,12 +1874,12 @@ class Echotest(models.Model):
 	 db_table = 'Echotest'
 
 
-class est_results(models.Model):
+class EstResults(models.Model):
     est_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Exercise Stress Test done', choices=[(1, 'Yes'), (2, 'No')])
     estresults = models.ForeignKey(EstResults)
 
     class Meta:
-	 db_table = 'est_results'
+	 db_table = 'EstResults'
 
 
 class Exercisestresstest(models.Model):
@@ -1935,12 +1935,12 @@ class Exercisestresstest(models.Model):
 	 db_table = 'Exercisestresstest'
 
 
-class holter_results(models.Model):
+class HolterResults(models.Model):
     hm_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Holter Monitor test done', choices=[(1, 'Yes'), (2, 'No')])
     holterresults = models.ForeignKey(HolterResults)
 
     class Meta:
-	 db_table = 'holter_results'
+	 db_table = 'HolterResults'
 
 
 class Hm(models.Model):
@@ -1990,12 +1990,12 @@ class Hm(models.Model):
 	 db_table = 'Hm'
 
 
-class cmri_results(models.Model):
+class CmriResults(models.Model):
     cmri_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac MRI done', choices=[(1, 'Yes'), (2, 'No')])
     cmriresults = models.ForeignKey(CmriResults)
 
     class Meta:
-	 db_table = 'cmri_results'
+	 db_table = 'CmriResults'
 
 
 class Cardiacmri(models.Model):
@@ -2009,12 +2009,12 @@ class Cardiacmri(models.Model):
 	 db_table = 'Cardiacmri'
 
 
-class cardiac_cath_procedures(models.Model):
+class CardiacCathProcedures(models.Model):
     ccath_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac catheterization done', choices=[(1, 'Yes'), (2, 'No')])
     cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
 
     class Meta:
-	 db_table = 'cardiac_cath_procedures'
+	 db_table = 'CardiacCathProcedures'
 
 
 class Cardiaccatherizations(models.Model):
@@ -2026,10 +2026,22 @@ class Cardiaccatherizations(models.Model):
 	 db_table = 'Cardiaccatherizations'
 
 
-class cardiac_surgery(models.Model):
+class CardiacSurgery(models.Model):
     cardsurg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac surgery done', choices=[(1, 'Yes'), (2, 'No')])
+    cardiacsurgery = models.ForeignKey(CardiacSurgery)
 
     class Meta:
-	 db_table = 'cardiac_surgery'
+	 db_table = 'CardiacSurgery'
+
+
+class Cardiacsurgery(models.Model):
+    cardsurg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac surgery | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
+    cardsurg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s cardiac surgery', blank=True)
+    cardsurg_name = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Name of $s cardiac surgery', blank=True)
+    cardsurg_summary = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', blank=True) # This field type is a guess
+    cardiacsurgery = models.ForeignKey(CardiacSurgery)
+
+    class Meta:
+	 db_table = 'Cardiacsurgery'
 
 
