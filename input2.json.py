@@ -104,7 +104,6 @@ class Terminations(models.Model):
 
 class Multiplebirth(models.Model):
     multiple${d}_number = models.IntegerField(help_text='', null=True, verbose_name='Number of children in $s multiple birth', blank=True)
-    birthhistory = models.ForeignKey(BirthHistory)
     multiple${d}_gestational_age = models.TextField(help_text='', null=True, verbose_name='Gestation age of $s multiple birth', blank=True) # This field type is a guess
     birthhistory = models.ForeignKey(BirthHistory)
 
@@ -122,9 +121,7 @@ class Prenatalmedications(models.Model):
 
 class Ultrasounds(models.Model):
     ultrasound${d}_weeks_gestation_drop = models.IntegerField(help_text='', null=True, verbose_name='$s ultrasound performed at (weeks gestation)', blank=True, choices=[(39, 'Unknown'), (1, '4 weeks + 1 day to 5 weeks'), (2, '5 weeks + 1 day to 6 weeks'), (3, '6 weeks + 1 day to 7 weeks'), (4, '7 weeks + 1 day to 8 weeks'), (5, '8 weeks + 1 day to 9 weeks'), (6, '9 weeks + 1 day to 10 weeks'), (7, '10 weeks + 1 day to 11 weeks'), (8, '11 weeks + 1 day to 12 weeks'), (9, '12 weeks + 1 day to 13 weeks'), (10, '13 weeks + 1 day to 14 weeks'), (11, '14 weeks + 1 day to 15 weeks'), (12, '15 weeks + 1 day to 16 weeks'), (13, '16 weeks + 1 day to 17 weeks'), (14, '17 weeks + 1 day to 18 weeks'), (15, '18 weeks + 1 day to 19 weeks'), (16, '19 weeks + 1 day to 20 weeks'), (17, '20 weeks + 1 day to 21 weeks'), (18, '21 weeks + 1 day to 22 weeks'), (19, '22 weeks + 1 day to 23 weeks'), (20, '23 weeks + 1 day to 24 weeks'), (21, '24 weeks + 1 day to 25 weeks'), (22, '25 weeks + 1 day to 26 weeks'), (23, '26 weeks + 1 day to 27 weeks'), (24, '27 weeks + 1 day to 28 weeks'), (25, '28 weeks + 1 day to 29 weeks'), (26, '29 weeks + 1 day to 30 weeks'), (27, '30 weeks + 1 day to 31 weeks'), (28, '31 weeks + 1 day to 32 weeks'), (29, '32 weeks + 1 day to 33 weeks'), (30, '33 weeks + 1 day to 34 weeks'), (31, '34 weeks + 1 day to 25 weeks'), (32, '35 weeks + 1 day to 36 weeks'), (33, '36 weeks + 1 day to 37 weeks'), (34, '37 weeks + 1 day to 38 weeks'), (35, '38 weeks + 1 day to 39 weeks'), (36, '39 weeks + 1 day to 40 weeks'), (37, '40 weeks + 1 day to 41 weeks'), (38, '41 weeks + 1 day to 42 weeks')]) # This field type is a guess
-    birthhistory = models.ForeignKey(BirthHistory)
     ultrasound${d}_normal_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ultrasound within normal limits', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    birthhistory = models.ForeignKey(BirthHistory)
     ultrasound${d}_spec = models.TextField(help_text='', null=True, verbose_name='$s ultrasound significant for', blank=True) # This field type is a guess
     birthhistory = models.ForeignKey(BirthHistory)
 
@@ -173,13 +170,9 @@ class PriorGeneticTesting(models.Model):
 
 class Microarray(models.Model):
     microarray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s microarray', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     microarray${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Microarray type', choices=[(1, 'Oligonucleotide by aCGH'), (2, 'SNP'), (3, 'Targeted BAC'), (4, 'Whole genomic BAC'), (5, 'Unknown'), (6, 'Other')])
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     microarray${d}_type_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s microarray type', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     microarray${d}_platform = models.IntegerField(help_text='', null=True, verbose_name='$s microarray platform | Specify $s microarray platform', blank=True, choices=[(1, 'Affymetrix'), (2, 'Agilent'), (3, 'Illumina'), (4, 'Nimblegen'), (5, 'Unknown/Not documented'), (6, 'Other')]) # This field type is a guess
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     microarray${d}_location = models.IntegerField(help_text='', null=True, verbose_name='Which laboratory performed $s microarray? | Specify $s microarray lab', blank=True, choices=[(1, 'Baylor'), (2, 'Provential'), (3, 'GeneDX'), (4, 'Transgenomic Familion'), (7, 'CHOP'), (5, 'Unknown'), (6, 'Other')]) # This field type is a guess
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -189,7 +182,6 @@ class Microarray(models.Model):
 
 class Variant(models.Model):
     variant${d}_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of $s variant on $s1 microarray', choices=[(1, 'Deletion'), (2, 'Duplication'), (3, 'Run of homozygosity'), (4, 'Unknown')])
-    microarray = models.ForeignKey(Microarray)
     variant${d}_chromosome = models.IntegerField(help_text='', null=True, verbose_name='$s variant (on $s1 microarray) on chromosome', blank=True, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'), (11, '11'), (12, '12'), (13, '13'), (14, '14'), (15, '15'), (16, '16'), (17, '17'), (18, '18'), (19, '19'), (20, '20'), (21, '21'), (22, '22'), (23, 'X'), (24, 'Y')]) # This field type is a guess
     microarray = models.ForeignKey(Microarray)
 
@@ -199,7 +191,6 @@ class Variant(models.Model):
 
 class Genetest(models.Model):
     gene${d}_result = models.CharField(help_text='Example: GNE1  Note: Results from gene panels should be entered under gene panel section.', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     gene${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -209,7 +200,6 @@ class Genetest(models.Model):
 
 class Mutation(models.Model):
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease causing mutation (on $s1 gene test)', blank=True)
-    genetest = models.ForeignKey(Genetest)
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change  at protein level for $s disease causing mutation (on $s1 gene test)', blank=True)
     genetest = models.ForeignKey(Genetest)
 
@@ -219,7 +209,6 @@ class Mutation(models.Model):
 
 class Variantofunknownsignificance(models.Model):
     vus_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 gene test)', blank=True)
-    genetest = models.ForeignKey(Genetest)
     vus_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 gene test)', blank=True)
     genetest = models.ForeignKey(Genetest)
 
@@ -229,15 +218,10 @@ class Variantofunknownsignificance(models.Model):
 
 class Genepanel(models.Model):
     gene_panel = models.CharField(help_text='For example, cardiomyopathy panel or hearing loss panel', null=True, max_length=2000, verbose_name='Name of $s gene panel performed', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     panel${d}_laboratory = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Which laboratory performed $s gene panel?', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     panel${d}_date_performed = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year $s panel was performed', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     panel${d}_result_type = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified on panel. ', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (4, 'Polymorphism'), (5, 'Results pending'), (6, 'Results not known')])
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -255,7 +239,6 @@ class Gene(models.Model):
 
 class Dcm(models.Model):
     change${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Change at cDNA level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
-    gene = models.ForeignKey(Gene)
     change${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Change at protein level for $s disease-causing mutation on $s2 gene on $s1 gene panel ', blank=True)
     gene = models.ForeignKey(Gene)
 
@@ -265,7 +248,6 @@ class Dcm(models.Model):
 
 class Variantofunknownsignificance(models.Model):
     vus${d}_at_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level on $s2 gene on $s1 gene panel', blank=True)
-    gene = models.ForeignKey(Gene)
     vus${d}_at_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level on $s2 gene on $s1 gene panel', blank=True)
     gene = models.ForeignKey(Gene)
 
@@ -275,9 +257,7 @@ class Variantofunknownsignificance(models.Model):
 
 class Singlegenedeletionduplicationtest(models.Model):
     deldup${d}_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='Gene tested $d', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     type_deldup_test${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Type of deletion/duplication testing performed', choices=[(1, 'MLPA'), (2, 'FISH'), (3, 'Unknown'), (4, 'Other')])
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     deldup${d}_result_was = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified in gene $d', choices=[(1, 'Positive - disease-causing deletion/duplication identified'), (2, 'Negative - no definite/possible disease-causing deletion/duplication identified'), (3, 'Variant of uncertain significance'), (6, 'Polymorphism'), (4, 'Results pending'), (5, 'Results not known')])
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -287,9 +267,7 @@ class Singlegenedeletionduplicationtest(models.Model):
 
 class Deletionduplication(models.Model):
     change${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='Deletion/Duplication at cDNA level for $s disease causing mutation (on $s1 deletion duplication  test)', blank=True)
-    singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
     change${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='Deletion/Duplication  at protein level for $s disease causing mutation (on $s1 deletion/duplication gene test)', blank=True)
-    singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
     change${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication (if available) (on $s1 deletion/duplication test)', blank=True)
     singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
 
@@ -299,9 +277,7 @@ class Deletionduplication(models.Model):
 
 class Variantofunknownsignificance(models.Model):
     vus${d}_dna_level = models.CharField(help_text='Example c.33C>G', null=True, max_length=2000, verbose_name='$s variant of unknown significance at cDNA level (on $s1 deletion/duplication test)', blank=True)
-    singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
     vus${d}_protein_level = models.CharField(help_text='Example: p.Ala11Tyr', null=True, max_length=2000, verbose_name='$s variant of unknown significance at protein level (on $s1 deletion/duplication test)', blank=True)
-    singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
     vus${d}_add_info_deldup = models.CharField(help_text='Example: Expected to result in exon skipping of exon 3', null=True, max_length=2000, verbose_name='Additional Information about $s deletion/duplication VUS (on $s1 deletion/duplication test) (if available)', blank=True)
     singlegenedeletionduplicationtest = models.ForeignKey(Singlegenedeletionduplicationtest)
 
@@ -311,9 +287,7 @@ class Variantofunknownsignificance(models.Model):
 
 class Targetedtest(models.Model):
     targeted_mito_single_test = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s targeted mutation tested ', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     targeted_mito_single_test${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Tissue type tested for $s single mutation targeted test', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     targeted_mito_single_test${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='What was the result of the $s single mutation targeted test?', choices=[(1, 'Positive'), (2, 'Negative')])
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -323,11 +297,8 @@ class Targetedtest(models.Model):
 
 class Mitochondrialpanel(models.Model):
     targeted_mito_panel${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Laboratory that performed $s targeted mitochondrial panel', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     targeted_mito_panel${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year $s targeted mitochondrial panel was performed', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     targeted_mito_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the type of the $s targeted mitochondrial panel?', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     targeted_mito_panel${d}_results = models.IntegerField(help_text='', null=True, verbose_name='Results of $s targeted mitochondrial panel', blank=True, choices=[(1, 'Normal'), (2, 'Variant Positive')]) # This field type is a guess
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -345,9 +316,8 @@ class Gene(models.Model):
 
 class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s2 gene on $s1 targeted mitochondrial panel', blank=True)
-    gene = models.ForeignKey(Gene)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s2 gene on  $s1 targeted mitochondrial panel', blank=True)
-    mitochondrialpanel = models.ForeignKey(Mitochondrialpanel)
+    gene = models.ForeignKey(Gene)
 
     class Meta:
 	 db_table = 'Mdnachange'
@@ -355,9 +325,7 @@ class Mdnachange(models.Model):
 
 class Wholemitogeneseq(models.Model):
     whole_mito_sequencing${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s whole mitochondrial genome sequencing', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     whole_mito_sequencing${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s whole mitochondrial genome sequencing', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     whole_mito_sequencing${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s whole mitochondrial genome sequencing was performed', blank=True)
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -367,7 +335,6 @@ class Wholemitogeneseq(models.Model):
 
 class Mutation(models.Model):
     dc_mutation${d}_gene = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Gene in which $s disease causing mutation was located on $s1 whole mitochondrial sequencing', blank=True)
-    wholemitogeneseq = models.ForeignKey(Wholemitogeneseq)
     dc_mutation${d}_mdna_level = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Change at mDNA level for $s disease causing mutation on $s1 whole mitochondrial sequencing', blank=True)
     wholemitogeneseq = models.ForeignKey(Wholemitogeneseq)
 
@@ -385,9 +352,7 @@ class Variantofunknownsignificance(models.Model):
 
 class Wholemitodel(models.Model):
     mito_deletion_analsysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     mito_deletion_analsysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s mitochondrial deletion analysis', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     mito_deletion_analsysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s mitochondrial deletion analysis was performed', blank=True)
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -397,7 +362,6 @@ class Wholemitodel(models.Model):
 
 class Deletion(models.Model):
     dc_deletion${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the $s disease causing deletion identified on $s1 mitochondrial deletion analysis?', blank=True)
-    wholemitodel = models.ForeignKey(Wholemitodel)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s1 mitochondrial deletion analysis', blank=True)
     wholemitodel = models.ForeignKey(Wholemitodel)
 
@@ -415,7 +379,6 @@ class Variantofunknownsignificance(models.Model):
 
 class Mitocombo(models.Model):
     mito_combo_analysis${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s combination mitochondrial analysis', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     mito_combo_analysis${d}_loc = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s combination mitochondrial analysis was performed', blank=True)
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -425,11 +388,9 @@ class Mitocombo(models.Model):
 
 class Deletion(models.Model):
     mito_combo_analysis${d}_sample = models.IntegerField(help_text='', null=True, verbose_name='Sample type for $s mitochondrial deletion analysis (from combined analysis $d1)', blank=True, choices=[(1, 'blood'), (2, 'urine'), (3, 'muscle'), (4, 'saliva'), (5, 'other')]) # This field type is a guess
-    mitocombo = models.ForeignKey(Mitocombo)
     dc_deletion${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='What was the $s disease causing deletion identified on $s2 mitochondrial deletion analysis (from $s1 combined analysis)?', blank=True)
-    deletion = models.ForeignKey(Deletion)
     dc_deletion${d}_spec = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Other details for $s disease causing deletion on $s2 mitochondrial deletion analysis (from $s1 combined analysis)', blank=True)
-    deletion = models.ForeignKey(Deletion)
+    mitocombo = models.ForeignKey(Mitocombo)
 
     class Meta:
 	 db_table = 'Deletion'
@@ -445,7 +406,6 @@ class Variantofunknownsignificance(models.Model):
 
 class Panel(models.Model):
     targeted_mito_combo_panel${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s panel performed (on $s1 combination analysis)?', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     targeted_mito_combo_panel${d}_results = models.TextField(help_text='', null=True, verbose_name='Describe results of $s panel (on $s1 combined analysis)', blank=True) # This field type is a guess
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -463,9 +423,8 @@ class Gene(models.Model):
 
 class Mdnachange(models.Model):
     mdna_change = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s change in mDNA on $s3 gene on $s2 panel (on $s1 combined analysis)', blank=True)
-    gene = models.ForeignKey(Gene)
     vus_mdna = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s variant of unknown significance on $s3 gene from $s2 panel (on $s1 combined analysis)', blank=True)
-    panel = models.ForeignKey(Panel)
+    gene = models.ForeignKey(Gene)
 
     class Meta:
 	 db_table = 'Mdnachange'
@@ -473,11 +432,8 @@ class Mdnachange(models.Model):
 
 class Methylationanalysistest(models.Model):
     meth${d}_gene_tested = models.CharField(help_text='Example: GNE1 or 15q11', null=True, max_length=2000, verbose_name='Gene/Region tested $d', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     meth${d}_cond_test = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Condition/s being tested for', blank=True)
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     meth${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate result methylation analysis identified in gene/region $d', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Inconclusive'), (5, 'Result not known'), (4, 'Results pending')])
-    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
     meth${d}_add_info = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Additional Information about methylation testing  (if available)', blank=True)
     priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
@@ -619,11 +575,8 @@ class PriorTesting(models.Model):
 
 class Bloodlactate(models.Model):
     blood_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Lactate', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     blood_lactate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Blood Lactate result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     blood_lactate_result = models.TextField(help_text='', null=True, verbose_name='$s Blood Lactate result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     blood_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Lactate was performed', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -633,11 +586,8 @@ class Bloodlactate(models.Model):
 
 class Bloodpyruvate(models.Model):
     blood_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Blood Pyruvate', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     blood_pyruvate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$ Blood Pyruvate result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     blood_pyruvate_result = models.TextField(help_text='', null=True, verbose_name='$s Blood Pyruvate result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     blood_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Blood Pyruvate was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -647,11 +597,8 @@ class Bloodpyruvate(models.Model):
 
 class Csflactate(models.Model):
     csf_lactate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Lactate', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     csf_lactate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s CSF Lactate result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     csf_lactate_result = models.TextField(help_text='', null=True, verbose_name='$s CSF Lactate result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     csf_lactate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CSF Lactate was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -661,11 +608,8 @@ class Csflactate(models.Model):
 
 class Csfpyruvate(models.Model):
     csf_pyruvate_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CSF Pyruvate', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     csf_pyruvate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s CSF Pyruvate result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     csf_pyruvate_result = models.TextField(help_text='', null=True, verbose_name='$s CSF Pyruvate result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     csf_pyruvate_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $ CSF Pyruvate was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -675,11 +619,8 @@ class Csfpyruvate(models.Model):
 
 class Paa(models.Model):
     paa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s PAA', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     paa = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s PAA Pyruvate result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     paa_result = models.TextField(help_text='', null=True, verbose_name='$s PAA result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     paa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where was $s PAA performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -689,11 +630,8 @@ class Paa(models.Model):
 
 class Plasmacn/Acp(models.Model):
     plasma_cn_acp_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Plasma CN/ACP', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     plasma_cn_acp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Plasma CN/ACP result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     plasma_cn_acp_result = models.TextField(help_text='', null=True, verbose_name='$s Plasma CN/ACP result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     plasma_cn_acp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Plasma CN/ACP was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -703,11 +641,8 @@ class Plasmacn/Acp(models.Model):
 
 class Uoa(models.Model):
     uoa_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s UOA', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     uoa = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s UOA result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     uoa_result = models.TextField(help_text='', null=True, verbose_name='$s UOA result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     uoa_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s UOA  was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -717,11 +652,8 @@ class Uoa(models.Model):
 
 class Ck(models.Model):
     ck_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CK', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     ck = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s CK result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     ck_result = models.TextField(help_text='', null=True, verbose_name='$s CK result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     ck_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s CK was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -731,11 +663,8 @@ class Ck(models.Model):
 
 class Uricacid(models.Model):
     uric_acid_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Uric acid', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     uric_acid = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Uric acid result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     uric_acid_result = models.TextField(help_text='', null=True, verbose_name='$s Uric acid result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     uric_acid_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Uric acid was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -745,11 +674,8 @@ class Uricacid(models.Model):
 
 class Lfts(models.Model):
     lfts_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s LFTs', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     lfts = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s LFTs result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     lfts_result = models.TextField(help_text='', null=True, verbose_name='$s LFTs result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     lfts_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where LFTs was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -759,11 +685,8 @@ class Lfts(models.Model):
 
 class Cbc(models.Model):
     cbc_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CBC', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     cbc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s CBC result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     cbc_result = models.TextField(help_text='', null=True, verbose_name='$s CBC result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cbc_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where CBC was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -773,11 +696,8 @@ class Cbc(models.Model):
 
 class Urinalysis(models.Model):
     urinalysis_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of  $s Urinalysis', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     urinalysis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Urinalysis result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     urinalysis_details = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Presence of', choices=[(1, 'Blood'), (2, 'Protein'), (3, 'Infection')])
-    priortesting = models.ForeignKey(PriorTesting)
     urinalysis_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Urinalysis was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -787,45 +707,25 @@ class Urinalysis(models.Model):
 
 class Chemistrypanel(models.Model):
     cmp_misc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 1)\\n\\nAbnormal values', choices=[(1, 'Glucose'), (2, 'Calcium'), (3, 'All of the above within normal range')])
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_glucose_level = models.TextField(help_text='', null=True, verbose_name='Glucose level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_calcium_level = models.TextField(help_text='', null=True, verbose_name='Calcium level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_electrolyte = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 2)\\n\\nAbnormal electrolytes', choices=[(1, 'Sodium'), (2, 'Potassium'), (3, 'Bicarb'), (4, 'Chloride'), (5, 'All of the above within normal range')])
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_electrolyte_sodium_level = models.TextField(help_text='', null=True, verbose_name='Sodium level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_electrolyte_potassium_level = models.TextField(help_text='', null=True, verbose_name='Potassium level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_electrolyte_bicarb_level = models.TextField(help_text='', null=True, verbose_name='Bicarb level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_electrolyte_chloride_level = models.TextField(help_text='', null=True, verbose_name='Chloride level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_kidney = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 3)\\n\\nAbnormal Kidney values', choices=[(1, 'Blood Urea Nitrogen (BUN)'), (2, 'Creatinine'), (3, 'All of the above within normal range')])
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_bun_level = models.TextField(help_text='', null=True, verbose_name='BUN level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_creatinine_level = models.TextField(help_text='', null=True, verbose_name='Creatinine level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_protein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 4)\\n\\nAbnormal protein values', choices=[(1, 'Albumin'), (2, 'Total protein'), (3, 'All of the above within normal range')])
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_albumin_level = models.TextField(help_text='', null=True, verbose_name='Albumin level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_total_protein_level = models.TextField(help_text='', null=True, verbose_name='Total protein level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_liver = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Chemistry Panel Results (Part 5)\\n\\nAbnormal liver values', choices=[(1, 'ALP (Alkaline Phosphatase)'), (2, 'ALT (Alanine aminotransferase)'), (3, 'AST (Aspartate aminotransferase)'), (4, 'Bilirubin'), (5, 'All of the above within normal range')])
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_alp_level = models.TextField(help_text='', null=True, verbose_name='ALP (Alkaline Phospatase) level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_alt_level = models.TextField(help_text='', null=True, verbose_name='ALT (Alanine aminotransferase) level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_ast_level = models.TextField(help_text='', null=True, verbose_name='AST(Aspartate aminotransferase) level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_bilirubin_level = models.TextField(help_text='', null=True, verbose_name='Bilirubin level $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of chemistry panel', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     cmp_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where chemistry panel was performed', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -835,11 +735,8 @@ class Chemistrypanel(models.Model):
 
 class Thyroidstudy(models.Model):
     thyroid_study_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of thyroid study', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     thyroid_study = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Thyroid study result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     thyroid_study_function = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Thyroid function findings', choices=[(1, 'TSH elevation'), (2, 'TSH decrease'), (3, 'T4 elevation'), (4, 'T4 decrease')])
-    priortesting = models.ForeignKey(PriorTesting)
     thyroid_function_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where thyroid testing was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -849,21 +746,13 @@ class Thyroidstudy(models.Model):
 
 class Renalfunctionstudy(models.Model):
     renal_function${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Abnormal Renal Function Study Results', choices=[(1, 'Urea Nitrogen'), (2, 'Electrolytes'), (3, 'Creatinine'), (4, 'All of the above within normal range')])
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Year of $s renal function study', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_urea_nitrogen = models.TextField(help_text='', null=True, verbose_name='Urea Nitrogen $placeholder on $s renal function study', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_electrolyte_sodium_level = models.TextField(help_text='', null=True, verbose_name='Sodium $placeholder on $s renal function study', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_electrolyte_potassium_level = models.TextField(help_text='', null=True, verbose_name='Potassium $placeholder on $s renal function study', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_electrolyte_bicarb_level = models.TextField(help_text='', null=True, verbose_name='Bicarb $placeholder on $s renal function study', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_electrolyte_chloride_level = models.TextField(help_text='', null=True, verbose_name='Chloride $placeholder on $s renal function study', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_creatinine = models.TextField(help_text='', null=True, verbose_name='Creatinine $placeholder on $s renal function study', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     renal_function${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s renal study was performed', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -873,11 +762,8 @@ class Renalfunctionstudy(models.Model):
 
 class Sweattest(models.Model):
     sweat_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Sweat test', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     sweat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Sweat test result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     sweat_result = models.TextField(help_text='', null=True, verbose_name='$s Sweat test result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     sweat_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Sweat test was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -887,13 +773,9 @@ class Sweattest(models.Model):
 
 class Celiacdiseasetest(models.Model):
     celiac_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Celiac disease test', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     celiac = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Celiac disease test result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     celiac_test_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Celiac disease test type', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     celiac_result = models.TextField(help_text='', null=True, verbose_name='$s Celiac disease test result $placeholder', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     celiac_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Lab where $s Celiac disease test was performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -903,17 +785,11 @@ class Celiacdiseasetest(models.Model):
 
 class Mri(models.Model):
     mri${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s MRI', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     mri${d}_body_part = models.IntegerField(help_text='Please enter cardiac MRIs in CMRI Results instrument if the cardiac intake forms will be used.', null=True, verbose_name='Part of body screened on $s MRI | Specify $placeholder part of body screened', blank=True, choices=[(1, 'Brain'), (2, 'Kidney'), (3, 'Abdomen'), (4, 'Chest'), (5, 'Muscle'), (6, 'Head'), (8, 'Temporal Bones'), (7, 'Other')]) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     mri${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s MRI result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     mri${d}_temp_bone_features = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Temporal bone features', choices=[(1, 'Cochlear Nerve Hypoplasia'), (2, 'EVA'), (3, 'Other')])
-    priortesting = models.ForeignKey(PriorTesting)
     mri${d}_temp_bone_other_features = models.TextField(help_text='', null=True, verbose_name='Other temporal bone features', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     mri${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s MRI Result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     mri${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s MRI performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -923,13 +799,9 @@ class Mri(models.Model):
 
 class Brainspectroscopy(Mrs)(models.Model):
     mrs${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s spectroscopy (MRS)', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     mrs${d}_body_part = models.IntegerField(help_text='', null=True, verbose_name='Part of body screened on $s spectroscopy  (MRS) | Specify $placeholder part of body screened', blank=True, choices=[(1, 'Brain'), (2, 'Kidney'), (3, 'Abdomen'), (4, 'Chest'), (5, 'Muscle'), (6, 'Head'), (7, 'Other')]) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     mrs${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s spectroscopy (MRS) result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     mrs${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s spectroscopy (MRS) result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     mrs${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s spectroscopy (MRS) performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -939,17 +811,11 @@ class Brainspectroscopy(Mrs)(models.Model):
 
 class Ct(models.Model):
     ct${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s CT', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     ct${d}_body_part = models.IntegerField(help_text='', null=True, verbose_name='Part of body screened on $s CT | Specify $placeholder part of body screened', blank=True, choices=[(1, 'Brain'), (2, 'Kidney'), (3, 'Abdomen'), (4, 'Chest'), (5, 'Muscle'), (6, 'Head'), (8, 'Temporal Bones'), (7, 'Other')]) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     ct${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s CT result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     ct${d}_temp_bone_features = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Temporal bone features', choices=[(1, 'Cochlear Nerve Hypoplasia'), (2, 'EVA'), (3, 'Other')])
-    priortesting = models.ForeignKey(PriorTesting)
     ct${d}_temp_bone_other_features = models.TextField(help_text='', null=True, verbose_name='Other temporal bone features', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     ct${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s CT result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     ct${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s CT performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -959,17 +825,11 @@ class Ct(models.Model):
 
 class Ultrasound(models.Model):
     us${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s US', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     us${d}_body_part = models.IntegerField(help_text='', null=True, verbose_name='Part of body screened on $s US | Specify $placeholder part of body screened', blank=True, choices=[(1, 'Brain'), (2, 'Kidney'), (3, 'Abdomen'), (4, 'Chest'), (5, 'Muscle'), (6, 'Head'), (7, 'Other')]) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     us${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s US result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     us${d}_renal_laterality = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Laterality of abnormal renal ultrasound findings', choices=[(1, 'Unilateral'), (2, 'Bilateral')])
-    priortesting = models.ForeignKey(PriorTesting)
     us${d}_renal_finding = models.IntegerField(help_text='', null=True, verbose_name='Renal ultrasound finding details', blank=True, choices=[(1, 'Cysts'), (2, 'Hypoplasia'), (3, 'Aplasia'), (4, 'Duplicated Ureters'), (5, 'Horseshoe'), (6, 'Other')]) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     us${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s US result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     us${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s US performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -979,13 +839,9 @@ class Ultrasound(models.Model):
 
 class Xray(models.Model):
     xray${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Xray', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     xray${d}_body_part = models.IntegerField(help_text='', null=True, verbose_name='Part of body screened on $s Xray | Specify $placeholder part of body screened', blank=True, choices=[(1, 'Brain'), (2, 'Kidney'), (3, 'Abdomen'), (4, 'Chest'), (5, 'Muscle'), (6, 'Head'), (7, 'Other')]) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     xray${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Xray result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     xray${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s Xray result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     xray${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Xray performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -995,13 +851,9 @@ class Xray(models.Model):
 
 class Endoscopy(models.Model):
     endo${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s Endoscopy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     endo${d}_body_part = models.TextField(help_text='', null=True, verbose_name='Type of $s Endoscopy ', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     endo${d} = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Endoscopy result | Specify $placeholder Type of Endoscopy ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     endo${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify $s Endoscopy Result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     endo${d}_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was $s Endoscopy performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1011,13 +863,9 @@ class Endoscopy(models.Model):
 
 class Musclebiopsy(models.Model):
     muscle_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s muscle biopsy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     muscle_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s muscle biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     muscle_biopsy${d}_spec_ = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s muscle biopsy', db_column='muscle_biopsy${d}_spec ', blank=True) # Field renamed to remove spaces. Field name made lowercase. This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     muscle_biopsy${d}_mito_test_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitochondrial testing done on $s muscle biopsy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     muscle_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s muscle biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1027,13 +875,9 @@ class Musclebiopsy(models.Model):
 
 class Skinbiopsy(models.Model):
     skin_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s skin biopsy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     skin_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s skin biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     skin_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s skin biopsy', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     skin_biopsy${d}_mito_test_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitochondrial testing done on $s skin biopsy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     skin_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s skin biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1043,13 +887,9 @@ class Skinbiopsy(models.Model):
 
 class Liverbiopsy(models.Model):
     liver_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s liver biopsy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     liver_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s liver biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     liver_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s liver biopsy', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     liver_biopsy${d}_mito_test_bool = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitochondrial testing done on $s liver biopsy', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     liver_biopsy${d}_mito_test_type = models.IntegerField(help_text='', null=True, verbose_name='Type of testing performed on $s liver biopsy | Results of $placeholder', blank=True, choices=[(1, 'PDH'), (2, 'OXPHOS'), (3, 'ETC Enzymes'), (4, 'Coenzyme Q10'), (5, 'Mitochondrial DNA Content')]) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1059,9 +899,7 @@ class Liverbiopsy(models.Model):
 
 class Brainbiopsy(models.Model):
     brain_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s brain biopsy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     brain_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s brain biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     brain_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s brain biopsy', blank=True) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1071,9 +909,7 @@ class Brainbiopsy(models.Model):
 
 class Bonemarrow(models.Model):
     bone_marrow_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s bone marrow biopsy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     bone_marrow_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s bone marrow biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     bone_marrow_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s bone marrow biopsy', blank=True) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1083,11 +919,8 @@ class Bonemarrow(models.Model):
 
 class Otherbiopsy(models.Model):
     other_biopsy${d}_type = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Specify $s other biopsy type', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     other_biopsy${d}_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of $s other biopsy', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     other_biopsy${d}_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='General pathological analysis of $s other biopsy', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     other_biopsy${d}_spec = models.TextField(help_text='', null=True, verbose_name='Specify abnormal result for $s other biopsy', blank=True) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1097,11 +930,8 @@ class Otherbiopsy(models.Model):
 
 class Electroretinogram(Erg)(models.Model):
     erg_date = models.FloatField(help_text='Please specify four digit year', null=True, verbose_name='Year of electroretinogram (ERG)', blank=True)
-    priortesting = models.ForeignKey(PriorTesting)
     erg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electroretinogram (ERG) result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     erg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electroretinogram (ERG) result', blank=True) # This field type is a guess
-    priortesting = models.ForeignKey(PriorTesting)
     erg_location = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Where was electroretinogram performed?', blank=True)
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1111,7 +941,6 @@ class Electroretinogram(Erg)(models.Model):
 
 class Electroencephalogram(Eeg)(models.Model):
     eeg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electroencephalogram (EEG) result', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     eeg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electroencephalogram (EEG) result', blank=True) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1121,7 +950,6 @@ class Electroencephalogram(Eeg)(models.Model):
 
 class Electromyogram(Emg)(models.Model):
     emg = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electromyogram (EMG) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     emg_spec = models.TextField(help_text='', null=True, verbose_name='Specify Electromyogram (EMG) results', blank=True) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1131,7 +959,6 @@ class Electromyogram(Emg)(models.Model):
 
 class Nerveconductionvelocity(Ncv)(models.Model):
     ncv = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Nerve Conduction Velocity (NCV) results', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not determined'), (4, 'Unknown/Not documented')])
-    priortesting = models.ForeignKey(PriorTesting)
     ncv_spec = models.TextField(help_text='', null=True, verbose_name='Specify Nerve Conduction Velocity (NCV) results', blank=True) # This field type is a guess
     priortesting = models.ForeignKey(PriorTesting)
 
@@ -1173,9 +1000,7 @@ class FamilyHistory(models.Model):
 
 class Otherfamilymemberswithsimilarsymptoms(models.Model):
     other_family${d}_side = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Which side of the family is the $s family member on?', choices=[(1, 'Maternal'), (2, 'Paternal'), (3, 'Unknown/Not documented')])
-    familyhistory = models.ForeignKey(FamilyHistory)
     other_family_rel${d}_ = models.CharField(max_length=2000, db_column='other_family_rel${d} ', blank=True, help_text='Ex: First cousin, aunt, etc.', null=True, verbose_name='What is the relationship of the $s family member to the proband?') # Field renamed to remove spaces. Field name made lowercase.
-    familyhistory = models.ForeignKey(FamilyHistory)
     other_family_symptoms${d} = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Describe the symptoms of the $s family member.', blank=True)
     familyhistory = models.ForeignKey(FamilyHistory)
 
@@ -1846,45 +1671,25 @@ class EcgResults(models.Model):
 
 class Ecg(models.Model):
     ecg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECG | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Time of $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_ventricular_rate = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ventricular Rate / bpm for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PR Interval / msec for $ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_qrs_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QRS Interval / msec  (ECG Computer) for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_qt_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QT Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_qtc_inter_machine = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (ECG Computer) for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_qtc_inter_manual = models.CharField(help_text='', null=True, max_length=2000, verbose_name='QTc Interval / msec   (Manual Calculation) for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_p_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='P axis for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_p_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='P Axis Type for $s ECG', choices=[(1, 'Sinus (0 to +90 degree)'), (2, 'LRA (-1 to -90 degree)'), (3, 'HLA (+91 to +180 degree)'), (4, 'LLA (-91 to -179 or +181 to +270 degree)')])
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_qrs_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='QRS axis for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_qrs_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='QRS Axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'RAD (>+100 degree)'), (3, 'Rightward (+90 to +100 degree)'), (4, 'LAD (negative degree)')])
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_twave_axis_degree = models.CharField(help_text='NOTE: Must use positive numbers. (360 degrees minus X)', null=True, max_length=2000, verbose_name='T wave axis for $s ECG', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_twave_axis_type = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='T wave axis Type for $s ECG', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Wide QRS-T angle')])
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_interp_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Predominant Rhythm.  ', choices=[(10, 'None'), (1, 'Normal Sinus Rhythm'), (2, 'Normal Sinus Rhythm with Sinus Arrhythmia'), (3, 'Normal Sinus Rhythm with Sinus Bradycardia'), (4, 'Normal Sinus Rhythm with Sinus Tachycardia'), (5, 'Low Right Atrial Rhythm'), (6, 'Ectopic Atrial Rhythm'), (7, 'Normal Sinus Rhythm alternating with Ectopic Atrial Rhythm'), (8, 'Junctional Rhythm (accelerated or escape)'), (9, 'Ventricular Rhythm (accelerated or escape)')])
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_interp_arrhythmia = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Arrhythmia/Conduction. ', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_interp_axis = models.CharField(help_text='Check all that apply.', null=True, max_length=2000, verbose_name='$s ECG Interpretation: Axis.', blank=True)
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
-    ecgresults = models.ForeignKey(EcgResults)
     ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
     ecgresults = models.ForeignKey(EcgResults)
 
@@ -1901,303 +1706,154 @@ class EchoResults(models.Model):
 
 class Echotest(models.Model):
     echo_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s ECHO | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s ECHO', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ht_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Height/cm on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_wt_report = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Weight/kg on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_bsa = models.CharField(help_text='', null=True, max_length=2000, verbose_name='BSA - Body Surface Area on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ivsd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd - (Diastolic septal thickness/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ivsd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='IVSd Zscore- (Diastolic septal thickness/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvidd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd - (LV Diastolic dimension/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvidd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDd Zscore- (LV Diastolic dimension/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvids = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs - (LV Systolic dimension/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvids_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVIDs Zscore- (LV Systolic dimension/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvpwd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd - (LV diastolic wall thickness/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvpwd_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVPWd Zscore- (LV diastolic wall thickness/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mass = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass - (M-mode LV mass-ASE corr./g) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mass_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass Zscore- (M-mode LV mass-ASE corr./g/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mass_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV mass index (g/h^2.7) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_d_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) - (mL) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_d_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) - (mL) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_d_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) - (mL) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_s_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (4C) - (mL) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_s_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (2C) - (mL) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_s_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, s (biplane) - (mL) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_d_4c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (4C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_d_2c_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (2C) index - (mL/m^2) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_vol_d_biplane_ind = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV volume, d (biplane) index - (mL/m^2) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_aov_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus - (Aortic Annulus diameter/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_aov_annulus_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV annulus Zscore- (Aortic Annulus diameter/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_root = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root - (Aortic Root diameter/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_root_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao Root Zscore- (Aortic Root diameter/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_st_junct_s = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s - (Sinotubular junction diameter/cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_st_junct_s_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao ST junct, s Zscore- (Sinotubular junction diameter/zscore) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_asc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d - (cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_asc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao asc,d, Zscore on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_dsc_d = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d - (cm) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ao_dsc_d_zscore = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Ao dsc,d, Zscore on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_aov_area = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AoV Area - (Aortic valve area/cm^2) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_sf = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV SF - (LV shortening fraction M-mode/%) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_ef = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF - (Ejection fraction M-mode/%) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_ef_4c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (4C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_ef_2c = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (2C) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_ef_biplane = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV EF (biplane) - (Ejection fraction/%) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_ef_aov = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV ejection time (AoV) - (msec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_intra_avv = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Intra AVV Time (MV) - (msec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mpi = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV MPI on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_septal_annulus = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: Septal annulus e' - (m/s) on $s ECHO report", blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mitral_septal = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral septal) on $s ECHO report", blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mitral_lateral = models.CharField(help_text='', null=True, max_length=2000, verbose_name="LV Diastolic Function: E/e' (mitral lateral) on $s ECHO report", blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_mitral_inflow = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV Diastolic Function: E/A (mitral inflow) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvot_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak velocity (m/s) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvot_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Peak gradient (mmHg) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvot_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Doppler: Mean gradient (mmHg) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_av_peak_vel = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Velocity (m/s) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_av_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Peak Gradient (mmHg) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_av_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Mean Gradient (mmHg) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_av_eject_time = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Valve Doppler: Ejection time (msec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_mv_peak_e = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak E (m/s) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_mv_peak_a = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Mitral Valve Doppler: Peak A (m/s) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_myocard_perf_index = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Myocardial Performance Index on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_samm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Systolic Anterior Motion of Mitral Valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_samm_degree = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Degree of SAMM on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO - (Left Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_lvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_rvoto = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO - (Right Ventricular Outflow Tract Obstruction) on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_rvoto_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RVOTO Gradient on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe'), (4, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_rvoto_gradient_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RVOTO Gradient Other - Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_rv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_rv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_chamber = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LV chamber on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_lv_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LV: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ra = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='RA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ra_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RA: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_la = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='LA on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_la_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='LA: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_aortic_root = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Root on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_aortic_root_specify = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Aortic Root: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_bicuspid_aortic_val = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Bicuspid aortic valve on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_aortic_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ai_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_aortic_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_as_sever = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_as_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_as_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='AS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_region_aortic_sten = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Region of aortic stenosis on $s ECHO report', choices=[(1, 'Valve'), (2, 'Subvalvular'), (3, 'Supravalvular'), (4, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_region_as_oth = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Region of aortic stenosis: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_hcm = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Hypertrophic Cardiomyopathy on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_hcm_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Hypertrophic Cardiomyopathy: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_hypertrophy_loc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Location of Hypertrophy on $s ECHO report', choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_hyper_other = models.TextField(help_text='', null=True, verbose_name='Location of Hypertrophy Other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_pul_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_pi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_pul_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ps_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pulmonary stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ps_peak_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_ps_mean_grad = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PS-Mean gradient (m/sec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_mit_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_mi_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_mit_val_prolapse = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_mvp_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Mitral valve prolapse: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ms_gradient = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ms_grad_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='MS gradient: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ms_jet_velocity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='MS mean jet velocity (m/sec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_tri_insuff = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_ti_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve insufficiency: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_tri_stenosis = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_tri_sten_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Tricuspid valve stenosis: Severity on $s ECHO report', choices=[(1, 'Trivial'), (2, 'Mild'), (3, 'Moderate'), (4, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_tri_sten_gradient = models.CharField(help_text='', null=True, max_length=2000, verbose_name='TS-Peak gradient (m/sec) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_rv_pressure = models.CharField(help_text='', null=True, max_length=2000, verbose_name='RV pressure estimate (mm/Hg > right atrial v wave) on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_asd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Atrial septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_asd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='ASD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_asd_specify_small = models.TextField(help_text='', null=True, verbose_name='ASD (small): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_asd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_asd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify (cm) on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_pfo = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent foramen ovale on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_pfo_severity = models.CharField(help_text='', null=True, max_length=2000, verbose_name='PFO: Specify on $s ECHO report', blank=True)
-    echoresults = models.ForeignKey(EchoResults)
     echo_vsd = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Ventricular septal defect on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_vsd_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='VSD: Size on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_vsd_specify_small = models.TextField(help_text='', null=True, verbose_name='VSD (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_vsd_specify_mod = models.TextField(help_text='', null=True, verbose_name='ASD (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_vsd_specify_large = models.TextField(help_text='', null=True, verbose_name='ASD (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_pda = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Patent ductus arteriosus on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_pda_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='PDA: Severity on $s ECHO report', choices=[(1, 'Small'), (2, 'Moderate'), (3, 'Large')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_pda_specify_small = models.TextField(help_text='', null=True, verbose_name='PDA (small): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_pda_specify_mod = models.TextField(help_text='', null=True, verbose_name='PDA (moderate): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_pda_specify_large = models.TextField(help_text='', null=True, verbose_name='PDA (large): Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_coarct = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_coarct_severity = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coarctation of the aorta: Severity on $s ECHO report', choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_coarct_sever_oth = models.TextField(help_text='', null=True, verbose_name='Coarctation of the aorta/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_peri_effusion = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion on $s ECHO report', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_peri_eff_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Pericardial effusion: Location on $s ECHO report', choices=[(1, 'RA'), (2, 'RV'), (3, 'LA'), (4, 'LA'), (5, 'LV'), (6, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_peri_eff_loc_oth = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_peri_eff_size = models.TextField(help_text='', null=True, verbose_name='Pericardial effusion/Size: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_rt_coronary_art = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Right coronary artery on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_lt_coronary_main = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Main on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_lt_coronary_ant_desc = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Anterior descending on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_lt_coronary_circum = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Left coronary artery _ Circumflex on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Unknown/Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_ca_origin = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous origin of coronary artery on $s ECHO report', choices=[(1, 'Both from R sinus'), (2, 'Both from L sinus'), (3, 'Single'), (4, 'Intramural'), (5, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_ca_origin_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous origin CA/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_coronary_ostia = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Coronary artery ostia on $s ECHO report', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Not well seen'), (4, 'Not documented'), (5, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_coronary_ostia_oth = models.TextField(help_text='', null=True, verbose_name='Coronary artery ostia Other - specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_aortic_arch = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Aortic Arch on $s ECHO report', choices=[(1, 'Normal branching'), (2, 'Right aortic arch'), (3, 'Aberrant Right subclavian'), (4, 'Double aortic arch'), (5, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_aortic_arch_oth = models.TextField(help_text='', null=True, verbose_name='Aortic Arch other - Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_number_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Number of pulmonary veins seen entering the left atrium on $s ECHO report', choices=[(1, '4 veins'), (2, '3 veins'), (3, '2 veins'), (4, '1 vein'), (5, 'Not well seen'), (6, 'Not documented')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_pul_vein = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous pulmonary veins on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_pul_vein_spec = models.TextField(help_text='', null=True, verbose_name='Anomalous pulmonary veins: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_ven_structure = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures on $s ECHO report', choices=[(1, 'Yes'), (2, 'No'), (3, 'Not well seen')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_ven_location = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Anomalous venous structures location on $s ECHO report', choices=[(1, 'SVC'), (2, 'LSVC to CS'), (3, 'Bilateral SVC'), (4, 'Azygos vein continuation of interrupted inferior vena cava (IVC)'), (5, 'Other')])
-    echoresults = models.ForeignKey(EchoResults)
     echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
-    echoresults = models.ForeignKey(EchoResults)
     echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
     echoresults = models.ForeignKey(EchoResults)
 
@@ -2214,97 +1870,51 @@ class EstResults(models.Model):
 
 class Exercisestresstest(models.Model):
     est_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s exercise stress test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s EST', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_machine = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST performed on', choices=[(1, 'Stationary Bicycle'), (2, 'Ramp/Treadmill')])
-    estresults = models.ForeignKey(EstResults)
     est_hr = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate ', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_hr_other = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_hr_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - rest', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Heart rate - maximum', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_hr_response = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Heart rate response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_hr_response_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Heart rate response Other - Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_bp = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Blood pressure response', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_bp_response = models.TextField(help_text='', null=True, verbose_name='$s EST Blood pressure response - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_bp_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - rest', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_bp_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Blood Pressure - maximum', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_o2_sat = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen saturation', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_o2_other = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen saturated - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_o2_sat_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - rest', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_o2_sat_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen saturation - maximum', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_work_rate = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Work rate', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_work_rate_other = models.TextField(help_text='', null=True, verbose_name='$s EST Work rate - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_work_rate_watts = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Work rate - Watts', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_o2_consump = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Oxygen consumption', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_os_comsump_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Oxygen consumption - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_os_comsump_rest_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - rest VO2 (L/min)', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_os_comsump_max_vo2 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max VO2 (L/min)', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_os_comsump_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - max (ml/kg/min)', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_os_comsump_max_at = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Oxygen consumption - Anerobic Threshold (AT)', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_cardiac_output = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Cardiac output', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_cardiac_output_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Cardiac output - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_cardiac_output_rest = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_card_output_rest_ci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - rest - CI', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_cardiac_output_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_card_output_max_mci = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Cardiac output - maximum - MCI', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_rhythm = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Rhythm', choices=[(1, 'Sinus'), (2, 'PAC-Premature Atrial Complexes'), (3, 'PVC-Premature Ventricular Complexes'), (4, 'PVC Couplets'), (5, 'Ventricular Tachycardia'), (6, 'Supraventricular Tachycardia'), (7, 'Ventricular Fibrillation'), (8, 'First Degree AV Block'), (9, 'Second Degree AV Block (Mobitz Type I Wenckebach)'), (10, 'Second Degree AV Block (Mobitz Type II)'), (11, 'Third Degree (or Complete) AV Block'), (12, 'Atrial Fibrillation'), (13, 'Atrial Flutter'), (14, 'Atrial Tachycardia'), (15, 'Bradycardia'), (16, 'Junctional rhythm'), (17, 'Ventricular fibrillation'), (18, 'Prolonged QT Interval'), (19, 'Wolff-Parkinson-White'), (20, 'Torsades de pointes'), (21, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_rhythm_other = models.TextField(help_text='', null=True, verbose_name='$s EST Rhythm - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_st_seg_change = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST ST segment changes', choices=[(1, 'None'), (2, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_st_seg_change_oth = models.TextField(help_text='', null=True, verbose_name='$s EST ST segment changes - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_symptom = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Symptoms', choices=[(1, 'None'), (2, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_symptom_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Symptoms - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_rest = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (rest)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_rest_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function  (rest) - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_reserve = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_reserve_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (reserve) - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_post = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s EST Pulmonary function (post)', choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Other')])
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_post_oth = models.TextField(help_text='', null=True, verbose_name='$s EST Pulmonary function (post) - Other: Specify', blank=True) # This field type is a guess
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
-    estresults = models.ForeignKey(EstResults)
     est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
     estresults = models.ForeignKey(EstResults)
 
@@ -2321,85 +1931,45 @@ class HolterResults(models.Model):
 
 class Hm(models.Model):
     hm_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s holter monitor test | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    holterresults = models.ForeignKey(HolterResults)
     hm_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Holter Monitor test', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_total = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Total beats', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Min HR (bpm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_avg = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Avg HR (bpm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_max = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Heart Rate Data: Max HR (bpm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_var_asdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: ASDNN 5 (msec)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_var_sdnn5 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDANN 5 (msec)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_var_sdnn = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: SDNN (msec)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_hr_var_rmssd = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter HR Variability: RMSSD (msec)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Total VE Beats (%)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_vent_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Vent Runs', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Beats', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Longest', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Fastest (bpm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_triplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Triplets (Events)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_couplet = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Couplets (Events)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_ront = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: R on T', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_bi_trigem = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Bi/Trigeminy (Beats)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_max_ve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Minute  (Beats)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_max_ve_hr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Max VE/Hour  (Beats)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_mean_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: Mean VE/Hour', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_ve_ve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Ventricular Ectopy: VE/1000 (% of rhythm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_total_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Total SVE Beats (%)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_svt_run = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVT Runs', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_beat = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Beats', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_long = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_fast = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Fastest (bpm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_atr_pair = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Atrial Pairs (Events)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_long_rr = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Longest R-R (Longest Pause/sec)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_max_sve_min = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Minute (Beats)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_max_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Max SVE/Hour (Beats)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_mean_sve_hour = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: Mean SVE/Hour (Beats)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_sve_sve_1000 = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Supraventricular Ectopy: SVE/1000 (% of rhythm)', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_summary = models.IntegerField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Heart rate interpretation', blank=True, choices=[(1, 'Normal'), (2, 'Abnormal'), (3, 'Increased vagal tone'), (4, 'Increased sympathetic tone')]) # This field type is a guess
-    holterresults = models.ForeignKey(HolterResults)
     hm_brady_percent = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: Bradycardia % of rhythm', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_avblock_percent = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: AV Block', choices=[(1, 'None'), (2, 'First degree'), (3, 'Second degree'), (4, 'Third degree')])
-    holterresults = models.ForeignKey(HolterResults)
     hm_pr_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: PR Interval', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
-    holterresults = models.ForeignKey(HolterResults)
     hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
     holterresults = models.ForeignKey(HolterResults)
 
@@ -2416,13 +1986,9 @@ class CmriResults(models.Model):
 
 class Cardiacmri(models.Model):
     cmri_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac MRI | Other test category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cmriresults = models.ForeignKey(CmriResults)
     cmri_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of Cardiac $s MRI', blank=True)
-    cmriresults = models.ForeignKey(CmriResults)
     cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
-    cmriresults = models.ForeignKey(CmriResults)
     cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
-    cmriresults = models.ForeignKey(CmriResults)
     cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
     cmriresults = models.ForeignKey(CmriResults)
 
@@ -2439,9 +2005,7 @@ class CardiacCathProcedures(models.Model):
 
 class Cardiaccatherizations(models.Model):
     ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
     ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
-    cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
     ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
     cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
 
@@ -2458,11 +2022,8 @@ class CardiacSurgery(models.Model):
 
 class Cardiacsurgery(models.Model):
     cardsurg_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac surgery | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
-    cardiacsurgery = models.ForeignKey(CardiacSurgery)
     cardsurg_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s cardiac surgery', blank=True)
-    cardiacsurgery = models.ForeignKey(CardiacSurgery)
     cardsurg_name = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Name of $s cardiac surgery', blank=True)
-    cardiacsurgery = models.ForeignKey(CardiacSurgery)
     cardsurg_summary = models.TextField(help_text='', null=True, verbose_name='$s cardiac surgery summary', blank=True) # This field type is a guess
     cardiacsurgery = models.ForeignKey(CardiacSurgery)
 

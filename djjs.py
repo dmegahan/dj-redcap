@@ -64,6 +64,9 @@ def csv2json(reader, fileName):
 	last_form_name = None;
 	cur_depth = 0;
 	for row in reader:
+		"""
+		Printing the list of repeating rows built below.
+		"""
 		if row['form_name']:
 			form_list[0] = row['form_name'];
 			if row['form_name'] != last_form_name:
@@ -73,10 +76,17 @@ def csv2json(reader, fileName):
 				last_form_name = row['form_name'];
 		"""
 		Needed for special case csv's with repeats used, not needed otherwise.
-		Determines if a field_name has startrepeat,repeat,or endrepeat in it,
-		builds a list of rows including or nested in those repeats, and prints them 
-		out based on their number of repeats and location, when the repeats have finished.
-		Otherwise, prints rows normally.
+		An array of rows is built depending on if that row has a startrepeat, endrepeat, or
+		repeat in it. Every row between a startrepeat and endrepeat is added to the 
+		array, while keeping track of the current depth of the array.
+
+		An array might look like: [[-,-,-,[-,[-,-,-],-,[-,-,]]]], where each - is a 
+		row and each list, besides the outermost one, is a group of rows inside a 
+		startrepeat/endrepeat segment.
+
+		The list is then scrubbed of empty indexs and rows with only endrepeat in the 
+		field name. Relationships between forms (used for creating foreign keys) are
+		made by appending the referenced form to the end of the field_name. 
 		"""
 		if row['field_name'].find('startrepeat') != -1:
 			repeat_info = row['field_name'].strip().split();
@@ -101,7 +111,12 @@ def csv2json(reader, fileName):
 			repeat_rows_list = last_inner_append(repeat_rows_list,'',0,cur_depth);
 		elif len(repeat_rows_list) > 0:
 			repeat_rows_list = last_inner_append(repeat_rows_list, row,0,cur_depth);
+		
 		if cur_depth <= 0 and len(repeat_rows_list) > 0:
+			"""
+			Run if there are values in the repeat_rows_list but the current depth
+			is 0, meaning all startrepeats have been closed with endrepeats
+			"""
 			repeat_rows_list = clean_list_space(repeat_rows_list);
 			repeat_rows_list = clean_list_endrepeat(repeat_rows_list);
 			create_form_relations(repeat_rows_list,form_list,0,0);
@@ -111,12 +126,13 @@ def csv2json(reader, fileName):
 			form_list = [''];
 			cur_depth = 0;
 		elif cur_depth <= 0 and len(repeat_rows_list) == 0:
+			#Print a row normally
 			fout.write(generateJson(row));
 			fout.write('\n');
 			cur_depth = 0;
 			form_list = [''];
 			repeat_rows_list = [];
-		print row['form_name'];
+	#print last repeats list, if any
 	if row['form_name'] != last_form_name:
 		if last_form_name:
 			print_list(all_repeats, fout);
@@ -150,10 +166,12 @@ def clean_list_endrepeat(repeats_list):
 	return repeats_list;
 
 def create_form_relations(repeats_list, form_list, form_index, prev_form_index):
-	#Edit form names to include the previous form read, so models can reference
-	#each other through foreign keys
+	"""
+	Edit form names to include the previous form read, so models can reference
+	each other through foreign keys. If there are nested lists, the function is 
+	recursively called to search them too.
+	"""
 	num_lists = 0;
-	print form_list;
 	for j, item in enumerate(repeats_list):
 		if isinstance(item,list):
 			num_lists = num_lists + 1;
@@ -163,12 +181,9 @@ def create_form_relations(repeats_list, form_list, form_index, prev_form_index):
 
 def order_list(repeats_list):
 	"""
-	Recursive method for generating the json for a list of lines that use repeats.
-	The function iterates through the list, generating the json for each dictionary it encounters.
-	When it finds another list, this function is recursively called on that list and does 
-	the same. The function uses num_repeats and num_repeats_index to keep track of how many iterations 
-	it should do for each list, nested
-	or not.
+	Given a repeats list created in the csv2json function, this list will pull out all
+	the embedded lists and order them in order of appearence, while keeping values in their
+	correct list, even if they were seperated by another list.
 	"""
 	orderList = [[]];
 	for j,item in enumerate(repeats_list):
@@ -179,6 +194,9 @@ def order_list(repeats_list):
 	return orderList;		
 
 def print_list(someList, fout):
+	"""
+	Prints every value in someList, including values in nested lists
+	"""
 	for item in someList:
 		if isinstance(item,list):
 			print_list(item,fout);
@@ -202,6 +220,10 @@ def last_inner_append(x,y,curDepth,depth):
 	return x;
 
 def generateJson(row):
+	"""
+	Generates the json for the given row. The json is formatted to 1 line for easier
+	search when generating the django models.
+	"""
 	return (json.dumps({'form':
                                         {'form name': row['form_name'],
                                         'section header': row['section_name'],
@@ -234,18 +256,20 @@ def json2dj(fileName):
 		form_name = get_field_value(line, 'form name');
 		fk_name = None;
 		
+		#print form_name;
 		if form_name.find('~') != -1:
 			form_name, fk_name = form_name.split('~');
 			fk_name = form2model(fk_name);
 		form_name = form2model(form_name);
-		if prev_fk_name:
-			fout.write(get_FK(prev_fk_name));
-		prev_fk_name = fk_name;		
+		#print 'fk_name ' + str(fk_name) + '	' + 'prev_fk ' + str(prev_fk_name);
 		if form_name != prev_form_name:
+			if prev_fk_name:
+				fout.write(get_FK(prev_fk_name));
 			if prev_form_name:
 				for meta_line in get_meta(prev_form_name):
 					fout.write(meta_line);
 			prev_form_name = form_name;
+			prev_fk_name = fk_name;
 			fout.write('class %s(models.Model):' % form_name);
 			fout.write('\n');
 			

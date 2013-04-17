@@ -5,8 +5,7 @@ class Genepanel(models.Model):
     panel${d}_result_type = models.IntegerField(max_length=2000, blank=True, help_text='For example, if testing showed both a disease-causing mutation and a polymorphism, check positive and polymorphism.', null=True, verbose_name='Indicate ALL types of results identified on panel. ', choices=[(1, 'Positive - disease-causing mutation identified'), (2, 'Negative - no definite/possible disease-causing mutation identified'), (3, 'Variant of uncertain significance'), (4, 'Polymorphism'), (5, 'Results pending'), (6, 'Results not known')])
     panel${d}_list_gene = models.IntegerField(max_length=2000, blank=True, help_text='Optional', null=True, verbose_name='Would you like to list the genes that were on the panel?', choices=[(1, 'Yes'), (2, 'No')])
     panel${d}_list_gene_entry = models.CharField(help_text='Example: PTPN11, HRAS, SOS1', null=True, max_length=2000, verbose_name='List genes on this panel (Separate with commas)', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
-    genepanel = models.ForeignKey(Genepanel)
+    priorgenetictesting = models.ForeignKey(PriorGeneticTesting)
 
     class Meta:
 	 db_table = 'Genepanel'
@@ -14,8 +13,7 @@ class Genepanel(models.Model):
 
 class Gene(models.Model):
     gene_result = models.CharField(help_text='Example: GNE1', null=True, max_length=2000, verbose_name='$s gene tested on $s1 gene panel', blank=True)
-    endrepeat = models.TextField(help_text='', null=True, verbose_name='', blank=True) # This field type is a guess
-    gene = models.ForeignKey(Gene)
+    genepanel = models.ForeignKey(Genepanel)
 
     class Meta:
 	 db_table = 'Gene'

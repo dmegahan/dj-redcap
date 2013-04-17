@@ -12,7 +12,6 @@ class CardiacFamilyHistory(models.Model):
 
 class EcgResults(models.Model):
     ecg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Electrocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
-    ecgresults = models.ForeignKey(EcgResults)
 
     class Meta:
 	 db_table = 'EcgResults'
@@ -40,6 +39,7 @@ class Ecg(models.Model):
     ecg_interp_structure = models.IntegerField(max_length=2000, blank=True, help_text='Check all that apply', null=True, verbose_name='$s ECG Interpretation: Structural. ', choices=[(1, 'None'), (2, 'Right atrial enlargement (RAE)'), (3, 'Left atrial enlargement (LAE)'), (4, 'Bi-atrial enlargement  (BAE)'), (5, 'Biventricular hypertrophy'), (6, 'Right ventricular hypertrophy (RVH)'), (7, 'Right ventricular hypertrophy (RVH) with strain'), (8, 'Left ventricular hypertrophy (LVH)'), (9, 'Left ventricular hypertrophy (LVH) with strain'), (10, 'Hypertrophic Cardiomyopathy (HCM)'), (11, 'Dilated Cardiomyopathy (DCM)'), (12, 'Dextrocardia')])
     ecg_interp_other = models.TextField(help_text='', null=True, verbose_name='$s ECG Interpretation:  Other (not listed above)', blank=True) # This field type is a guess
     ecg_result = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s ECG Result', choices=[(1, 'Normal'), (2, 'VON - Variant of Normal'), (3, 'Abnormal'), (4, 'Not Determined')])
+    ecgresults = models.ForeignKey(EcgResults)
 
     class Meta:
 	 db_table = 'Ecg'
@@ -47,7 +47,6 @@ class Ecg(models.Model):
 
 class EchoResults(models.Model):
     echo_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Echocardiogram done', choices=[(1, 'Yes'), (2, 'No')])
-    echoresults = models.ForeignKey(EchoResults)
 
     class Meta:
 	 db_table = 'EchoResults'
@@ -204,6 +203,7 @@ class Echotest(models.Model):
     echo_anom_ven_loc_oth = models.TextField(help_text='', null=True, verbose_name='Anomalous venous structures location/Other: Specify on $s ECHO report', blank=True) # This field type is a guess
     echo_other_chd = models.TextField(help_text='', null=True, verbose_name='Other congenital heart disease or findings on $s ECHO report', blank=True) # This field type is a guess
     echo_comments_report = models.TextField(help_text='', null=True, verbose_name='Additional comments from $s ECHO report not listed above.', blank=True) # This field type is a guess
+    echoresults = models.ForeignKey(EchoResults)
 
     class Meta:
 	 db_table = 'Echotest'
@@ -211,7 +211,6 @@ class Echotest(models.Model):
 
 class EstResults(models.Model):
     est_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Exercise Stress Test done', choices=[(1, 'Yes'), (2, 'No')])
-    estresults = models.ForeignKey(EstResults)
 
     class Meta:
 	 db_table = 'EstResults'
@@ -265,6 +264,7 @@ class Exercisestresstest(models.Model):
     est_pul_func_ve = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - VE', blank=True)
     est_pul_func_rq = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s EST Pulmonary function - RQ', blank=True)
     est_summary = models.TextField(help_text='', null=True, verbose_name='EST $s Summary', blank=True) # This field type is a guess
+    estresults = models.ForeignKey(EstResults)
 
     class Meta:
 	 db_table = 'Exercisestresstest'
@@ -272,7 +272,6 @@ class Exercisestresstest(models.Model):
 
 class HolterResults(models.Model):
     hm_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Holter Monitor test done', choices=[(1, 'Yes'), (2, 'No')])
-    holterresults = models.ForeignKey(HolterResults)
 
     class Meta:
 	 db_table = 'HolterResults'
@@ -320,6 +319,7 @@ class Hm(models.Model):
     hm_qrs_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QRS Interval', blank=True)
     hm_qtc_interval = models.CharField(help_text='', null=True, max_length=2000, verbose_name='$s Holter Monitor Interpretation: QTc Interval', blank=True)
     hm_addit_info = models.TextField(help_text='', null=True, verbose_name='$s Holter Monitor Interpretation: Additional information ', blank=True) # This field type is a guess
+    holterresults = models.ForeignKey(HolterResults)
 
     class Meta:
 	 db_table = 'Hm'
@@ -327,7 +327,6 @@ class Hm(models.Model):
 
 class CmriResults(models.Model):
     cmri_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac MRI done', choices=[(1, 'Yes'), (2, 'No')])
-    cmriresults = models.ForeignKey(CmriResults)
 
     class Meta:
 	 db_table = 'CmriResults'
@@ -339,6 +338,7 @@ class Cardiacmri(models.Model):
     cmri_evidence = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='$s Cardiac MRI Summary showed evidence of ', choices=[(6, 'None'), (1, 'HCM- Hypertrophic cardiomyopathy'), (2, 'LE- Myocardial late enhancement'), (3, 'ARVD/C- Arrhythmogenic right ventricular dysplasia/cardiomyopathy'), (4, 'LVNC- Left ventricular noncompaction'), (5, 'DCM- Dilated cardiomyopathy')])
     cmri_hypertrophy_loc = models.IntegerField(help_text='', null=True, verbose_name='Location of Hypertrophy | Location of Hypertrophy Other - Specify', blank=True, choices=[(1, 'Septal'), (2, 'Apical'), (3, 'Concentric'), (4, 'Other')]) # This field type is a guess
     cmri_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac MRI Summary/Final report', blank=True) # This field type is a guess
+    cmriresults = models.ForeignKey(CmriResults)
 
     class Meta:
 	 db_table = 'Cardiacmri'
@@ -346,7 +346,6 @@ class Cardiacmri(models.Model):
 
 class CardiacCathProcedures(models.Model):
     ccath_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac catheterization done', choices=[(1, 'Yes'), (2, 'No')])
-    cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
 
     class Meta:
 	 db_table = 'CardiacCathProcedures'
@@ -356,6 +355,7 @@ class Cardiaccatherizations(models.Model):
     ccath_enrollment = models.IntegerField(help_text='', null=True, verbose_name='How would you categorize the $s cardiac catherization | Other procedure category', blank=True, choices=[(1, 'Initial test'), (2, 'Enrollment test'), (3, 'Post-enrollment test'), (4, 'Other')]) # This field type is a guess
     ccath_date = models.CharField(help_text='', null=True, max_length=2000, verbose_name='Date of $s Cardiac cathertization', blank=True)
     ccath_summary = models.TextField(help_text='', null=True, verbose_name='$s Cardiac catherization summary', blank=True) # This field type is a guess
+    cardiaccathprocedures = models.ForeignKey(CardiacCathProcedures)
 
     class Meta:
 	 db_table = 'Cardiaccatherizations'
@@ -363,7 +363,6 @@ class Cardiaccatherizations(models.Model):
 
 class CardiacSurgery(models.Model):
     cardsurg_done = models.IntegerField(max_length=2000, blank=True, help_text='', null=True, verbose_name='Cardiac surgery done', choices=[(1, 'Yes'), (2, 'No')])
-    cardiacsurgery = models.ForeignKey(CardiacSurgery)
 
     class Meta:
 	 db_table = 'CardiacSurgery'
